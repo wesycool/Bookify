@@ -1,18 +1,18 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-const userSchema = new Schema({
-    userName: String,
+const businessSchema = new Schema({
+    businessType: String,
+    businessName: String,
     address1: String,
     address2: String,
     city: String,
     province: String,
     email: String,
     phone: Number,
-    userCreated: {type: Date, default: Date.now},
     archieve: Boolean
 });
 
-const Users = mongoose.model("Users", userSchema);
+const Business = mongoose.model("Business", businessSchema);
 
-module.exports = Users;
+module.exports = Business;
