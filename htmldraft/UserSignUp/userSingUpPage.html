@@ -4,22 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Business Dashboard</title>
+    <title>User Sign Up Page</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
-    <style>
-        .footerContainer {
-            position: fixed;
-            bottom: 0;
-            width: 100%;
-            height: 60px;
-            line-height: 60px;
-        }
-        .card{
-            min-width: fit-content;
-        }
-
-    </style>
+    <link rel="stylesheet" href="./usersignup.css">
 </head>
 
 <body>
@@ -49,58 +36,52 @@
         </nav>
     </div>
 
-<div class="container">
-    <div class="row">
-        <div class="col">
-    <div class="card" style="width: 20rem;">
-        <img class="card-img-top" src="https://smartincentives.org/wp-content/uploads/web_banner-3.jpg" alt="Card image cap">
-        <div class="card-body">
-          <p class="card-text">HairStyledotCom</p>
+    <div class="userSignupForm">
+        <div class="form-container">
+            <div class="image-holder"></div>
+            <form method="post">
+                <h2 class="text-center"><strong>Create</strong> an account.</h2>
+                <div class="form-group"><input class="form-control" type="username" name="username" placeholder="User Name"></div>
+                <div class="form-group"><input class="form-control" type="email" name="email" placeholder="Email"></div>
+                <div class="form-group"><input class="form-control" type="password" name="password" placeholder="Password"></div>
+                <div class="form-group"><input class="form-control" type="password" name="password-repeat" placeholder="Password (repeat)"></div>
+
+                <div class="form-group"><button class="btn btn-primary btn-block" type="submit">Sign Up</button></div></form>
         </div>
     </div>
-        </div>
-          <div class="col-sm-3">
-              <img src="https://snowmap.fast-sfc.com/base_snow_map/13/2182/2995.png" alt="map">
-              <h1>Contact Us</h1>
-              <p>Email</p>
-              <p>Phone</p>
-              <p>Address</p>
-            </div>
-          </div>
-        </div>
      
     
 
     <div class="footerContainer">
-        <footer>
-            <div class="container">
-                <div class="row justify-content-center">
-                    <div class="col-md-3">
-                        <h3>Services</h3>
-                        <ul>
-                            <li><a href="#">Claim your Business</a></li>
-                            <li><a href="#">Advertise on Us</a></li>
-                        </ul>
-                    </div>
-                    <div class="col-md-3">
-                        <h3>About</h3>
-                        <ul>
-                            <li><a href="#">About Us</a></li>
-                            <li><a href="#">Term of Service</a></li>
-                        </ul>
-                    </div>
-                    <div class="col-lg-3 social"><a href="#"><i class="icon ion-social-facebook"></i></a><a href="#"><i
-                                class="icon ion-social-twitter"></i></a><a href="#"><i
-                                class="icon ion-social-snapchat"></i></a><a href="#"><i
-                                class="icon ion-social-instagram"></i></a>
-                        <p class="copyright">Spratans © 2020</p>
+        <div class="footer">
+            <footer>
+                <div class="container-fluid">
+                    <div class="row justify-content-center">
+                        <div class="col-md-3">
+                            <h3>Services</h3>
+                            <ul>
+                                <li><a href="#">Claim your Business</a></li>
+                                <li><a href="#">Advertise with us</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-md-3">
+                            <h3>About</h3>
+                            <ul>
+                                <li><a href="#">About Us</a></li>
+                                <li><a href="#">Term of Service</a></li>
+                            </ul>
+                        </div>
+
+                        <div class="col-lg-3 item social"><a href="#"><i class="fab fa-facebook"></i></a><a href="#"><i class="fab fa-twitter"></i></a><a href="#"><i class="fab fa-snapchat"></i></a><a href="#"><i class="fab fa-instagram"></i></a>
+                            <p class="copyright">Spartans © 2020</p>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </footer>
+            </footer>
+        </div>
     </div>
 
-
+    <script src="https://kit.fontawesome.com/bb6ee5fc4f.js" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
         integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
         crossorigin="anonymous"></script>
