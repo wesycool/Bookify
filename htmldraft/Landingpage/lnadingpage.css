@@ -1,0 +1,80 @@
+  /* jubmo */
+  .jumbo {
+    background-image: url("https://images.unsplash.com/photo-1489844097929-c8d5b91c456e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1052&q=80%201052w");
+    height: 600px;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+  }
+  
+  .jumbo h1 {
+    font-size: 60px;
+    padding-top: 140px;
+    margin-top: 0;
+  }
+  
+  
+  
+    /* footer */
+  
+    .footer {
+      padding: 50px 0;
+      background-color: #fff;
+    }
+    
+    .footer h3 {
+      margin-top: 0;
+      margin-bottom: 12px;
+      font-weight: bold;
+      font-size: 16px;
+    }
+    
+    .footer ul {
+      padding: 0;
+      list-style: none;
+      line-height: 1.6;
+      font-size: 14px;
+      margin-bottom: 0;
+    }
+    
+    .footer ul a {
+      color: inherit;
+      text-decoration: none;
+      opacity: 0.8;
+    }
+    
+    .footer ul a:hover {
+      opacity: 1;
+    }
+    
+    .footer .item.social {
+      text-align: right;
+    }
+    
+    .footer .item.social > a {
+      font-size: 24px;
+      width: 40px;
+      height: 40px;
+      line-height: 40px;
+      display: inline-block;
+      text-align: center;
+      border-radius: 50%;
+      border: 1px solid #ccc;
+      margin-left: 10px;
+      margin-top: 22px;
+      color: inherit;
+      opacity: 0.75;
+    }
+    
+    .footer .item.social > a:hover {
+      opacity: 0.9;
+    }
+    
+    .footer .copyright {
+      margin-top: 14px;
+      margin-bottom: 0;
+      font-size: 13px;
+      opacity: 0.6;
+    }
+    
+    
