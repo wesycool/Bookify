@@ -9,6 +9,7 @@ function App() {
   return (
     <Router>
       <div>
+        <Navbar />
         <Wrapper>
           <Route exact path="/" component={Temp} />
         </Wrapper>
