@@ -17,7 +17,7 @@
         }
         .card{
             min-width: fit-content;
-            background-color: rgb(223, 230, 236);
+            background-color: rgb(0 0 0 / 81%);
         }
 
         .rating {
@@ -57,8 +57,17 @@
 }
 .h1, h1 {
     font-size: 1.5rem;
+    color: white;
 }
 
+p {
+    margin-top: 0;
+    margin-bottom: 1rem;
+    color: white;
+}
+hr.new1{
+    border-top: 1px solid tomato;
+}
     </style>
 </head>
 
@@ -91,44 +100,54 @@
 
 <div class="container">
     <div class="row">
-        <div class="col">
+        <div class="col-sm-8">
     <div class="card" style="width: 20rem;">
-        <img class="card-img-top" src="https://smartincentives.org/wp-content/uploads/web_banner-3.jpg" alt="Card image cap">
+        <img class="card-img-top" src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80" alt="Card image cap">
         <div class="card-body">
-          <p class="card-text">HairStyledotCom</p>
+          <p style="color: white;" class="card-text">HairStyledotCom</p>
         </div>
     </div>
         </div>
-          <div class="col-sm-3">
+          <div class="col-sm-3 ">
               <div class="card">
-              <img src="https://snowmap.fast-sfc.com/base_snow_map/13/2182/2995.png" alt="map">
+              <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTZN9HBLNVbL51jjYNACR2DEBkEtakz9Xcv4w&usqp=CAU" alt="map">
               <h1>Contact Us</h1>
               <p>Email</p>
+              <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
               <p>Phone</p>
+              <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Phone Number">
               <p>Address</p>
+              <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Address">
             </div>
           </div>
     </div>
-    <hr />
-    <div class="col-md-6">
+    <hr class="new1">
+    
+    
+
+<div class="row">
+<div class="col-md-6">
+<div class="card">
+    <div class="card-body">
+        <h1>Overall Star Rating </h1>
+        <div class="rating"> <input type="radio" name="rating" value="5" id="5"><label for="5">☆</label> <input type="radio" name="rating" value="4" id="4"><label for="4">☆</label> <input type="radio" name="rating" value="3" id="3"><label for="3">☆</label> <input type="radio" name="rating" value="2" id="2"><label for="2">☆</label> <input type="radio" name="rating" value="1" id="1"><label for="1">☆</label>
+            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+        </div>
+    </div>
+  </div>
+</div>
+   
+<div class="col-md-6">
     <div class="card">
-        <h5 style="background-color: rgb(245, 96, 96);" class="card-header">Featured</h5>
-        <div style="background-color: rgb(187, 221, 243);" class="card-body">
-          <h5 class="card-title">Restaurants</h5>
-          <p class="card-text">Click Book It to view restaurants</p>
+        <h5 style="background-color: rgb(53, 22, 2); color: rgb(202, 235, 17)" class="card-header">Featured</h5>
+        <div  class="card-body">
+          <h5  style="color: white;" class="card-title">The Keg</h5>
+          <p  class="card-text">Book it Now!</p>
           <a href="#" class="btn btn-success">Book It!</a>
         </div>
       </div>
 </div>
-<br />
-<div class="col-md-3">
-<div class="card">
-    <div class="card-body">
-        <h1>Star Rating </h1>
-        <div class="rating"> <input type="radio" name="rating" value="5" id="5"><label for="5">☆</label> <input type="radio" name="rating" value="4" id="4"><label for="4">☆</label> <input type="radio" name="rating" value="3" id="3"><label for="3">☆</label> <input type="radio" name="rating" value="2" id="2"><label for="2">☆</label> <input type="radio" name="rating" value="1" id="1"><label for="1">☆</label>
-        </div>
-    </div>
-  </div>
+</div>
 </div>
 </div>
 
