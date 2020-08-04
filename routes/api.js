@@ -1,4 +1,5 @@
 const router = require("express").Router();
+
 const {Business} = require('../app/models/index.js')
 
 router.get("/api/business-list", (req,res) =>{
@@ -12,3 +13,4 @@ router.get("/api/business-list", (req,res) =>{
 })
 
 module.exports = router;
+
