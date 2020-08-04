@@ -6,6 +6,9 @@ import Footer from "./components/Footer";
 import Wrapper from "./components/Wrapper";
 import Browse from "./components/Browse"
 
+
+
+
 function App() {
   return (
     <Router>

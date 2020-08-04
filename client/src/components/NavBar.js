@@ -1,20 +1,20 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import Browser from "./Browse"
 
 const list = [
     {   
-        'business':'test Name 1',
+        'businessName':'test Name 1',
         'category':'test Category 1',
-        'location': 'test Location 1',
+        'city': 'test Location 1',
         'rating': 'test Rating 1',
         'imgSRC': 'https://avatars1.githubusercontent.com/u/31528729?s=460&u=47436ea6b0f63a23dbe6fbbc71e75156dc05e40f&v=4',
         'information': 'test Information 1'
     },
     {   
-        'business':'test Name 2',
+        'businessName':'test Name 2',
         'category':'test Category 2',
-        'location': 'test Location 2',
+        'city': 'test Location 2',
         'rating': 'test Rating 2',
         'imgSRC': 'https://avatars1.githubusercontent.com/u/31528729?s=460&u=47436ea6b0f63a23dbe6fbbc71e75156dc05e40f&v=4',
         'information': 'test Information 2'
@@ -24,7 +24,7 @@ const list = [
 
 function Navbar(props) {
     const location = useLocation();
-    const [ businessList, setList ] = useState( list )
+    const [ businessList, setList ] = useState( [] )
     console.log(businessList)
 
     useEffect(() => {
