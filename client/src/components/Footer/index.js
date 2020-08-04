@@ -3,19 +3,19 @@ import "./style.css";
 
 function Footer() {
   return (
-    <div class="footerContainer">
-    <div class="footer">
+    <div className="footerContainer">
+    <div className="footer">
         <footer>
-            <div class="container-fluid">
-                <div class="row justify-content-center">
-                    <div class="col-md-3">
+            <div className="container-fluid">
+                <div className="row justify-content-center">
+                    <div className="col-md-3">
                         <h3>Services</h3>
                         <ul>
                             <li><a href="#">Claim your Business</a></li>
                             <li><a href="#">Advertise with us</a></li>
                         </ul>
                     </div>
-                    <div class="col-md-3">
+                    <div className="col-md-3">
                         <h3>About</h3>
                         <ul>
                             <li><a href="#">About Us</a></li>
@@ -23,8 +23,8 @@ function Footer() {
                         </ul>
                     </div>
 
-                    <div class="col-lg-3 item social"><a href="#"><i class="fab fa-facebook"></i></a><a href="#"><i class="fab fa-twitter"></i></a><a href="#"><i class="fab fa-snapchat"></i></a><a href="#"><i class="fab fa-instagram"></i></a>
-                        <p class="copyright">Spartans © 2020</p>
+                    <div className="col-lg-3 item social"><a href="#"><i className="fab fa-facebook"></i></a><a href="#"><i className="fab fa-twitter"></i></a><a href="#"><i className="fab fa-snapchat"></i></a><a href="#"><i className="fab fa-instagram"></i></a>
+                        <p className="copyright">Spartans © 2020</p>
                     </div>
                 </div>
             </div>

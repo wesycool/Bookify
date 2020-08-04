@@ -1,19 +1,22 @@
 import React from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import Temp from "./pages/Temp.js";
-import Navbar from "./components/Navbar";
+import Navbar from "./components/NavBar";
 import Footer from "./components/Footer";
 import Wrapper from "./components/Wrapper";
-import Browse from "./pages/Browse"
+import Browse from "./components/Browse"
+
+
+
 
 function App() {
   return (
     <Router>
       <div>
         <Navbar />
-        <Wrapper>
+        {/* <Wrapper>
           <Route exact path="/" component={Browse} />
-        </Wrapper>
+        </Wrapper> */}
         <Footer />
       </div>
     </Router>

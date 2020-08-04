@@ -5,8 +5,8 @@ const reservationSchema = new Schema({
     Date: Date,
     Price: Number,
     Status: String,
-    userID: {type: Schema.Types.ObjectId,ref: "User"},
-    businessID: {type: Schema.Types.ObjectId,ref: "Business"}
+    userID: String,
+    businessID: String
 });
 
 const Reservation = mongoose.model("Reservation", reservationSchema);
