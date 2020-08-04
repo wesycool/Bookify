@@ -4,6 +4,7 @@ import Temp from "./pages/Temp.js";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import Wrapper from "./components/Wrapper";
+import Browse from "./pages/Browse"
 
 function App() {
   return (
@@ -11,7 +12,7 @@ function App() {
       <div>
         <Navbar />
         <Wrapper>
-          <Route exact path="/" component={Temp} />
+          <Route exact path="/" component={Browse} />
         </Wrapper>
         <Footer />
       </div>
