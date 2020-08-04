@@ -22,6 +22,9 @@ function Browse() {
                 </div>
             </div>
         </div>
+        <div className="col-auto d-none d-lg-block">
+            <img src="https://avatars1.githubusercontent.com/u/31528729?s=460&u=47436ea6b0f63a23dbe6fbbc71e75156dc05e40f&v=4" width="200" height="160" alt="" />
+        </div>
         <div className="card resultBox col-md-8">
             <div className="row no-gutters rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
                 <div className="resultBoxContent col">
@@ -35,6 +38,9 @@ function Browse() {
                     <a href="gotoBusinessPage" className="stretched-link btn btn-secondary">See more information</a>
                 </div>
             </div>
+        </div>
+        <div className="col-auto d-none d-lg-block">
+            <img src="https://avatars1.githubusercontent.com/u/31528729?s=460&u=47436ea6b0f63a23dbe6fbbc71e75156dc05e40f&v=4" width="200" height="160" alt="" />
         </div>
         <div className="card resultBox col-md-8">
             <div className="row no-gutters rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
