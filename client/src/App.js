@@ -5,19 +5,19 @@ import Navbar from "./components/NavBar";
 import Footer from "./components/Footer";
 import Wrapper from "./components/Wrapper";
 import Browse from "./components/Browse";
-import Usersignup from "./components/Usersignup"
+// import Usersignup from "./components/Usersignup"
 
 
 function App() {
   return (
     <Router>
       <div>
-        <Usersignup />
-        {/* <Navbar />
+        {/* <Usersignup /> */}
+        <Navbar />
         <Wrapper>
           <Route exact path="/" component={Browse} />
         </Wrapper> 
-        <Footer /> */}
+        <Footer />
       </div>
     </Router>
   );

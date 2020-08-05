@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import Browser from "./Browse"
+import UserSignup from "./Usersignup"
 
 const list = [
     {   
@@ -51,14 +52,71 @@ function Navbar(props) {
                 <Link to="/" className={ location.pathname === "/"? "nav-link active" : "nav-link"}>
                     <h2 className="navbar-brand" >Spart</h2>
                 </Link>
-                <div className="navbar-collapse justify-content-end">
+                <div className="navbar-collapse justify-content-center">
                     <form className="form-inline">
                         <input className="form-control mr-sm-2 " type="search" placeholder="e.g. Hair Salon" aria-label="category" id="category"/>
                         <button className="btn btn-secondary my-2 my-sm-0" onClick={searchList} type="button" ><i className="fas fa-search"></i> <span id="searchBtn">Search</span></button>
                     </form>
                 </div>
-
                 
+
+                <div calssName="justify-content-end">
+                    <ul className="navbar-nav nav ml-auto">
+                        <li className="nav-item">
+                            <Link
+                            to="/Usersignup"
+                            className={window.location.pathname === "/Usersignup" ? "nav-link active" : "nav-link"}
+                            >
+                            <button type="button" className="btn btn-secondary" data-toggle="modal" data-target="#ModalSignUp">
+                                Sign Up 
+                            </button>
+                            <div className="modal fade bd-example-modal-lg" id="ModalSignUp" tabindex="-1" role="dialog" aria-labelledby="ModalSignUpTitle" aria-hidden="true">
+                                <div className="modal-dialog modal-lg">
+                                <div className="userSignupForm modal-content">
+                                    <div className="form-container">
+                                        <div className="image-holder"></div>
+                                        <form method="post">
+                                            <h2 className="text-center"><strong>Create</strong> an account.</h2>
+                                            <div className="form-group"><input className="form-control" type="username" name="username" placeholder="User Name" /></div>
+                                            <div className="form-group"><input className="form-control" type="email" name="email" placeholder="Email" /></div>
+                                            <div className="form-group"><input className="form-control" type="password" name="password" placeholder="Password" /></div>
+                                            <div className="form-group"><input className="form-control" type="password" name="password-repeat" placeholder="Password (repeat)" /></div>
+
+                                            <div className="form-group"><button className="btn btn-primary btn-block" type="submit">Sign Up</button></div></form>
+                                    </div>
+                                </div>
+                                </div>
+                            </div>  
+                            </Link>
+                        </li>
+                        <li className="nav-item">
+                            <Link
+                            to="/Sign In"
+                            className={window.location.pathname === "/singin" ? "nav-link active" : "nav-link"}
+                            >
+                            <button type="button" className="btn btn-secondary" data-toggle="modal" data-target="#ModalSignIn">
+                                Sign In
+                            </button>
+                            <div className="modal fade bd-example-modal-lg" id="ModalSignIn" tabindex="-1" role="dialog" aria-labelledby="ModalSignInTitle" aria-hidden="true">
+                                <div className="modal-dialog modal-lg">
+                                <div className="userSignupForm modal-content">
+                                    <div className="form-container">
+                                        <div className="image-holder"></div>
+                                        <form method="post">
+                                            <h2 className="text-center"><strong>Logo</strong> logIn</h2>
+                                            <div className="form-group"><input className="form-control" type="email" name="email" placeholder="Email" /></div>
+                                            <div className="form-group"><input className="form-control" type="password" name="password" placeholder="Password" /></div>
+
+                                            <div className="form-group"><button className="btn btn-primary btn-block" type="submit">Sign Up</button></div></form>
+                                    </div>
+                                </div>
+                                </div>
+                            </div>  
+                            </Link>
+                        </li>
+                    </ul>
+                </div>
+
             </nav>
             <div className="container">
                 <h2 className="subtitle">Recommendation</h2>
