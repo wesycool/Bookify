@@ -1,7 +1,10 @@
 import React from "react";
-import "./style.css";
+import { Link, useLocation } from "react-router-dom";
+import "./Footer.css";
 
 function Footer() {
+  const location = useLocation()
+
   return (
     <div className="footerContainer">
     <div className="footer">
@@ -11,7 +14,7 @@ function Footer() {
                     <div className="col-md-3">
                         <h3>Services</h3>
                         <ul>
-                            <li><a href="#">Claim your Business</a></li>
+                            <li><Link to={ location === "/" ? "./newbusiness": "../newbusiness"}>List your Business</Link></li>
                             <li><a href="#">Advertise with us</a></li>
                         </ul>
                     </div>

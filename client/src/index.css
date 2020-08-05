@@ -12,9 +12,7 @@ code {
     monospace;
 }
 
-
-/* form  */
-
+/* form */
 .userSignupForm {
   background: #f1f7fc;
   padding: 80px 0;
@@ -77,4 +75,8 @@ code {
 
 .userSignupForm form .btn-primary:hover, .userSignupForm form .btn-primary:active {
   background: purple;
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> develop

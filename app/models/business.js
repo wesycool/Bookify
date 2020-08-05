@@ -10,7 +10,9 @@ const businessSchema = new Schema({
     province: String,
     email: String,
     phone: Number,
-    archieve: Boolean
+    information: String,
+    imgSRC: String,
+    archieve: Boolean,
 });
 
 const Business = mongoose.model("Business", businessSchema);

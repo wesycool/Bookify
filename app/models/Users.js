@@ -3,12 +3,8 @@ const Schema = mongoose.Schema;
 
 const userSchema = new Schema({
     userName: String,
-    address1: String,
-    address2: String,
-    city: String,
-    province: String,
     email: String,
-    phone: Number,
+    password: String,
     userCreated: {type: Date, default: Date.now},
     archieve: Boolean
 });
