@@ -4,7 +4,7 @@ function router( app ){
     app.get('/api/business-list', async (req,res) =>{
         res.send(await orm.businessList())
     })
-    app.post('/api/business-list', async (req,res) =>{
+    app.post('/api/new-business', async (req,res) =>{
         await orm.postBusiness(req.body)
         res.send('success')
     })
