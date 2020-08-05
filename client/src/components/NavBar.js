@@ -63,13 +63,26 @@ function Navbar(props) {
                 <div calssName="justify-content-end">
                     <ul className="navbar-nav nav ml-auto">
                         <li className="nav-item">
-                            <Link
-                            to="/Usersignup"
-                            className={window.location.pathname === "/Usersignup" ? "nav-link active" : "nav-link"}
-                            >
-                            <button type="button" className="btn btn-secondary" data-toggle="modal" data-target="#ModalSignUp">
-                                Sign Up 
+                            <button type="button" className="btn btn-secondary" data-toggle="modal" data-target="#ModalSignIn">
+                                Sign In
                             </button>
+                            <div className="modal fade bd-example-modal-lg" id="ModalSignIn" tabindex="-1" role="dialog" aria-labelledby="ModalSignInTitle" aria-hidden="true">
+                                <div className="modal-dialog modal-lg">
+                                    <div className="userSignupForm modal-content">
+                                        <div className="form-container">
+                                            <div className="image-holder"></div>
+                                            <form method="post">
+                                                <h2 className="text-center"><strong>Logo</strong>Sign In</h2>
+                                                <div className="form-group"><input className="form-control" type="email" name="email" placeholder="Email" /></div>
+                                                <div className="form-group"><input className="form-control" type="password" name="password" placeholder="Password" /></div>
+                                                <div className="form-group"><button className="btn btn-primary btn-block" type="submit">Sign In</button></div>
+                                                <a herf="" data-toggle="modal" data-dismiss="modal" data-target="#ModalSignUp">Sign Up</a>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
                             <div className="modal fade bd-example-modal-lg" id="ModalSignUp" tabindex="-1" role="dialog" aria-labelledby="ModalSignUpTitle" aria-hidden="true">
                                 <div className="modal-dialog modal-lg">
                                 <div className="userSignupForm modal-content">
@@ -81,38 +94,12 @@ function Navbar(props) {
                                             <div className="form-group"><input className="form-control" type="email" name="email" placeholder="Email" /></div>
                                             <div className="form-group"><input className="form-control" type="password" name="password" placeholder="Password" /></div>
                                             <div className="form-group"><input className="form-control" type="password" name="password-repeat" placeholder="Password (repeat)" /></div>
-
-                                            <div className="form-group"><button className="btn btn-primary btn-block" type="submit">Sign Up</button></div></form>
+                                            <div className="form-group"><button className="btn btn-primary btn-block" type="button" data-dismiss="modal" data-target="#ModalSignIn">Sign Up</button></div>
+                                        </form>
                                     </div>
                                 </div>
                                 </div>
-                            </div>  
-                            </Link>
-                        </li>
-                        <li className="nav-item">
-                            <Link
-                            to="/Sign In"
-                            className={window.location.pathname === "/singin" ? "nav-link active" : "nav-link"}
-                            >
-                            <button type="button" className="btn btn-secondary" data-toggle="modal" data-target="#ModalSignIn">
-                                Sign In
-                            </button>
-                            <div className="modal fade bd-example-modal-lg" id="ModalSignIn" tabindex="-1" role="dialog" aria-labelledby="ModalSignInTitle" aria-hidden="true">
-                                <div className="modal-dialog modal-lg">
-                                <div className="userSignupForm modal-content">
-                                    <div className="form-container">
-                                        <div className="image-holder"></div>
-                                        <form method="post">
-                                            <h2 className="text-center"><strong>Logo</strong> logIn</h2>
-                                            <div className="form-group"><input className="form-control" type="email" name="email" placeholder="Email" /></div>
-                                            <div className="form-group"><input className="form-control" type="password" name="password" placeholder="Password" /></div>
-
-                                            <div className="form-group"><button className="btn btn-primary btn-block" type="submit">Sign Up</button></div></form>
-                                    </div>
-                                </div>
-                                </div>
-                            </div>  
-                            </Link>
+                            </div>
                         </li>
                     </ul>
                 </div>
