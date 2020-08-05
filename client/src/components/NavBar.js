@@ -27,15 +27,15 @@ function Navbar(props) {
     const [ businessList, setList ] = useState( list )
     console.log(businessList)
 
-    useEffect(() => {
-        fetch("/api/business-list")
-          .then(res => res.json())
-          .then(
-            (result) => {
-              setList(result.items);
-            }
-          )
-      }, [])
+    // useEffect(() => {
+    //     fetch("/api/business-list")
+    //       .then(res => res.json())
+    //       .then(
+    //         (result) => {
+    //           setList(result.items);
+    //         }
+    //       )
+    //   }, [])
 
     function searchList(){
         const searchCategory = document.querySelector('#category').value.trim()
