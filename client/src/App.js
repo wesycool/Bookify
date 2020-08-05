@@ -12,9 +12,7 @@ function App() {
     <Router>
       <div>
         <Navbar />
-        {/* <Wrapper>
-          <Route exact path="/" component={Browse} />
-        </Wrapper> */}
+        <Route exact path="/business/:id" component={Temp} />          
         <Footer />
       </div>
     </Router>

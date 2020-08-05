@@ -1,72 +1,106 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import Browser from "./Browse"
-
-const list = [
-    {   
-        'business':'test Name 1',
-        'category':'test Category 1',
-        'location': 'test Location 1',
-        'rating': 'test Rating 1',
-        'imgSRC': 'https://avatars1.githubusercontent.com/u/31528729?s=460&u=47436ea6b0f63a23dbe6fbbc71e75156dc05e40f&v=4',
-        'information': 'test Information 1'
-    },
-    {   
-        'business':'test Name 2',
-        'category':'test Category 2',
-        'location': 'test Location 2',
-        'rating': 'test Rating 2',
-        'imgSRC': 'https://avatars1.githubusercontent.com/u/31528729?s=460&u=47436ea6b0f63a23dbe6fbbc71e75156dc05e40f&v=4',
-        'information': 'test Information 2'
-    }
-]
 
 
 function Navbar(props) {
     const location = useLocation();
-    const [ businessList, setList ] = useState( list )
-    console.log(businessList)
-
+    const [ businessList, setList ] = useState( [] )
+    const [ fullList, setFullList ] = useState( [] )
+    
     useEffect(() => {
         fetch("/api/business-list")
           .then(res => res.json())
-          .then(
-            (result) => {
-              setList(result.items);
-            }
-          )
-      }, [])
+          .then((result) => {
+                const list = result.filter( ({archieve}) => archieve === false)
+                setList(list)
+                setFullList(list)
+            })
+    }, [] )
+
 
     function searchList(){
         const searchCategory = document.querySelector('#category').value.trim()
-        const filtered = businessList.filter( ({category}) => {return category.toLocaleLowerCase() === searchCategory.toLocaleLowerCase()})
-        console.log('list', filtered)
+        const filtered = (searchCategory === '')? fullList : fullList.filter( ({category}) => category.toLocaleLowerCase() === searchCategory.toLocaleLowerCase())
+        setList(filtered)
     }
 
 
 
     return (
         <div>
-            <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
-                <Link to="/" className={ location.pathname === "/"? "nav-link active" : "nav-link"}>
-                    <h2 className="navbar-brand" >Spart</h2>
+            <nav className="navbar navbar-expand-lg navbar-dark bg-dark" style={{marginBottom:'10px'}}>
+                <Link to="/">
+                    <h2 className="navbar-brand" ><i class="fas fa-bookmark"></i> Bookify</h2>
                 </Link>
                 <div className="navbar-collapse justify-content-end">
                     <form className="form-inline">
                         <input className="form-control mr-sm-2 " type="search" placeholder="e.g. Hair Salon" aria-label="category" id="category"/>
-                        <button className="btn btn-secondary my-2 my-sm-0" onClick={searchList} type="button" ><i className="fas fa-search"></i> <span id="searchBtn">Search</span></button>
+                        <Link to="/">
+                            <button className="btn btn-secondary my-2 my-sm-0" onClick={searchList} type="button">
+                                <i className="fas fa-search"></i> <span id="searchBtn">Search</span></button>
+                        </Link>
+                        
                     </form>
+                </div> 
+
+
+
+                <div calssName="justify-content-end">
+                    <ul className="navbar-nav nav ml-auto">
+                        <li className="nav-item">
+     
+                            <button type="button" className="btn btn-secondary" data-toggle="modal" data-target="#ModalSignUp">
+                                Sign Up 
+                            </button>
+                            <div className="modal fade bd-example-modal-lg" id="ModalSignUp" tabindex="-1" role="dialog" aria-labelledby="ModalSignUpTitle" aria-hidden="true">
+                                <div className="modal-dialog modal-lg">
+                                <div className="userSignupForm modal-content">
+                                    <div className="form-container">
+                                        <div className="image-holder"></div>
+                                        <form method="post">
+                                            <h2 className="text-center"><strong>Create</strong> an account.</h2>
+                                            <div className="form-group"><input className="form-control" type="username" name="username" placeholder="User Name" /></div>
+                                            <div className="form-group"><input className="form-control" type="email" name="email" placeholder="Email" /></div>
+                                            <div className="form-group"><input className="form-control" type="password" name="password" placeholder="Password" /></div>
+                                            <div className="form-group"><input className="form-control" type="password" name="password-repeat" placeholder="Password (repeat)" /></div>
+
+                                            <div className="form-group"><button className="btn btn-primary btn-block" type="submit">Sign Up</button></div></form>
+                                    </div>
+                                </div>
+                                </div>
+                            </div>  
+                        </li>
+
+
+                        <li className="nav-item">
+                            <button type="button" className="btn btn-secondary" data-toggle="modal" data-target="#ModalSignIn">
+                                Sign In
+                            </button>
+                            <div className="modal fade bd-example-modal-lg" id="ModalSignIn" tabindex="-1" role="dialog" aria-labelledby="ModalSignInTitle" aria-hidden="true">
+                                <div className="modal-dialog modal-lg">
+                                <div className="userSignupForm modal-content">
+                                    <div className="form-container">
+                                        <div className="image-holder"></div>
+                                        <form method="post">
+                                            <h2 className="text-center"><strong>Logo</strong> logIn</h2>
+                                            <div className="form-group"><input className="form-control" type="email" name="email" placeholder="Email" /></div>
+                                            <div className="form-group"><input className="form-control" type="password" name="password" placeholder="Password" /></div>
+
+                                            <div className="form-group"><button className="btn btn-primary btn-block" type="submit">Sign Up</button></div></form>
+                                    </div>
+                                </div>
+                                </div>
+                            </div>  
+                        </li>
+                    </ul>
                 </div>
 
-                
             </nav>
-            <div className="container">
-                <h2 className="subtitle">Recommendation</h2>
-                <div className="container">
-                <Browser list={businessList}></Browser>
-                </div>
 
-            </div>
+            {location.pathname === "/" ? <Browser list={businessList}></Browser> : ''}
+    
+
         </div>
     )
 }
