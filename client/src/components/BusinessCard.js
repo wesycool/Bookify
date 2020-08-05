@@ -5,9 +5,8 @@ function BusinessCard({list}) {
     const location = useLocation()
     const {_id, businessName, category, city, information,imgSRC} = list
 
-    console.log(category)
-
   return (
+    
     <div className='row'>
         <div className="col col-lg-8">
             <Link to={`/business/${_id}`} style={{color:'black'}} className="text-decoration-none">
@@ -15,6 +14,7 @@ function BusinessCard({list}) {
 
                     <div className="col-12 col-md-4" style={{margin:'10px'}}>
                         <img src={`./assets/img/${imgSRC}`} width="95%" height="160" alt="" />
+
                     </div>
                     
                     <div className="col resultBoxContent " style={{margin:'10px'}}>

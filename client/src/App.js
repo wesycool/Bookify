@@ -11,8 +11,10 @@ function App() {
     <Router>
       <div>
         <Navbar />
+
         <Route exact path="/business/:id" component={Temp} />
         <Route exact path="/newbusiness/" component={Business} />             
+
         <Footer />
       </div>
     </Router>
