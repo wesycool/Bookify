@@ -1,25 +1,29 @@
 import React from "react";
+import { Link, useLocation } from "react-router-dom";
 
 function BusinessCard({list}) {
-    const {business, category, location, rating, imgSRC, information} = list
-    console.log('Business Card: ', list)
+    const {_id, businessName, category, city, imgSRC, information} = list
   return (
+    
     <div className='row'>
         <div className="col col-lg-8">
-            <div className="row no-gutters rounded overflow-hidden flex-md-row mb-4 shadow h-md-250 position-relative">
+            <Link to={`/business/${_id}`} style={{color:'black'}} className="text-decoration-none">
+                <div className="row no-gutters rounded overflow-hidden flex-md-row mb-4 shadow h-md-250 position-relative">
 
-                <div className="col-12 col-md-4" style={{margin:'10px'}}>
-                    <img src={imgSRC} width="95%" height="160" alt="" />
+                    <div className="col-12 col-md-4" style={{margin:'10px'}}>
+                        <img src={imgSRC} width="95%" height="160" alt="" />
+                    </div>
+                    
+                    <div className="col resultBoxContent " style={{margin:'10px'}}>
+                        <h3 className="mb-0" id="businessName">{businessName}</h3>
+                        <strong className="d-inline-block mb-2 textInfo" id="location">{category} - {city}</strong>
+                        <p className="mb-auto information">{information}</p>
+                    </div>
+
                 </div>
-                
-                <div className="col resultBoxContent" style={{margin:'10px'}}>
-                    <h3 className="mb-0" id="businessName">{business} - {rating}</h3>
-                    <strong className="d-inline-block mb-2 textInfo" id="location">{category} - {location}</strong>
-                    <p className="mb-auto information">{information}</p>
-                    <a href="gotoBusinessPage" className="stretched-link btn btn-secondary">See more information</a>
-                </div>
-            </div>
+            </Link>
         </div>
+       
     </div>
     );
 }

@@ -1,0 +1,57 @@
+.card{
+    min-width: fit-content;
+    background-color: rgb(0 0 0 / 81%);
+}
+
+.rating {
+display: flex;
+flex-direction: row-reverse;
+justify-content: center
+}
+
+.rating>input {
+display: none
+}
+
+.rating>label {
+position: relative;
+width: 1em;
+font-size: 3vw;
+color: #FFD600;
+cursor: pointer
+}
+
+.rating>label::before {
+content: "\2605";
+position: absolute;
+opacity: 0
+}
+
+.rating>label:hover:before,
+.rating>label:hover~label:before {
+opacity: 1 !important
+}
+.rating>input:checked~label:before {
+opacity: 1
+}
+
+.rating:hover>input:checked~label:before {
+opacity: 0.4
+}
+.h1, h1 {
+font-size: 1.5rem;
+color: white;
+text-decoration: underline;
+text-decoration-color: tomato;
+text-align: center;
+}
+
+p {
+margin-top: 0;
+margin-bottom: 1rem;
+color: white;
+text-align: center;
+}
+hr.new1{
+border-top: 1px solid tomato;
+}

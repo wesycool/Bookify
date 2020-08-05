@@ -1,17 +1,3 @@
-// const express = require("express");
-// const mongoose = require("mongoose");
-// const app = express();
-
-// mongoose.connect("mongodb://localhost/spartan", {
-//   useNewUrlParser: true, 
-//   useFindAndModify: false,
-//   useUnifiedTopology: true
-// });
-
-// app.use(require("./routes/api.js"));
-
-
-
 const express = require('express')
 const apiRouter = require('./app/router')
 const app = express()
