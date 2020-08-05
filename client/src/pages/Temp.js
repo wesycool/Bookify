@@ -7,8 +7,9 @@ function Temp() {
   const location = useLocation();
   const businessID = location.pathname.split('/')
   const [ business, setList ] = useState( [] )
-  const {category, businessName,address1,address2,city,province,email,phone, imgSRC,information} = business
-  
+
+  const {category, businessName, address1, address2, city, province, email, phone, information, imgSRC} = business
+
 
   useEffect(() => {
     fetch("/api/business-list")
@@ -28,9 +29,11 @@ function Temp() {
         <div className='col' style={{marginBottom: '20px'}}>
 
           <div className="card" style={{height:'100%'}}>
-          <img className="card-img-top" src={imgSRC} alt="Card image cap" style={{height:"300px"}}/>
+
+          <img className="card-img-top" src={`../assets/img/${imgSRC}`} alt="Card image cap" style={{height:"300px"}}/>
             <div className="card-body">
-              <h1 className="card-text">{businessName}</h1>
+              <h1 className="card-text h1">{businessName}</h1>
+
               <p>{category}</p>
               <p>{information}</p>
             </div>
@@ -43,7 +46,8 @@ function Temp() {
               <div className="card" style={{height:'100%'}}>
                 <img src="https://snowmap.fast-sfc.com/base_snow_map/13/2182/2995.png" alt="map" style={{height:"200px"}}/>
                 <div className="container" style={{marginTop:'10px'}}>
-                  <h1>Contact Us</h1>
+                  <h1 className="h1">Contact Us</h1>
+
                   <p>{address1} {"\n"} {address2} {"\n"} {city}, {province}</p>
                   <p>Email: {email}</p>
                   <p>Phone: {phone}</p>
@@ -61,7 +65,8 @@ function Temp() {
         <div className="col-12 col-md-6" style={{marginBottom:"20px"}}>
           <div className="card">
               <div className="card-body">
-                  <h1>Overall Star Rating </h1>
+                  <h1 className="h1">Overall Star Rating </h1>
+
                   <div className="rating">
                     <input type="radio" name="rating" value="5" id="5"/>
                     <label for="5">☆</label>
@@ -83,7 +88,9 @@ function Temp() {
           <div className="col-12 col-md-6" style={{marginBottom:"20px"}}>
             <div className="card" style={{height:'100%'}}>
               <div  className="card-body">
-                <h1>Make a Reservation </h1>
+
+                <h1 className="h1">Make a Reservation </h1>
+
                 <br/>
                 <h5  style={{color: "white", textAlign: "center"}} className="card-title">{businessName}</h5>
                 <div>

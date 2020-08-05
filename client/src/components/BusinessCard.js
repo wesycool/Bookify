@@ -2,7 +2,9 @@ import React from "react";
 import { Link, useLocation } from "react-router-dom";
 
 function BusinessCard({list}) {
-    const {_id, businessName, category, city, imgSRC, information} = list
+    const location = useLocation()
+    const {_id, businessName, category, city, information,imgSRC} = list
+
   return (
     
     <div className='row'>
@@ -11,7 +13,8 @@ function BusinessCard({list}) {
                 <div className="row no-gutters rounded overflow-hidden flex-md-row mb-4 shadow h-md-250 position-relative">
 
                     <div className="col-12 col-md-4" style={{margin:'10px'}}>
-                        <img src={imgSRC} width="95%" height="160" alt="" />
+                        <img src={`./assets/img/${imgSRC}`} width="95%" height="160" alt="" />
+
                     </div>
                     
                     <div className="col resultBoxContent " style={{margin:'10px'}}>
