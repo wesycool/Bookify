@@ -76,3 +76,19 @@ code {
 .userSignupForm form .btn-primary:hover, .userSignupForm form .btn-primary:active {
   background: purple;
 }
+
+/* newbusinesspage */
+.busineesForm {
+  background-color: rgb(238, 242, 252);
+}
+
+.newbusinesstemp1 {
+  width: 100%;
+}
+
+#mainHeader {
+  background-image: url("https://image.freepik.com/free-vector/group-people-running-up-stairway-top-mountain_24911-56324.jpg");
+  opacity: 79%;
+  height: 500px;
+  background-size: cover;
+}
