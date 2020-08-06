@@ -6,20 +6,6 @@ import UserSignup from "./Usersignup"
 
 function Navbar(props) {
     const location = useLocation();
-<<<<<<< HEAD
-    const [ businessList, setList ] = useState( list )
-    console.log(businessList)
-
-    // useEffect(() => {
-    //     fetch("/api/business-list")
-    //       .then(res => res.json())
-    //       .then(
-    //         (result) => {
-    //           setList(result.items);
-    //         }
-    //       )
-    //   }, [])
-=======
     const [ businessList, setList ] = useState( [] )
     const [ fullList, setFullList ] = useState( [] )
     
@@ -33,7 +19,6 @@ function Navbar(props) {
             })
     }, [] )
 
->>>>>>> develop
 
     function searchList(){
         const searchCategory = document.querySelector('#category').value.trim()
@@ -110,54 +95,6 @@ function Navbar(props) {
                         </li>
                     </ul>
                 </div>
-<<<<<<< HEAD
-                
-
-                <div calssName="justify-content-end">
-                    <ul className="navbar-nav nav ml-auto">
-                        <li className="nav-item">
-                            <button type="button" className="btn btn-secondary" data-toggle="modal" data-target="#ModalSignIn">
-                                Sign In
-                            </button>
-                            <div className="modal fade bd-example-modal-lg" id="ModalSignIn" tabindex="-1" role="dialog" aria-labelledby="ModalSignInTitle" aria-hidden="true">
-                                <div className="modal-dialog modal-lg">
-                                    <div className="userSignupForm modal-content">
-                                        <div className="form-container">
-                                            <div className="image-holder"></div>
-                                            <form method="post">
-                                                <h2 className="text-center"><strong>Logo</strong>Sign In</h2>
-                                                <div className="form-group"><input className="form-control" type="email" name="email" placeholder="Email" /></div>
-                                                <div className="form-group"><input className="form-control" type="password" name="password" placeholder="Password" /></div>
-                                                <div className="form-group"><button className="btn btn-primary btn-block" type="submit">Sign In</button></div>
-                                                <a herf="" data-toggle="modal" data-dismiss="modal" data-target="#ModalSignUp">Sign Up</a>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div className="modal fade bd-example-modal-lg" id="ModalSignUp" tabindex="-1" role="dialog" aria-labelledby="ModalSignUpTitle" aria-hidden="true">
-                                <div className="modal-dialog modal-lg">
-                                <div className="userSignupForm modal-content">
-                                    <div className="form-container">
-                                        <div className="image-holder"></div>
-                                        <form method="post">
-                                            <h2 className="text-center"><strong>Create</strong> an account.</h2>
-                                            <div className="form-group"><input className="form-control" type="username" name="username" placeholder="User Name" /></div>
-                                            <div className="form-group"><input className="form-control" type="email" name="email" placeholder="Email" /></div>
-                                            <div className="form-group"><input className="form-control" type="password" name="password" placeholder="Password" /></div>
-                                            <div className="form-group"><input className="form-control" type="password" name="password-repeat" placeholder="Password (repeat)" /></div>
-                                            <div className="form-group"><button className="btn btn-primary btn-block" type="button" data-dismiss="modal" data-target="#ModalSignIn">Sign Up</button></div>
-                                        </form>
-                                    </div>
-                                </div>
-                                </div>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-=======
->>>>>>> develop
 
             </nav>
 
