@@ -4,6 +4,7 @@ import Temp from "./pages/Temp.js";
 import Business from "./pages/Businesspage.js";
 import Navbar from "./components/NavBar.js";
 import Footer from "./components/Footer.js";
+import Newbusinesspage from "./pages/Newbusinesspage";
 
 
 function App() {
@@ -13,7 +14,7 @@ function App() {
         <Navbar />
 
         <Route exact path="/business/:id" component={Temp} />
-        <Route exact path="/newbusiness/" component={Business} />             
+        <Route exact path="/Newbusinesspage/" component={Newbusinesspage} />             
 
         <Footer />
       </div>

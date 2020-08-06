@@ -33,14 +33,13 @@ function Navbar(props) {
                 <Link to="/">
                     <h2 className="navbar-brand" ><i class="fas fa-bookmark"></i> Bookify</h2>
                 </Link>
-                <div className="navbar-collapse justify-content-end">
+                <div className="navbar-collapse justify-content-center">
                     <form className="form-inline">
                         <input className="form-control mr-sm-2 " type="search" placeholder="e.g. Hair Salon" aria-label="category" id="category"/>
                         <Link to="/">
                             <button className="btn btn-secondary my-2 my-sm-0" onClick={searchList} type="button">
                                 <i className="fas fa-search"></i> <span id="searchBtn">Search</span></button>
                         </Link>
-                        
                     </form>
                 </div> 
 
@@ -66,7 +65,7 @@ function Navbar(props) {
 
                                             <div className="form-group"><button className="btn btn-primary btn-block" type="button" data-dismiss="modal">Sign In</button></div>
                                             <a href="" data-toggle="modal" data-target="#ModalSignUp">Sign Up</a>
-                                            </form>
+                                        </form>
 
                                     </div>
                                 </div>

@@ -76,3 +76,13 @@ code {
 .userSignupForm form .btn-primary:hover, .userSignupForm form .btn-primary:active {
   background: purple;
 }
+
+/* newbusinesspage */
+
+.newBusinessForm {
+  width:900px;
+}
+
+.newbusinesstemp1 {
+  width: 100%;
+}
