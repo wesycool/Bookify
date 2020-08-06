@@ -14,7 +14,7 @@ function Footer() {
                     <div className="col-md-3">
                         <h3>Services</h3>
                         <ul>
-                            <li><Link to={ location === "/" ? "./newbusiness": "../newbusiness"}>List your Business</Link></li>
+                            <li><Link to={ location === "/" ? "./Newbusinesspage": "../Newbusinesspage"}>List your Business</Link></li>
                             <li><a href="#">Advertise with us</a></li>
                         </ul>
                     </div>
