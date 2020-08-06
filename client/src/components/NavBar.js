@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import Browser from "./Browse"
+import "./NavBar.css"
 
 
 function Navbar(props) {
@@ -21,8 +22,25 @@ function Navbar(props) {
 
     function searchList(){
         const searchCategory = document.querySelector('#category').value.trim()
-        const filtered = (searchCategory === '')? fullList : fullList.filter( ({category}) => category.toLocaleLowerCase() === searchCategory.toLocaleLowerCase())
-        setList(filtered)
+        const filterCategory = (searchCategory === '')? fullList : fullList.filter( ({category}) => category.toLocaleLowerCase() === searchCategory.toLocaleLowerCase())
+
+        // Location Filter
+        const getLocation = document.querySelector('#location').value.trim()
+        const splitLocation = getLocation.split(/[\s,]+/)
+
+        const getCity =  fullList.filter( ({city}) => city.toLowerCase().indexOf( splitLocation[0].toLowerCase() )>-1 )
+        const getProvince =  fullList.filter( ({province}) => province.toLowerCase().indexOf( splitLocation[0].toLowerCase() )>-1 )
+        const concatCityProvince = [...getCity, ...getProvince].filter((item, pos) => [...getCity, ...getProvince].indexOf(item) === pos)
+
+        const getCityProvince = (splitLocation.length > 1)? fullList.filter( ({province}) => province.toLowerCase().indexOf( splitLocation[1].toLowerCase() )>-1 ) : concatCityProvince
+        const filterLocation = concatCityProvince.filter( location => getCityProvince.includes(location))
+
+        // Search Filter on Both Category and Location Combination
+        const filterCategoryLocation = filterCategory.filter( list => filterLocation.includes(list) )
+        const filterLocationCategory = filterLocation.filter( list => filterCategory.includes(list) )
+        const filterSearch = [...filterCategoryLocation, ...filterLocationCategory].filter((item, pos) => [...filterCategoryLocation, ...filterLocationCategory].indexOf(item) === pos)
+    
+        setList(filterSearch)
     }
 
 
@@ -31,70 +49,30 @@ function Navbar(props) {
         <div>
             <nav className="navbar navbar-expand-lg navbar-dark bg-dark" style={{marginBottom:'10px'}}>
                 <Link to="/">
-                    <h2 className="navbar-brand" ><i class="fas fa-bookmark"></i> Bookify</h2>
+                    <h1 className="navbar-brand" ><i class="fas fa-bookmark"></i> Bookify</h1>
                 </Link>
-                <div className="navbar-collapse justify-content-end">
-                    <form className="form-inline">
-                        <input className="form-control mr-sm-2 " type="search" placeholder="e.g. Hair Salon" aria-label="category" id="category"/>
-                        <Link to="/">
-                            <button className="btn btn-secondary my-2 my-sm-0" onClick={searchList} type="button">
-                                <i className="fas fa-search"></i> <span id="searchBtn">Search</span></button>
-                        </Link>
-                        
-                    </form>
-                </div> 
 
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
 
-
-                <div calssName="justify-content-end">
-                    <ul className="navbar-nav nav ml-auto">
-                        <li className="nav-item">
-                            <button type="button" className="btn btn-secondary" data-toggle="modal" data-target="#ModalSignIn">
-                                Sign In
-                            </button>
-                            <div className="modal fade bd-example-modal-lg" id="ModalSignIn" tabindex="-1" role="dialog" aria-labelledby="ModalSignInTitle" aria-hidden="true">
-
-                                <div className="modal-dialog modal-lg">
-                                <div className="userSignupForm modal-content">
-                                    <div className="form-container">
-                                        <div className="image-holder"></div>
-                                        <form method="post">
-
-                                            <h2 className="text-center"><strong>Logo</strong> Log In</h2>
-                                            <div className="form-group"><input className="form-control" type="email" name="email" placeholder="Email" /></div>
-                                            <div className="form-group"><input className="form-control" type="password" name="password" placeholder="Password" /></div>
-
-                                            <div className="form-group"><button className="btn btn-primary btn-block" type="button" data-dismiss="modal">Sign In</button></div>
-                                            <a href="" data-toggle="modal" data-target="#ModalSignUp">Sign Up</a>
-                                            </form>
-
-                                    </div>
-                                </div>
-                                </div>
-                            </div>  
-                            <div className="modal fade bd-example-modal-lg" id="ModalSignUp" tabindex="-1" role="dialog" aria-labelledby="ModalSignUpTitle" aria-hidden="true">
-
-                                <div className="modal-dialog modal-lg">
-                                <div className="userSignupForm modal-content">
-                                    <div className="form-container">
-                                        <div className="image-holder"></div>
-                                        <form method="post">
-                                            <h2 className="text-center"><strong>Create</strong> an account.</h2>
-                                            <div className="form-group"><input className="form-control" type="username" name="username" placeholder="User Name" /></div>
-                                            <div className="form-group"><input className="form-control" type="email" name="email" placeholder="Email" /></div>
-                                            <div className="form-group"><input className="form-control" type="password" name="password" placeholder="Password" /></div>
-                                            <div className="form-group"><input className="form-control" type="password" name="password-repeat" placeholder="Password (repeat)" /></div>
-
-                                            <div className="form-group"><button className="btn btn-primary btn-block" type="button" data-dismiss="modal">Sign Up</button></div></form>
-
-                                    </div>
-                                </div>
-                                </div>
-                            </div>  
-                        </li>
-                    </ul>
+                <div className="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+                    <div className='row'>
+                        <div className='col-12 col-md-3 col-lg-12' id="signin">
+                            <a href='' style={{color:'white'}} data-toggle="modal" data-target="#ModalSignIn">Sign In</a>
+                        </div>
+                        <div className='col'>
+                            <form className="form-inline justify-content-end">
+                                <input className="form-control mr-sm-2" type="search" placeholder="e.g. Hair Salon" aria-label="category" id="category"/>
+                                <input className="form-control mr-sm-2" type="search" placeholder="e.g. Toronto, Ontario" aria-label="location" id="location"/>
+                                <Link to="/">
+                                    <button className="btn btn-secondary my-2 my-sm-0" onClick={searchList} type="button">
+                                        <i className="fas fa-search"></i> <span id="searchBtn">Search</span></button>
+                                </Link>
+                            </form>
+                        </div>
+                    </div>
                 </div>
-
             </nav>
 
             {location.pathname === "/" ? <Browser list={businessList}></Browser> : ''}
