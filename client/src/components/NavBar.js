@@ -51,6 +51,7 @@ function Navbar(props) {
                 <Link to="/">
                     <h1 className="navbar-brand" ><i class="fas fa-bookmark"></i> Bookify</h1>
                 </Link>
+
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>

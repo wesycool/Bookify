@@ -21,6 +21,7 @@ function App() {
         <Route exact path="/aboutus/" component={AboutUs} />  
         <Route exact path="/termscondition/" component={TermsCondition} />               
 
+
         <Footer />
         <Modal />
       </div>

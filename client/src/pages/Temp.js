@@ -36,6 +36,7 @@ function Temp() {
 
               <p className="p">{category}</p>
               <p className="p">{information}</p>
+
             </div>
           </div>
 
@@ -51,6 +52,7 @@ function Temp() {
                   <p className="p">{address1} {"\n"} {address2} {"\n"} {city}, {province}</p>
                   <p className="p">Email: {email}</p>
                   <p className="p">Phone: {phone}</p>
+
                 </div>
 
               </div>
