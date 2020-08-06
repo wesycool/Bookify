@@ -10,6 +10,7 @@ const businessSchema = new Schema({
     province: String,
     email: String,
     phone: Number,
+    postalCode: String,
     information: String,
     imgSRC: String,
     archieve: Boolean,

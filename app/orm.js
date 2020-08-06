@@ -7,7 +7,8 @@ const db = require( './models' );
 
 const orm = {
     businessList: async () => { return await db.Business.find({}) },
-    postBusiness: async (body) => { return await db.Business.create(body) }
+    postBusiness: async (body) => { return await db.Business.create(body) },
+    postUser: async (body) => { return await db.Users.create(body) }
 }
 
 

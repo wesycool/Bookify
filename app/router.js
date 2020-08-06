@@ -6,8 +6,12 @@ function router( app ){
     })
 
     app.post('/api/new-business', async (req,res) =>{
+        await orm.postBusiness(req.body.data)
+        res.send('success')
+    })
 
-        await orm.postBusiness(req.body)
+    app.post('/api/new-user', async (req,res) =>{
+        await orm.postUser(req.body.data)
         res.send('success')
     })
 }

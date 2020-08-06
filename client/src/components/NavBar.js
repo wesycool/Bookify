@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import Browser from "./Browse"
+import axios from 'axios';
 import "./NavBar.css"
 
 
@@ -10,10 +11,9 @@ function Navbar(props) {
     const [ fullList, setFullList ] = useState( [] )
     
     useEffect(() => {
-        fetch("/api/business-list")
-          .then(res => res.json())
-          .then((result) => {
-                const list = result.filter( ({archieve}) => archieve === false)
+        axios.get("/api/business-list")
+          .then(({data}) => {
+                const list = data.filter( ({archieve}) => archieve === false)
                 setList(list)
                 setFullList(list)
             })
