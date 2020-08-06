@@ -1,0 +1,14 @@
+.navbar-brand{
+    font-size: xx-large !important;
+}
+
+#signin{
+    font-size: small;
+    margin-bottom: 10px;
+}
+
+@media screen and (min-width:992px){
+    #signin{
+        text-align: right;
+    }
+}

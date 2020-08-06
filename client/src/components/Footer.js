@@ -21,8 +21,8 @@ function Footer() {
                     <div className="col-md-3">
                         <h3>About</h3>
                         <ul>
-                            <li><a href="#">About Us</a></li>
-                            <li><a href="#">Term of Service</a></li>
+                            <li><Link to={ location === "/" ? "./aboutus": "../aboutus"}>About Us</Link></li>
+                            <li><Link to={ location === "/" ? "./termscondition": "../termscondition"}>Term of Service</Link></li>
                         </ul>
                     </div>
 
