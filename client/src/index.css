@@ -92,3 +92,13 @@ code {
   height: 500px;
   background-size: cover;
 }
+
+
+/* Booking */
+
+.userSignupForm .image-holder-booking {
+  display: table-cell;
+  width: auto;
+  background: url(https://media.giphy.com/media/ZDEXRiAGeocyJ8URit/giphy.gif);
+  background-size: contain;
+}
