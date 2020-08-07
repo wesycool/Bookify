@@ -15,8 +15,9 @@
     "start": "node server.js",
     "client": "cd client && npm start",
     "build": "cd client && npm run build",
+    "install": "cd client && npm install",
     "start:dev": "concurrently 'nodemon --ignore client/' 'npm run client'",
-    "heroku-postbuild": "cd client && NPM_CONFIG_PRODUCTION=false npm install && npm run build"
+    "heroku-postbuild": "npm install && npm run build"
   },
   "repository": {
     "type": "git",
