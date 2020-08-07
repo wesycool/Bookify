@@ -7,7 +7,7 @@ Bookify is simple to use, just search for what you're interested in and all the 
 
 ## User Story
 
-We are The Spartans; a development team from Toronto, Canada. We developed the idea for Bookify with convenience as our top priority. In today’s world, especially since the events of the global pandemic, it is vital to have instant information and updates on the places you are visiting. Having a one-stop-shop app to help people was our driving force.
+We are Spartans; a development team from Toronto, Canada. We developed the idea for Bookify with convenience as our top priority. In today’s world, especially since the events of the global pandemic, it is vital to have instant information and updates on the places you are visiting. Having a one-stop-shop app to help people was our driving force.
 
 ## Table of contents
 * [Abstract](#Abstract)
