@@ -12,12 +12,12 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js",
+    "start": "serve -s build",
     "client": "cd client && npm start",
     "build": "cd client && npm run build",
     "install": "cd client && npm install",
     "start:dev": "concurrently 'nodemon --ignore client/' 'npm run client'",
-    "heroku-postbuild": "npm install && npm run build"
+    "heroku-postbuild": "npm run build"
   },
   "repository": {
     "type": "git",
