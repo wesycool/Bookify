@@ -38,7 +38,7 @@ function Businessdash() {
 
 
 
-    function editNewBusiness(){
+    function editBusiness(){
       const data = { 
         "category": category.current.value,
         "businessName": businessName.current.value,
@@ -54,7 +54,6 @@ function Businessdash() {
         "archieve": false
       }
 
-      console.log(data)
       axios.put(`/api/edit-business/${splitLocation[2]}`,{headers: {'Content-Type': 'application/json'},data})
   
     }
@@ -128,13 +127,13 @@ function Businessdash() {
                           <label for="businessCategory">Business Type</label>
                           <select className="custom-select d-block w-100" ref={category} required="">
                               <option>Choose...</option>
-                              <option {...category == 'Barber'? 'selected': ''} >Barber</option>
-                              <option {...category == 'Coffee Shop'? 'selected': ''} >Coffee Shop</option>
-                              <option {...category == 'Garage'? 'selected': ''} >Garage</option>
-                              <option {...category == 'Gym'? 'selected': ''} >Gym</option>
-                              <option {...category == 'Hair Salon'? 'selected': ''} >Hair Salon</option>
-                              <option {...category == 'Pub'? 'selected': ''} >Pub</option>
-                              <option {...category == 'Restaurant'? 'selected': ''} >Restaurant</option>
+                              <option {...category === 'Barber'? 'selected': ''} >Barber</option>
+                              <option {...category === 'Coffee Shop'? 'selected': ''} >Coffee Shop</option>
+                              <option {...category === 'Garage'? 'selected': ''} >Garage</option>
+                              <option {...category === 'Gym'? 'selected': ''} >Gym</option>
+                              <option {...category === 'Hair Salon'? 'selected': ''} >Hair Salon</option>
+                              <option {...category === 'Pub'? 'selected': ''} >Pub</option>
+                              <option {...category === 'Restaurant'? 'selected': ''} >Restaurant</option>
                           </select>
                       </div>
                     </div>
@@ -179,19 +178,19 @@ function Businessdash() {
                       <div className="col-md-2 mb-2">
                         <label for="businessProvince">Province</label>
                         <select className="custom-select d-block w-100" ref={province} required="">
-                            <option {...province == 'AB'? 'selected': ''}>AB</option>
-                            <option {...province == 'BC'? 'selected': ''}>BC</option>
-                            <option {...province == 'MB'? 'selected': ''}>MB</option>
-                            <option {...province == 'NB'? 'selected': ''}>NB</option>
-                            <option {...province == 'NL'? 'selected': ''}>NL</option>
-                            <option {...province == 'NS'? 'selected': ''}>NS</option>
-                            <option {...province == 'NT'? 'selected': ''}>NT</option>
-                            <option {...province == 'NU'? 'selected': ''}>NU</option>
-                            <option {...province == 'ON'? 'selected': ''}>ON</option>
-                            <option {...province == 'PE'? 'selected': ''}>PE</option>
-                            <option {...province == 'QC'? 'selected': ''}>QC</option>
-                            <option {...province == 'SK'? 'selected': ''}>SK</option>
-                            <option {...province == 'YT'? 'selected': ''}>YT</option>
+                            <option {...province === 'AB'? 'selected': ''}>AB</option>
+                            <option {...province === 'BC'? 'selected': ''}>BC</option>
+                            <option {...province === 'MB'? 'selected': ''}>MB</option>
+                            <option {...province === 'NB'? 'selected': ''}>NB</option>
+                            <option {...province === 'NL'? 'selected': ''}>NL</option>
+                            <option {...province === 'NS'? 'selected': ''}>NS</option>
+                            <option {...province === 'NT'? 'selected': ''}>NT</option>
+                            <option {...province === 'NU'? 'selected': ''}>NU</option>
+                            <option {...province === 'ON'? 'selected': ''}>ON</option>
+                            <option {...province === 'PE'? 'selected': ''}>PE</option>
+                            <option {...province === 'QC'? 'selected': ''}>QC</option>
+                            <option {...province === 'SK'? 'selected': ''}>SK</option>
+                            <option {...province === 'YT'? 'selected': ''}>YT</option>
                           </select>
                         <div className="invalid-feedback">
                           Please select a valid businessProvince.
@@ -214,7 +213,7 @@ function Businessdash() {
                     </div>
 
                       <div className ="row justify-content-md-center pb-4">
-                          <button className="btn btn-primary col-5" onClick={editNewBusiness} type="button">Save and Submit</button>
+                          <button className="btn btn-primary col-5" onClick={editBusiness} type="button">Save and Submit</button>
                       </div>
                   </form>
                 </div>
