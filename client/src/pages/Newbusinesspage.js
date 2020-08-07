@@ -53,6 +53,7 @@ function Newbusinesspage() {
         <div className="form-container">
             <div className="col">
                 <h4 className="mb-3 pt-3">Register Your Business</h4>
+                
                 <form className="" style={{width: "100%"}}>
                   <div className="row">
                     <div className="col-md-6 mb-3">
@@ -160,7 +161,9 @@ function Newbusinesspage() {
                         <button className="btn btn-primary col-5" onClick={postNewBusiness} type="submit">Save and Submit</button>
                     </div>
                 </form>
-              </div>
+
+
+            </div>
         </div>
     </div>
     </div>

@@ -1,7 +1,10 @@
-import React, {useRef} from "react";
+import React, {useRef, useEffect} from "react";
+import { Link, useLocation } from "react-router-dom";
 import { BrowserRouter as Router, Route } from "react-router-dom";
+import axios from 'axios'
 
 function Businessdash() {
+    const location = useLocation()
     const category = useRef()
     const businessName = useRef()
     const address1 = useRef()
@@ -12,7 +15,27 @@ function Businessdash() {
     const phone = useRef()
     const postalCode = useRef()
     const information = useRef()
-    const imgSRC = useRef()
+    const splitLocation = location.pathname.split('/')
+    
+    // ObjectId("5f2c71acd7e4e0cac8181a94")
+    // 5f2c9d930fc92fcfe04fe9cc
+
+    useEffect(() => {
+      axios.get(`/api/get-business/${splitLocation[2]}`)
+      .then(({data}) => {
+          category.current.value = data.category
+          businessName.current.value = data.businessName
+          address1.current.value = data.address1
+          address2.current.value = data.address2
+          city.current.value = data.city
+          province.current.value = data.province
+          email.current.value = data.email
+          phone.current.value = data.phone
+          postalCode.current.value = data.postalCode
+          information.current.value = data.information
+        })
+    })
+
 
 
     function editNewBusiness(){
@@ -32,6 +55,7 @@ function Businessdash() {
       }
 
       console.log(data)
+      axios.put(`/api/edit-business/${splitLocation[2]}`,{headers: {'Content-Type': 'application/json'},data})
   
     }
 
@@ -47,7 +71,8 @@ function Businessdash() {
               <ul className="list-group mb-3">
                 <li className="list-group-item d-flex justify-content-between lh-condensed">
                     <div className="col">
-                        <div className="card-body text-center"><img className="rounded-circle mb-3 mt-4" src="https://avatars1.githubusercontent.com/u/31528729?s=460&u=47436ea6b0f63a23dbe6fbbc71e75156dc05e40f&v=4" width="160" height="160" />
+                        <div className="card-body text-center">
+                          <img className="rounded-circle mb-3 mt-4" src="https://avatars1.githubusercontent.com/u/31528729?s=460&u=47436ea6b0f63a23dbe6fbbc71e75156dc05e40f&v=4" width="160" height="160" />
                         </div>
                         <div>User Name</div>
                         <div>User Info</div>
@@ -89,7 +114,7 @@ function Businessdash() {
             <Route exact path="/businessdashboard/" component={Businessdash} /> */}
 
 <div className="col">
-                  <h4 className="mb-3 pt-3">Register Your Business</h4>
+                  <h4 className="mb-3 pt-3">Business Account</h4>
                   <form className="" style={{width: "100%"}}>
                     <div className="row">
                       <div className="col-md-6 mb-3">
@@ -102,14 +127,14 @@ function Businessdash() {
                       <div className="col-md-6 mb-3">
                           <label for="businessCategory">Business Type</label>
                           <select className="custom-select d-block w-100" ref={category} required="">
-                              <option value="">Choose...</option>
-                              <option>Barber</option>
-                              <option>Coffee Shop</option>
-                              <option>Garage</option>
-                              <option>Gym</option>
-                              <option>Hair Salon</option>
-                              <option>Pub</option>
-                              <option>Restaurant</option>
+                              <option>Choose...</option>
+                              <option {...category == 'Barber'? 'selected': ''} >Barber</option>
+                              <option {...category == 'Coffee Shop'? 'selected': ''} >Coffee Shop</option>
+                              <option {...category == 'Garage'? 'selected': ''} >Garage</option>
+                              <option {...category == 'Gym'? 'selected': ''} >Gym</option>
+                              <option {...category == 'Hair Salon'? 'selected': ''} >Hair Salon</option>
+                              <option {...category == 'Pub'? 'selected': ''} >Pub</option>
+                              <option {...category == 'Restaurant'? 'selected': ''} >Restaurant</option>
                           </select>
                       </div>
                     </div>
@@ -154,19 +179,19 @@ function Businessdash() {
                       <div className="col-md-2 mb-2">
                         <label for="businessProvince">Province</label>
                         <select className="custom-select d-block w-100" ref={province} required="">
-                            <option>AB</option>
-                            <option>BC</option>
-                            <option>MB</option>
-                            <option>NB</option>
-                            <option>NL</option>
-                            <option>NS</option>
-                            <option>NT</option>
-                            <option>NU</option>
-                            <option selected>ON</option>
-                            <option>PE</option>
-                            <option>QC</option>
-                            <option>SK</option>
-                            <option>YT</option>
+                            <option {...province == 'AB'? 'selected': ''}>AB</option>
+                            <option {...province == 'BC'? 'selected': ''}>BC</option>
+                            <option {...province == 'MB'? 'selected': ''}>MB</option>
+                            <option {...province == 'NB'? 'selected': ''}>NB</option>
+                            <option {...province == 'NL'? 'selected': ''}>NL</option>
+                            <option {...province == 'NS'? 'selected': ''}>NS</option>
+                            <option {...province == 'NT'? 'selected': ''}>NT</option>
+                            <option {...province == 'NU'? 'selected': ''}>NU</option>
+                            <option {...province == 'ON'? 'selected': ''}>ON</option>
+                            <option {...province == 'PE'? 'selected': ''}>PE</option>
+                            <option {...province == 'QC'? 'selected': ''}>QC</option>
+                            <option {...province == 'SK'? 'selected': ''}>SK</option>
+                            <option {...province == 'YT'? 'selected': ''}>YT</option>
                           </select>
                         <div className="invalid-feedback">
                           Please select a valid businessProvince.
@@ -187,12 +212,7 @@ function Businessdash() {
                           <textarea className="form-control" ref={information} rows="3"></textarea>
                       </div>
                     </div>
-                    <div className ="row">
-                      <div className="form-group col-sm-4">
-                          <label for="businessImg">Upload Your Business Image files</label>
-                          <input type="file" className="form-control-file" ref={imgSRC} />
-                      </div>
-                      </div>
+
                       <div className ="row justify-content-md-center pb-4">
                           <button className="btn btn-primary col-5" onClick={editNewBusiness} type="button">Save and Submit</button>
                       </div>

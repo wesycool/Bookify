@@ -5,7 +5,9 @@
   "main": "server.js",
   "dependencies": {
     "express": "^4.17.1",
-    "mongoose": "^5.9.27"
+    "moment": "^2.27.0",
+    "mongoose": "^5.9.27",
+    "rc-time-picker": "^3.7.3"
   },
   "devDependencies": {},
   "scripts": {

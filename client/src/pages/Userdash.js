@@ -165,9 +165,9 @@ function Usersdash() {
                 </div>
 
 
-                <hr className="mb-4" />
+                {/* <hr className="mb-4" /> */}
 
-                {/* <!-- My Review --> */}
+                {/* <!-- My Review -->
                <div className="cardBusinessdash" id="reservationList">
                <h4 className="mb-3">Review List</h4>
 
@@ -210,7 +210,7 @@ function Usersdash() {
                        </div>
                    </div>
                </div>
-            </div>
+            </div> */}
 
 
 

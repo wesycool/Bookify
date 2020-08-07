@@ -1,10 +1,17 @@
-import React from "react";
+import React, {useRef} from "react";
 import { Link, useLocation } from "react-router-dom";
+import axios from 'axios'
 
 function Modal() {
   const location = useLocation();
+  const email = useRef()
+  const password = useRef()
 
-  function signUp(){
+  async function signIn(){
+    await axios.get("/api/business-list")
+    .then(({data}) => {
+        console.log(data)
+      })
     
   }
     
@@ -18,11 +25,11 @@ function Modal() {
                         <form method="post">
 
                         <h2 className="text-center">Log In</h2>
-                        <div className="form-group"><input className="form-control" type="email" name="email" placeholder="Email" /></div>
-                        <div className="form-group"><input className="form-control" type="password" name="password" placeholder="Password" /></div>
+                        <div className="form-group"><input className="form-control" ref={email} type="email" name="email" placeholder="Email" /></div>
+                        <div className="form-group"><input className="form-control" ref={password} type="password" name="password" placeholder="Password" /></div>
 
-                        <div className="form-group"><button className="btn btn-primary btn-block" type="button"  data-dismiss="modal">Sign In</button></div>
-                        <Link to={ location ==='/' ? './signuppage' : '../signuppage' } onClick={signUp}>Sign Up</Link>
+                        <div className="form-group"><button className="btn btn-primary btn-block" type="button"  data-dismiss="modal" onClick={signIn}>Sign In</button></div>
+                        <Link to={ location ==='/' ? './signuppage' : '../signuppage' }>Sign Up</Link>
                         </form>
 
                     </div>

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import Browser from "./Browse"
-import axios from 'axios';
+import axios from 'axios'
 import "./NavBar.css"
 
 
@@ -59,7 +59,9 @@ function Navbar(props) {
                 <div className="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
                     <div className='row'>
                         <div className='col-12 col-md-3 col-lg-12' id="signin">
-                            <a href='' style={{color:'white'}} data-toggle="modal" data-target="#ModalSignIn">Sign In</a>
+                            <Link to={location.pathname == '/'? "./businessdashboard/:id": "../businessdashboard/:id"} style={{color:'white'}}>Business Account</Link>
+                            <Link to={location.pathname == '/'? "./userdashboard/:id": "../userdashboard/:id"} style={{color:'white'}}>My Account</Link>
+                            <a href='' style={{color:'white'}} data-toggle="modal" data-target="#ModalSignIn"> Sign In</a>
                         </div>
                         <div className='col'>
                             <form className="form-inline justify-content-end">
