@@ -11,10 +11,10 @@ function BasicDateTimePicker() {
       <DateTimePicker
         autoOk
         ampm={false}
-        disableFuture
         value={selectedDate}
         onChange={handleDateChange}
         label="Date and Time"
+        disablePast
       />
 
     </MuiPickersUtilsProvider>

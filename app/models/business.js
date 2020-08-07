@@ -13,6 +13,7 @@ const businessSchema = new Schema({
     postalCode: String,
     information: String,
     imgSRC: String,
+    password: {type:String, default: 'password'},
     archieve: Boolean,
 });
 

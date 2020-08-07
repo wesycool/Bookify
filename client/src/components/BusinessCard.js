@@ -1,6 +1,5 @@
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
-import BasicDateTimePicker from "./DateTimePicker";
 
 function BusinessCard({list}) {
     const location = useLocation()
@@ -30,7 +29,6 @@ function BusinessCard({list}) {
                 </div>
             </Link>
         </div>
-       <BasicDateTimePicker />
     </div>
     );
 }

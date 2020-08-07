@@ -50,6 +50,11 @@ function Navbar(props) {
 
     function signOut(){
         sessionStorage.clear()
+        document.querySelector('#userAccountLink').setAttribute('style','display:none')
+        document.querySelector('#businessAccountLink').setAttribute('style','display:none')
+        document.querySelector('#signInLink').setAttribute('style','display:initial; color:white')
+        document.querySelector('#signOutLink').setAttribute('style','display:none')
+        
     }
 
 
@@ -71,12 +76,12 @@ function Navbar(props) {
                             <Link to={location.pathname == '/'? `./businessdashboard/${storeid}`: `../businessdashboard/${storeid}`} onClick={changeID} style={{display:'none'}} id="businessAccountLink">Business Account</Link>
                             <Link to={location.pathname == '/'? `./userdashboard/${storeid}`: `../userdashboard/${storeid}`} onClick={changeID} style={{display:'none'}} id="userAccountLink">My Account</Link>
                             <a href='' style={{color:'white'}} data-toggle="modal" data-target="#ModalSignIn" id='signInLink'>Sign In</a>
-                            <a href='' style={{color:'white'}} id='signOutLink' onClick={signOut}> Sign Out</a>
+                            <a href='/' style={{color:'white'}} id='signOutLink' style={{display:'none'}} onClick={signOut}> Sign Out</a>
                         </div>
                         <div className='col'>
                             <form className="form-inline justify-content-end">
                                 <input className="form-control mr-sm-2" type="search" placeholder="e.g. Hair Salon" aria-label="category" id="category"/>
-                                <input className="form-control mr-sm-2" type="search" placeholder="e.g. Toronto, Ontario" aria-label="location" id="location"/>
+                                <input className="form-control mr-sm-2" type="search" placeholder="e.g. Toronto, ON" aria-label="location" id="location"/>
                                 <Link to="/">
                                     <button className="btn btn-secondary my-2 my-sm-0" onClick={searchList} type="button">
                                         <i className="fas fa-search"></i> <span id="searchBtn">Search</span></button>

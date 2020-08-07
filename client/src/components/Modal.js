@@ -13,7 +13,8 @@ function Modal() {
     await axios.get(`/api/login-business/${email.current.value}`)
     .then(({data}) => {
 
-        if (data._id) {
+        if (data.password === password.current.value) {
+          document.querySelector('#signOutLink').setAttribute('style','display:initial; color:white')
           document.querySelector('#businessAccountLink').setAttribute('style','display:initial; color:white')
           document.querySelector('#userAccountLink').setAttribute('style','display:none')
           document.querySelector('#signInLink').setAttribute('style','display:none')
@@ -27,6 +28,7 @@ function Modal() {
     .then(({data}) => {
 
         if (data.password === password.current.value) {
+          document.querySelector('#signOutLink').setAttribute('style','display:initial; color:white')
           document.querySelector('#userAccountLink').setAttribute('style','display:initial; color:white')
           document.querySelector('#businessAccountLink').setAttribute('style','display:none')
           document.querySelector('#signInLink').setAttribute('style','display:none')
@@ -35,6 +37,10 @@ function Modal() {
 
       })
     
+  }
+
+  function saveReservation(){
+    console.log('test')
   }
     
   return (
@@ -70,7 +76,7 @@ function Modal() {
                         <h2 className="text-center">Booking</h2>
                           <BasicDateTimePicker />
 
-                        <div className="form-group"><button className="btn btn-primary btn-block" type="button"  data-dismiss="modal" onClick={signIn}>Book Now</button></div>
+                        <div className="form-group"><button className="btn btn-primary btn-block" type="button"  data-dismiss="modal" onClick={saveReservation}>Book Now</button></div>
                         
                         </form>
                     </div>
