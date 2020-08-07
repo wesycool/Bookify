@@ -38,150 +38,31 @@
 
 
     
-    <div class="col">
-        <div class="col-2">
-            <ul class="nav navbar-nav text-light" id="sideMenu">
-                <li class="nav-item"><a class="nav-link" href="index.html"><i class="fas fa-tachometer-alt">
-                    <div class="col-3">
-                        <div class="card-body text-center"><img class="rounded-circle mb-3 mt-4" src="https://avatars1.githubusercontent.com/u/31528729?s=460&u=47436ea6b0f63a23dbe6fbbc71e75156dc05e40f&v=4" width="160" height="160">
-                        </div>
+    <div class='row'>
+        <div class="col col-lg-8">
+            <div to={`/business/${_id}`}  class="text-decoration-none">
+                <div class="row no-gutters rounded overflow-hidden flex-md-row mb-4 shadow h-md-250 position-relative">
+
+                    <div class="col-12 col-md-4" style={{margin:'10px'}}>
+                        <img src={`./assets/img/${imgSRC}`} width="95%" height="160" alt="" />
+
                     </div>
-                </i><strong>User Dashboard</strong></a></li>
-                <li class="nav-item"><a class="nav-link" href="profile.html"><i class="fas fa-user"></i><span>Profile Settings</span></a></li>
-                <li class="nav-item"><a class="nav-link" href="table.html"><i class="fas fa-table"></i><span>Reservation List</span></a></li>
-                <li class="nav-item"><a class="nav-link" href="login.html"><i class="far fa-user-circle"></i><span>Review List</span></a></li>
-                <li class="nav-item"><a class="nav-link" href="ppolicy.html"><i class="fas fa-user-circle"></i><span>Privacy Policy</span></a></li>
-            </ul>
-        </div>
-        <div class="container col-8">
-            <h3 class="subTitle">Business Profile</h3>
-            <div class="row">
-                <div class="col">
-                    <div class="card shadow mb-3" id="profileSetting">
-                        <div class="card-header">
-                            <p class="font-weight-bold">Profile Settings</p>
-                        </div>
-                        <div class="card-body">
-                            <form class="row">
-                                <div class="col-3">
-                                    <div class="card-body text-center"><img class="rounded-circle mb-3 mt-4" src="https://avatars1.githubusercontent.com/u/31528729?s=460&u=47436ea6b0f63a23dbe6fbbc71e75156dc05e40f&v=4" width="160" height="160">
-                                        <div class="mb-3"><button class="btn btn-primary btn-sm" type="button">Change Photo</button></div>
-                                    </div>
-                                </div>
-                                <div class="col-3">
-                                    <div class="row">
-                                        <div class="form-group"><label for="businessName"><strong>Business Name</strong></label><input class="form-control" type="text" placeholder="user.name" name="businessName"></div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="form-group"><label for="email"><strong>Email Address</strong></label><input class="form-control" type="email" placeholder="user@example.com" name="email"></div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="form-group"><label for="phone"><strong>Phone Number</strong></label><input class="form-control" type="phone" placeholder="4161234567" name="phone"></div>
-                                    </div>
-                                    <div class="form-group"><button class="btn btn-primary btn-sm" type="submit">Save Settings</button></div>
-                                </div>
-                                <div class="col-3">
-                                    <div class="row">
-                                        <div class="form-group"><label for="business_url"><strong>Business URL</strong></label><input class="business_url" type="text" placeholder="business_url.com" name="business_url"></div>
-                                    </div>
-                                </div>
-                                <div class="col-3">
-                                    <div class="row">
-                                        <div class="form-group"><label for="businss_hour"><strong>Business Hours</strong></label><input class="business_hour" type="text" placeholder="" name="business_hour"></div>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
+                    
+                    <div class="col resultBoxContent m-10">
+                        <h3 class="mb-0" id="businessName">{businessName}</h3>
+                        <strong class="d-inline-block mb-2 textInfo" id="location">{category} - {city}</strong>
+                        <p class="mb-auto reservationDate">{to}</p>
                     </div>
-                    <div class="card shadow mb-3" id="reservationList">
-                        <div class="card-header">
-                            <p class="font-weight-bold">Reservation List</p>
-                        </div>
-                        <div class="card-body">
-                            <div class="row mt-4 ml-0.8 mr-0.5 mb-5">
-                                <div class="card-body col-auto d-none d-lg-block">
-                                    <img class="rounded-circle mb-3 mt-4" src="https://avatars1.githubusercontent.com/u/31528729?s=460&u=47436ea6b0f63a23dbe6fbbc71e75156dc05e40f&v=4" alt="">
-                                </div>
-                                <div class="card resultBox col-md-8">
-                                    <div class="row no-gutters rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
-                                        <div class="col">
-                                            <h3 class="mb-0" id="bookTitle">Customer Name</h3>
-                                            <p class="mb-auto" id="bookDescription">Customer / reservation Information</p>
-                                            <div class="footer d-flex justify-content-end">
-                                                <button class="btn btn-primary m-2">Accept</button>
-                                                <button class="btn btn-primary m-2">Cancel</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card-body">
-                            <div class="row mt-4 ml-0.8 mr-0.5 mb-5">
-                                <div class="card-body col-auto d-none d-lg-block">
-                                    <img class="rounded-circle mb-3 mt-4" src="https://avatars1.githubusercontent.com/u/31528729?s=460&u=47436ea6b0f63a23dbe6fbbc71e75156dc05e40f&v=4" alt="">
-                                </div>
-                                <div class="card resultBox col-md-8">
-                                    <div class="row no-gutters rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
-                                        <div class="col">
-                                            <h3 class="mb-0" id="bookTitle">Customer Name</h3>
-                                            <p class="mb-auto" id="bookDescription">Customer / reservation Information</p>
-                                            <div class="footer d-flex justify-content-end">
-                                                <button class="btn btn-primary m-2">Accept</button>
-                                                <button class="btn btn-primary m-2">Cancel</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card shadow mb-3" id="reservationList">
-                        <div class="card-header">
-                            <p class="font-weight-bold">Reservation List</p>
-                        </div>
-                        <div class="card-body">
-                            <div class="book row mt-4 ml-0.8 mr-0.5 mb-5">
-                                <div class="card-body col-auto d-none d-lg-block">
-                                    <img class="rounded-circle mb-3 mt-4" src="https://avatars1.githubusercontent.com/u/31528729?s=460&u=47436ea6b0f63a23dbe6fbbc71e75156dc05e40f&v=4" alt="">
-                                </div>
-                                <div class="card resultBox col-md-8">
-                                    <div class="row no-gutters rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
-                                        <div class="col">
-                                            <h3 class="mb-0" id="reviewTitle">Title comment</h3>
-                                            <p class="mb-auto" id="reviewContent">lorem ipsum dolor sit amet, consectetur adipiscing elit. morbi ut tellus sed felis consectetur auctor eget non justo. nunc in laoreet nunc. quisque accumsan tincidunt neque, at dictum turpis. in hac habitasse platea dictumst.</p>
-                                            <div class="reviewReply d-flex justify-content-end">
-                                                <button class="btn btn-primary m-2">Reply Comment</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card-body">
-                            <div class="book row mt-4 ml-0.8 mr-0.5 mb-5">
-                                <div class="card-body col-auto d-none d-lg-block">
-                                    <img class="rounded-circle mb-3 mt-4" src="https://avatars1.githubusercontent.com/u/31528729?s=460&u=47436ea6b0f63a23dbe6fbbc71e75156dc05e40f&v=4" alt="">
-                                </div>
-                                <div class="card resultBox col-md-8">
-                                    <div class="row no-gutters rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
-                                        <div class="col">
-                                            <h3 class="mb-0" id="reviewTitle">Title comment</h3>
-                                            <p class="mb-auto" id="reviewContent">lorem ipsum dolor sit amet, consectetur adipiscing elit. morbi ut tellus sed felis consectetur auctor eget non justo. nunc in laoreet nunc. quisque accumsan tincidunt neque, at dictum turpis. in hac habitasse platea dictumst.</p>
-                                            <div class="reviewReply d-flex justify-content-end">
-                                                <button class="btn btn-primary m-2">Reply Comment</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+
                 </div>
             </div>
         </div>
+       
     </div>
 
+    const today = Date.now();
+
+console.log(new Intl.DateTimeFormat('en-US', {year: 'numeric', month: '2-digit',day: '2-digit', hour: '2-digit', minute: '2-digit', second: '2-digit'}).format(today));
 
 
 
