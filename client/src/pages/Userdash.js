@@ -1,6 +1,6 @@
-import React, {useRef, useEffect} from "react";
+import React, {useRef, useEffect, useState} from "react";
 import { Link, useLocation } from "react-router-dom";
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import ReservationCard from '../components/ReservationCard.js'
 import axios from 'axios'
 
 function Usersdash() {
@@ -15,6 +15,7 @@ function Usersdash() {
   const getPostalCode = useRef()
   const splitLocation = location.pathname.split('/')
 
+  const [ reservationList, setList ] = useState( [] )
   // ObjectId("5f2cb22b41d8b9da4b160e27")
 
   useEffect(() => {
@@ -31,6 +32,13 @@ function Usersdash() {
       })
   })
 
+  useEffect(() => {
+      axios.get(`/api/user-reservation/${splitLocation[2]}`)
+        .then(({data}) => {
+          setList(data)
+          console.log(data)
+          })
+  }, [] )
 
   function editUser(){
     const data = { 
@@ -185,29 +193,12 @@ function Usersdash() {
                {/* <!-- My Appoinment --> */}
                <div className="cardBusinessdash" id="reservationList">
                 <h4 className="mb-3">Appointments List</h4>
-
-              
-                <div className="card-body">
-                    <div className="row mt-4 ml-0.8 mr-0.5 mb-5">
-                        <div className="card-body col-3 d-none d-lg-block">
-                            <img className="rounded-circle mb-3 mt-4" src="https://avatars1.githubusercontent.com/u/31528729?s=460&u=47436ea6b0f63a23dbe6fbbc71e75156dc05e40f&v=4" alt="" />
-                        </div>
-                        <div className="card resultBox col-md-8">
-                            <div className="row no-gutters rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
-                                <div className="col">
-                                    <h3 className="mb-0" id="bookTitle">Customer Name</h3>
-                                    <p className="mb-auto" id="bookDescription">Customer / reservation Information</p>
-                                    <div className="footer d-flex justify-content-end">
-                                        <button className="btn btn-primary m-2">Accept</button>
-                                        <button className="btn btn-primary m-2">Cancel</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                <div className='row'>
+                { reservationList.map( (list) => <ReservationCard list={list}></ReservationCard> ) }
                 </div>
+                
 
-                </div>
+              </div>
 
 
                 {/* <hr className="mb-4" /> */}
