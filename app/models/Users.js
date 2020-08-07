@@ -2,9 +2,14 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const userSchema = new Schema({
-    name: String,
+    firstName: String,
+    lastName: String,
     email: String,
-    phone: Number,
+    address: String,
+    address2: String,
+    city: String,
+    province:String,
+    postalCode: String,
     password: String,
     userCreated: {type: Date, default: Date.now},
     archieve: Boolean
