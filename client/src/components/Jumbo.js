@@ -15,30 +15,31 @@ function Jumbo() {
           <div className="carousel-item">
             <img className="jumboImg" src="https://images.unsplash.com/photo-1463797221720-6b07e6426c24?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80" />
             <div className="container">
-              <div className="carousel-caption b-10 text-left">
-                <h1>Example headline.</h1>
-                <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-                <p><Link className ="btn btn-lg btn-primary" to={ location === "/" ? "./aboutus": "../aboutus"}>Button</Link></p>
+              <div className="carousel-caption text-left">
+                <h2>Bookify is..</h2>
+                <h6>to have a positive impact on the world with this powerful new app. With Bookify we can help connect consumers with businesses through minimal contact and precision bookings.
+</h6>
+                <p><Link className ="btn btn-lg btn-secondary" to={ location === "/" ? "./aboutus": "../aboutus"}>Button</Link></p>
               </div>
             </div>
           </div>
           <div className="carousel-item active">
             <img className="jumboImg" src="https://images.unsplash.com/photo-1534778356534-d3d45b6df1da?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80 1050w" />
             <div className="container">
-              <div className="carousel-caption b-10">
-                <h1>Another example headline.</h1>
-                <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-                <p><a className="btn btn-lg btn-primary" href="#" role="button">Learn more</a></p>
+              <div className="carousel-caption">
+                <h2>Register your business!</h2>
+                <h6>During this unprecedented time, we wanted to ensure we can help businesses generate revenue at a faster pace with an easy-to-use platform.</h6>
+                <p><Link className ="btn btn-lg btn-secondary" to={ location === "/" ? "./newbusiness": "../newbusiness"}>Register</Link></p>
               </div>
             </div>
           </div>
           <div className="carousel-item">
             <img className="jumboImg" src="https://images.unsplash.com/photo-1512080482556-ea648017576c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80 1050w" />
             <div className="container">
-              <div className="carousel-caption b-10 text-right">
-                <h1>One more for good measure.</h1>
-                <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-                <p><a className="btn btn-lg btn-primary" href="#" role="button">Browse gallery</a></p>
+              <div className="carousel-caption text-right">
+                <h3>Make a Booking Us</h3>
+                <h6>During this unprecedented time, we wanted to ensure we can help consumers shop at and support their favourite businesses at a faster pace with an easy-to-use platform.</h6>
+                <p><Link className ="btn btn-lg btn-secondary" to={ location === "/" ? "./": "../"}>Book with Us</Link></p>
               </div>
             </div>
           </div>
