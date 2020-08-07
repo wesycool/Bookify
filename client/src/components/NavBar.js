@@ -48,6 +48,10 @@ function Navbar(props) {
         setStoreId(sessionStorage.id)
     }
 
+    function signOut(){
+        sessionStorage.clear()
+    }
+
 
 
     return (
@@ -67,6 +71,7 @@ function Navbar(props) {
                             <Link to={location.pathname == '/'? `./businessdashboard/${storeid}`: `../businessdashboard/${storeid}`} onClick={changeID} style={{display:'none'}} id="businessAccountLink">Business Account</Link>
                             <Link to={location.pathname == '/'? `./userdashboard/${storeid}`: `../userdashboard/${storeid}`} onClick={changeID} style={{display:'none'}} id="userAccountLink">My Account</Link>
                             <a href='' style={{color:'white'}} data-toggle="modal" data-target="#ModalSignIn" id='signInLink'>Sign In</a>
+                            <a href='' style={{color:'white'}} id='signOutLink' onClick={signOut}> Sign Out</a>
                         </div>
                         <div className='col'>
                             <form className="form-inline justify-content-end">

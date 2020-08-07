@@ -11,7 +11,7 @@ function Modal() {
 
     await axios.get(`/api/login-business/${email.current.value}`)
     .then(({data}) => {
-        console.log(data._id)
+
         if (data._id) {
           document.querySelector('#businessAccountLink').setAttribute('style','display:initial; color:white')
           document.querySelector('#userAccountLink').setAttribute('style','display:none')
@@ -24,8 +24,8 @@ function Modal() {
 
     await axios.get(`/api/login-user/${email.current.value}`)
     .then(({data}) => {
-        console.log(data._id)
-        if (data._id) {
+
+        if (data.password === password.current.value) {
           document.querySelector('#userAccountLink').setAttribute('style','display:initial; color:white')
           document.querySelector('#businessAccountLink').setAttribute('style','display:none')
           document.querySelector('#signInLink').setAttribute('style','display:none')
