@@ -22,10 +22,8 @@ function ReservationCard({list}) {
                         <h3 className="mb-0" id="businessName">{businessName}</h3>
                         <strong className="d-inline-block mb-2 textInfo" id="location">{category} - {city}</strong>
                         <div className="mb-auto reservationDate">
-                            <BasicDateTimePicker />
                         </div>
                     </div>
-
                 </div>
             </Link>
         </div>

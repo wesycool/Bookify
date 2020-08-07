@@ -5,16 +5,18 @@ import { DateTimePicker, MuiPickersUtilsProvider } from "@material-ui/pickers";
 function BasicDateTimePicker() {
   const [selectedDate, handleDateChange] = useState(new Date());
 
+  console.log(selectedDate);
   return (
     <MuiPickersUtilsProvider utils={DateFnsUtils}>
 
       <DateTimePicker
         autoOk
         ampm={false}
-        disableFuture
+        disablePast
         value={selectedDate}
         onChange={handleDateChange}
         label="Date and Time"
+        dateFormat="MM/dd/yyyy"
       />
 
     </MuiPickersUtilsProvider>

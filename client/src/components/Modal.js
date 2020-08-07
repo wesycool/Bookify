@@ -15,6 +15,10 @@ function Modal() {
       })
     
   }
+
+  async function book(){
+  console.log(this.selectedDate);
+  }
     
   return (
     <div className='container'>
@@ -48,8 +52,8 @@ function Modal() {
 
                         <h2 className="text-center">Booking</h2>
                           <BasicDateTimePicker />
-
-                        <div className="form-group"><button className="btn btn-primary btn-block" type="button"  data-dismiss="modal" onClick={signIn}>Book Now</button></div>
+                          
+                        <div className="form-group"><button className="btn btn-primary btn-block" type="button"  data-dismiss="modal" onClick={book}>Book Now</button></div>
                         
                         </form>
                     </div>
