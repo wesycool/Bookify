@@ -10,27 +10,12 @@ import SignUpPage from "./pages/SignUpPage.js";
 import TermsCondition from "./pages/TermsCondition.js";
 import Businessdash from "./pages/Businessdash.js";
 
-
+import BasicDateTimePicker from "./components/DateTimePicker";
+// import date from './components/date';
 
 function App() {
   return (
-    <Router>
-      <div>
-        <Navbar />
-{/* temp */}
-        <Route exact path="/businessdashboard" component={Businessdash} />
-        
-
-        <Route exact path="/business/:id" component={Temp} />
-        <Route exact path="/newbusiness/" component={Business} />
-        <Route exact path="/signuppage/" component={SignUpPage} />  
-        <Route exact path="/aboutus/" component={AboutUs} />  
-        <Route exact path="/termscondition/" component={TermsCondition} />          
-
-        <Footer />
-        <Modal />
-      </div>
-    </Router>
+<BasicDateTimePicker />
   );
 }
 
