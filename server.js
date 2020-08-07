@@ -5,7 +5,7 @@ const orm = require('./app/orm.js');
 const mongoose = require( 'mongoose' );
 
 const PORT = process.env.PORT || 8080
-const API_URL = process.env.NODE_ENV === 'production' ? 'https://spartans-bookify.herokuapp.com/' : 'http://localhost:8080'
+const API_URL = process.env.NODE_ENV === 'production' ? 'https://spartans-bookify.herokuapp.com' : 'http://localhost:8080'
 
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/spartan" , 
     {useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false});
@@ -18,6 +18,11 @@ app.use( express.static('client/build') )
 
 // for routes
 apiRouter(app)
+
+app.get('/', function (req, res) {
+    console.log( `[/] (${req.protocol}//${req.get('host')}/${req.originalUrl} -- sending file: ${dirname}/client/build/index.html );
+    res.sendFile(${dirname}/client/build/index.html`);
+ });
 
 app.listen(PORT, function() {
     console.log( `Serving app at: http://localhost:${PORT}` )
