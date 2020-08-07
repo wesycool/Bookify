@@ -39,8 +39,10 @@ function Modal() {
     
   }
 
-  function saveReservation(){
-    console.log('test')
+
+  async function book(){
+  console.log(this.selectedDate);
+
   }
     
   return (
@@ -76,7 +78,9 @@ function Modal() {
                         <h2 className="text-center">Booking</h2>
                           <BasicDateTimePicker />
 
-                        <div className="form-group"><button className="btn btn-primary btn-block" type="button"  data-dismiss="modal" onClick={saveReservation}>Book Now</button></div>
+                        <div className="form-group"><button className="btn btn-primary btn-block" type="button"  data-dismiss="modal" onClick={book}>Book Now</button></div>
+
+
                         
                         </form>
                     </div>
