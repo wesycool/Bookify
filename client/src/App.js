@@ -19,7 +19,7 @@ function App() {
         <Navbar />
 {/* temp */}
         <Route exact path="/businessdashboard" component={Businessdash} />
-
+        
 
         <Route exact path="/business/:id" component={Temp} />
         <Route exact path="/newbusiness/" component={Business} />
