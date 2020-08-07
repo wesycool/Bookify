@@ -2,9 +2,14 @@ import React, {useRef} from "react";
 import axios from 'axios';
 
 function SignUpPage() {
-    const getName = useRef()
+    const getFirstName = useRef()
+    const getLastName = useRef()
     const getEmail = useRef()
-    const getPhone = useRef()
+    const getAddress = useRef()
+    const getAddress2 = useRef()
+    const getCity = useRef()
+    const getProvince = useRef()
+    const getPostalCode = useRef()
     const getPassword = useRef()
     const confirmPassword = useRef()
     
@@ -13,9 +18,14 @@ function SignUpPage() {
         if(getPassword.current.value != ''){
             if (getPassword.current.value === confirmPassword.current.value){
                 const data = {
-                    "name": getName.current.value,
+                    "firstName": getFirstName.current.value,
+                    "lastName": getLastName.current.value,
                     "email": getEmail.current.value,
-                    "phone": getPhone.current.value,
+                    "address": getAddress.current.value,
+                    "address2": getAddress2.current.value,
+                    "city": getCity.current.value,
+                    "province": getProvince.current.value,
+                    "postalCode": getPostalCode.current.value,
                     "password": getPassword.current.value,
                     "archieve": false
                 }
@@ -31,25 +41,101 @@ function SignUpPage() {
     
     return (
         <div className='container'>
-            <div className="modal fade bd-example-modal-lg" id="ModalSignUp" tabindex="-1" role="dialog" aria-labelledby="ModalSignUpTitle" aria-hidden="true">
+            <h4 className="mb-3">New Account Sign Up</h4>
+              <form className="needs-validation" novalidate="">
+                <div className="row">
 
-                <div className="modal-dialog modal-lg">
-                    <div className="userSignupForm modal-content">
-                        <div className="form-container">
-                        <div className="image-holder"></div>
-                        <form method="post">
-                            <h2 className="text-center"><strong>Create</strong> an account.</h2>
-                            <div className="form-group"><input className="form-control" type="name" ref={getName} placeholder="Name" required/></div>
-                            <div className="form-group"><input className="form-control" type="email" ref={getEmail} placeholder="Email" required/></div>
-                            <div className="form-group"><input className="form-control" type="phone" ref={getPhone} placeholder="Phone" required/></div>
-                            <div className="form-group"><input className="form-control" type="password" ref={getPassword} placeholder="Password" required/></div>
-                            <div className="form-group"><input className="form-control" type="password" ref={confirmPassword} placeholder="Password (repeat)" required/></div>
-                            <div className="form-group"><button className="btn btn-primary btn-block" type="button" data-dismiss="modal" onClick={postNewUser}>Sign Up</button></div>
-                        </form>
+                  <div className="col-md-6 mb-3">
+                    <label for="firstName">First name</label>
+                    <input type="text" className="form-control" ref={getFirstName} placeholder="" required="" />
+                  </div>
+
+                  <div className="col-md-6 mb-3">
+                    <label for="lastName">Last name</label>
+                    <input type="text" className="form-control" ref={getLastName} placeholder="" required="" />
+                    <div className="invalid-feedback">
+                      Valid last name is required.
                     </div>
+                  </div>
                 </div>
-            </div>
-            </div>  
+
+    
+                <div className="mb-3">
+                  <label for="email">Email</label>
+                  <input type="email" className="form-control" ref={getEmail} placeholder="you@example.com" />
+                  <div className="invalid-feedback">
+                    Please enter a valid email address for shipping updates.
+                  </div>
+                </div>
+    
+                <div className="mb-3">
+                  <label for="address">Address</label>
+                  <input type="text" className="form-control" ref={getAddress} placeholder="1234 Main St" required="" />
+                  <div className="invalid-feedback">
+                    Please enter your shipping address.
+                  </div>
+                </div>
+    
+                <div className="mb-3">
+                  <label for="address2">Address 2 <span>(Optional)</span></label>
+                  <input type="text" className="form-control" ref={getAddress2} placeholder="Apartment or suite" />
+                </div>
+    
+                <div className="row">
+                  <div className="col-md-5 mb-3">
+                    <label for="country">City</label>
+                    <input type="text" className="form-control" ref={getCity} />
+                    <div className="invalid-feedback">
+                      Please select a valid country.
+                    </div>
+                  </div>
+
+                  <div className="col-md-4 mb-3">
+                    <label for="state">Province</label>
+                    <select className="custom-select d-block w-100" ref={getProvince} required="">
+                        <option>AB</option>
+                        <option>BC</option>
+                        <option>MB</option>
+                        <option>NB</option>
+                        <option>NL</option>
+                        <option>NS</option>
+                        <option>NT</option>
+                        <option>NU</option>
+                        <option selected>ON</option>
+                        <option>PE</option>
+                        <option>QC</option>
+                        <option>SK</option>
+                        <option>YT</option>
+                    </select>
+                    <div className="invalid-feedback">
+                      Please provide a valid state.
+                    </div>
+                  </div>
+
+                  <div className="col-md-3 mb-3">
+                    <label for="zip">Postal Code</label>
+                    <input type="text" className="form-control" ref={getPostalCode} placeholder="" required="" />
+                    <div className="invalid-feedback">
+                      Zip code required.
+                    </div>
+                  </div>
+                </div>
+
+                <div className="mb-3">
+                  <label for="address">Password</label>
+                  <input type="text" className="form-control" ref={getPassword} required="" />
+                </div>
+                
+                <div className="mb-3">
+                  <label for="address">Confirm Password</label>
+                  <input type="text" className="form-control" ref={confirmPassword} required="" />
+                </div>
+
+                <div className ="row justify-content-md-center pb-4">
+                    <button className="btn btn-primary col-5" onClick={postNewUser} type="submit">Save and Submit</button>
+                </div>
+              </form>
+
         </div>
     )
 }
