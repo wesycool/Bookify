@@ -39,9 +39,17 @@ function router( app ){
         res.send(await orm.editUser(req))
     })
 
+
+
     app.post('/api/new-reservation', async (req,res) =>{
         await orm.postReservation(req.body.data)
         res.send('success')
+    })
+    app.get('/api/business-reservation/:id', async (req,res) =>{
+        res.send( await orm.findBusinessReservation(req.params.id))
+    })
+    app.get('/api/user-reservation/:id', async (req,res) =>{
+        res.send(await orm.findUserReservation(req.params.id))
     })
 
 }

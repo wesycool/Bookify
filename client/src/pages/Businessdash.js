@@ -1,6 +1,6 @@
-import React, {useRef, useEffect} from "react";
+import React, {useRef, useEffect, useState} from "react";
 import { Link, useLocation } from "react-router-dom";
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import ReservationCard from '../components/ReservationCard.js'
 import axios from 'axios'
 
 function Businessdash() {
@@ -17,6 +17,7 @@ function Businessdash() {
     const information = useRef()
     const splitLocation = location.pathname.split('/')
     
+    const [ reservationList, setList ] = useState( [] )
     // ObjectId("5f2c71acd7e4e0cac8181a94")
     // 5f2c9d930fc92fcfe04fe9cc
 
@@ -36,7 +37,15 @@ function Businessdash() {
         })
     })
 
+    useEffect(() => {
+      axios.get(`/api/business-reservation/${splitLocation[2]}`)
+        .then(({data}) => {
+            setList(data)
+            console.log(data)
+          })
+    }, [] )
 
+    console.log('reservationList:',reservationList)
 
     function editBusiness(){
       const data = { 
@@ -73,8 +82,6 @@ function Businessdash() {
                         <div className="card-body text-center">
                           <img className="rounded-circle mb-3 mt-4" src="https://avatars1.githubusercontent.com/u/31528729?s=460&u=47436ea6b0f63a23dbe6fbbc71e75156dc05e40f&v=4" width="160" height="160" />
                         </div>
-                        <div>User Name</div>
-                        <div>User Info</div>
                     </div>
                   </li>
                 <li className="list-group-item d-flex justify-content-between lh-condensed">
@@ -107,12 +114,7 @@ function Businessdash() {
             <div className="col-md-8 order-md-2">
 
 
-{/* 
-            <Route exact path="/businessdashboard/" component={Businessdash} />
-            <Route exact path="/businessdashboard/" component={Businessdash} />
-            <Route exact path="/businessdashboard/" component={Businessdash} /> */}
-
-<div className="col">
+              <div className="col">
                   <h4 className="mb-3 pt-3">Business Account</h4>
                   <form className="" style={{width: "100%"}}>
                     <div className="row">
@@ -223,41 +225,12 @@ function Businessdash() {
                {/* <!-- My Appoinment --> */}
                <div className="cardBusinessDash" id="reservationList">
                 <h4 className="mb-3">Appointments List</h4>
-
-              
-                <div className="card-body">
-                    <div className="row mt-4 ml-0.8 mr-0.5 mb-5">
-                        <div className="card-body col-3 d-none d-lg-block">
-                            <img className="rounded-circle mb-3 mt-4" src="https://avatars1.githubusercontent.com/u/31528729?s=460&u=47436ea6b0f63a23dbe6fbbc71e75156dc05e40f&v=4" alt="" />
-                        </div>
-                        <div className="card resultBox col-md-8">
-                            <div className="row no-gutters rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
-                                <div className="col">
-                                    <h3 className="mb-0" id="bookTitle">Customer Name</h3>
-                                    <p className="mb-auto" id="bookDescription">Customer / reservation Information</p>
-                                    <div className="footer d-flex justify-content-end">
-                                        <button className="btn btn-primary m-2">Accept</button>
-                                        <button className="btn btn-primary m-2">Cancel</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                <div className='row'>
+                { reservationList.map( (list) => <ReservationCard list={list}></ReservationCard> ) }
                 </div>
-
                 </div>
-
-
-
-
-
             </div>
-
-
         </div>
-
-
-
     </div>
   );
 }

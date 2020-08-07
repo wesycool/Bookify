@@ -19,7 +19,8 @@ const orm = {
     editUser: async ({body,params}) => { return await db.Users.findOneAndUpdate({_id: mongoose.Types.ObjectId(params.id)},body.data,{new:true}) },
 
     postReservation: async (body) => { return await db.Reservation.create(body) },
-
+    findBusinessReservation: async (id) => { return await db.Reservation.find({businessID: id}) },
+    findUserReservation: async (id) => { return await db.Reservation.find({userID: id}) },
 }
 
 
