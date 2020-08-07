@@ -1,7 +1,6 @@
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
-import TimePicker from 'rc-time-picker';
-import moment from 'moment';
+import BasicDateTimePicker from "./DateTimePicker";
 
 function BusinessCard({list}) {
     const location = useLocation()
@@ -23,15 +22,15 @@ function BusinessCard({list}) {
                         <h3 className="mb-0" id="businessName">{businessName}</h3>
                         <strong className="d-inline-block mb-2 textInfo" id="location">{category} - {city}</strong>
                         <p className="mb-auto information">{information}</p>
-                        {/* <div className="mb-auto reservationDate">
-                            <TimePicker defaultValue={moment()} showHour={false} showMinute={false} />
-                        </div> */}
+                        <div className="mb-auto reservationDate">
+                        
+                        </div>
                     </div>
 
                 </div>
             </Link>
         </div>
-       
+       <BasicDateTimePicker />
     </div>
     );
 }
