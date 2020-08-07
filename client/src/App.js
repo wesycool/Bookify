@@ -8,6 +8,7 @@ import Business from "./pages/Newbusinesspage.js";
 import AboutUs from "./pages/AboutUs.js";
 import SignUpPage from "./pages/SignUpPage.js";
 import TermsCondition from "./pages/TermsCondition.js";
+import Businessdash from "./pages/Businessdash.js";
 
 
 
@@ -16,6 +17,9 @@ function App() {
     <Router>
       <div>
         <Navbar />
+{/* temp */}
+        <Route exact path="/businessdashboard" component={Businessdash} />
+        
 
         <Route exact path="/business/:id" component={Temp} />
         <Route exact path="/newbusiness/" component={Business} />
