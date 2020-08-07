@@ -1,6 +1,7 @@
 import React, {useRef} from "react";
 import { Link, useLocation } from "react-router-dom";
-import axios from 'axios'
+import axios from 'axios';
+import BasicDateTimePicker from "./DateTimePicker";
 
 function Modal() {
   const location = useLocation();
@@ -36,7 +37,32 @@ function Modal() {
                 </div>
             </div>
         </div>  
+
+
+        <div className="modal fade bd-example-modal-lg" id="ModalBooking" tabindex="-1" role="dialog" aria-labelledby="ModalBookingTitle" aria-hidden="true">
+            <div className="modal-dialog modal-lg">
+                <div className="userSignupForm modal-content">
+                    <div className="form-container">
+                        <div className="image-holder-booking"></div>
+                        <form method="post">
+
+                        <h2 className="text-center">Booking</h2>
+                          <BasicDateTimePicker />
+
+                        <div className="form-group"><button className="btn btn-primary btn-block" type="button"  data-dismiss="modal" onClick={signIn}>Book Now</button></div>
+                        
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>  
+
+
     </div>
+
+
+
+
   );
 }
 

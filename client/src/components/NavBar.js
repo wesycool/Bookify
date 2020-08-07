@@ -71,7 +71,9 @@ function Navbar(props) {
                                     <button className="btn btn-secondary my-2 my-sm-0" onClick={searchList} type="button">
                                         <i className="fas fa-search"></i> <span id="searchBtn">Search</span></button>
                                 </Link>
+                                
                             </form>
+
                         </div>
                     </div>
                 </div>

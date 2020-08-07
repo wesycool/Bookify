@@ -96,7 +96,7 @@ function Temp() {
                 <br/>
                 <h5  style={{color: "white", textAlign: "center"}} className="card-title">{businessName}</h5>
                 <div>
-                  <a href="#" className="btn btn-danger  btn-block">Book It Now!</a>
+                  <a href="" className="btn btn-danger  btn-block" data-toggle="modal" data-target="#ModalBooking">Book It Now!</a>
                 </div>
               </div>
             </div>
