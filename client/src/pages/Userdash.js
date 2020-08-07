@@ -1,7 +1,53 @@
-import React from "react";
+import React, {useRef, useEffect} from "react";
+import { Link, useLocation } from "react-router-dom";
 import { BrowserRouter as Router, Route } from "react-router-dom";
+import axios from 'axios'
 
 function Usersdash() {
+  const location = useLocation()
+  const getFirstName = useRef()
+  const getLastName = useRef()
+  const getEmail = useRef()
+  const getAddress = useRef()
+  const getAddress2 = useRef()
+  const getCity = useRef()
+  const getProvince = useRef()
+  const getPostalCode = useRef()
+  const splitLocation = location.pathname.split('/')
+
+  // ObjectId("5f2cb22b41d8b9da4b160e27")
+
+  useEffect(() => {
+    axios.get(`/api/get-user/${splitLocation[2]}`)
+    .then(({data}) => {
+      getFirstName.current.value = data.firstName
+      getLastName.current.value = data.lastName
+      getEmail.current.value = data.email
+      getAddress.current.value = data.address
+      getAddress2.current.value = data.address2
+      getCity.current.value = data.city
+      getProvince.current.value = data.province
+      getPostalCode.current.value = data.postalCode
+      })
+  })
+
+
+  function editUser(){
+    const data = { 
+      "firstName": getFirstName.current.value,
+      "lastName": getLastName.current.value,
+      "email": getEmail.current.value,
+      "address": getAddress.current.value,
+      "address2": getAddress2.current.value,
+      "city": getCity.current.value,
+      "province": getProvince.current.value,
+      "postalCode": getPostalCode.current.value,
+      "archieve": false
+    }
+      axios.put(`/api/edit-user/${splitLocation[2]}`,{headers: {'Content-Type': 'application/json'},data})
+
+  }
+
   return (
     <div className="container">
         <div className="row">
@@ -9,15 +55,14 @@ function Usersdash() {
          {/* leftside */}
             <div className="col-md-4 order-md-1 mb-4">
               <h4 className="d-flex justify-content-between align-items-center mb-3">
-                <span>Business Dashboard</span>
+                <span>User Dashboard</span>
               </h4>
               <ul className="list-group mb-3">
                 <li className="list-group-item d-flex justify-content-between lh-condensed">
                     <div className="col">
-                        <div className="card-body text-center"><img className="rounded-circle mb-3 mt-4" src="https://avatars1.githubusercontent.com/u/31528729?s=460&u=47436ea6b0f63a23dbe6fbbc71e75156dc05e40f&v=4" width="160" height="160" />
+                        <div className="card-body text-center">
+                          <img className="rounded-circle mb-3 mt-4" src="https://avatars1.githubusercontent.com/u/31528729?s=460&u=47436ea6b0f63a23dbe6fbbc71e75156dc05e40f&v=4" width="160" height="160" />
                         </div>
-                        <div>User Name</div>
-                        <div>User Info</div>
                     </div>
                   </li>
                 <li className="list-group-item d-flex justify-content-between lh-condensed">
@@ -49,41 +94,27 @@ function Usersdash() {
             <div className="col-md-8 order-md-2">
 
 
-              <h4 className="mb-3">User Setting</h4>
+              <h4 className="mb-3">My Account</h4>
               <form className="needs-validation" novalidate="">
                 <div className="row">
-                  <div className="col-md-6 mb-3">
+                <div className="col-md-6 mb-3">
                     <label for="firstName">First name</label>
-                    <input type="text" className="form-control" id="firstName" placeholder="" value="" required="" />
-                    <div className="invalid-feedback">
-                      Valid first name is required.
-                    </div>
+                    <input type="text" className="form-control" ref={getFirstName} placeholder="" required="" />
                   </div>
+
                   <div className="col-md-6 mb-3">
                     <label for="lastName">Last name</label>
-                    <input type="text" className="form-control" id="lastName" placeholder="" value="" required="" />
+                    <input type="text" className="form-control" ref={getLastName} placeholder="" required="" />
                     <div className="invalid-feedback">
                       Valid last name is required.
                     </div>
                   </div>
                 </div>
+
     
                 <div className="mb-3">
-                  <label for="username">Username</label>
-                  <div className="input-group">
-                    <div className="input-group-prepend">
-                      <span className="input-group-text">@</span>
-                    </div>
-                    <input type="text" className="form-control" id="username" placeholder="Username" required="" />
-                    <div className="invalid-feedback">
-                      Your username is required.
-                    </div>
-                  </div>
-                </div>
-    
-                <div className="mb-3">
-                  <label for="email">Email <span>(Optional)</span></label>
-                  <input type="email" className="form-control" id="email" placeholder="you@example.com" />
+                  <label for="email">Email</label>
+                  <input type="email" className="form-control" ref={getEmail} placeholder="you@example.com" />
                   <div className="invalid-feedback">
                     Please enter a valid email address for shipping updates.
                   </div>
@@ -91,7 +122,7 @@ function Usersdash() {
     
                 <div className="mb-3">
                   <label for="address">Address</label>
-                  <input type="text" className="form-control" id="address" placeholder="1234 Main St" required="" />
+                  <input type="text" className="form-control" ref={getAddress} placeholder="1234 Main St" required="" />
                   <div className="invalid-feedback">
                     Please enter your shipping address.
                   </div>
@@ -99,38 +130,52 @@ function Usersdash() {
     
                 <div className="mb-3">
                   <label for="address2">Address 2 <span>(Optional)</span></label>
-                  <input type="text" className="form-control" id="address2" placeholder="Apartment or suite" />
+                  <input type="text" className="form-control" ref={getAddress2} placeholder="Apartment or suite" />
                 </div>
     
                 <div className="row">
                   <div className="col-md-5 mb-3">
-                    <label for="country">Country</label>
-                    <select className="custom-select d-block w-100" id="country" required="">
-                      <option value="">Choose...</option>
-                      <option>United States</option>
-                    </select>
+                    <label for="country">City</label>
+                    <input type="text" className="form-control" ref={getCity} />
                     <div className="invalid-feedback">
                       Please select a valid country.
                     </div>
                   </div>
+
                   <div className="col-md-4 mb-3">
-                    <label for="state">State</label>
-                    <select className="custom-select d-block w-100" id="state" required="">
-                      <option value="">Choose...</option>
-                      <option>California</option>
+                    <label for="state">Province</label>
+                    <select className="custom-select d-block w-100" ref={getProvince} required="">
+                        <option {...getProvince === 'AB'? 'selected': ''}>AB</option>
+                        <option {...getProvince === 'BC'? 'selected': ''}>BC</option>
+                        <option {...getProvince === 'MB'? 'selected': ''}>MB</option>
+                        <option {...getProvince === 'NB'? 'selected': ''}>NB</option>
+                        <option {...getProvince === 'NL'? 'selected': ''}>NL</option>
+                        <option {...getProvince === 'NS'? 'selected': ''}>NS</option>
+                        <option {...getProvince === 'NT'? 'selected': ''}>NT</option>
+                        <option {...getProvince === 'NU'? 'selected': ''}>NU</option>
+                        <option {...getProvince === 'ON'? 'selected': ''}>ON</option>
+                        <option {...getProvince === 'PE'? 'selected': ''}>PE</option>
+                        <option {...getProvince === 'QC'? 'selected': ''}>QC</option>
+                        <option {...getProvince === 'SK'? 'selected': ''}>SK</option>
+                        <option {...getProvince === 'YT'? 'selected': ''}>YT</option>
                     </select>
                     <div className="invalid-feedback">
                       Please provide a valid state.
                     </div>
                   </div>
+
                   <div className="col-md-3 mb-3">
-                    <label for="zip">Zip</label>
-                    <input type="text" className="form-control" id="zip" placeholder="" required="" />
+                    <label for="zip">Postal Code</label>
+                    <input type="text" className="form-control" ref={getPostalCode} placeholder="" required="" />
                     <div className="invalid-feedback">
                       Zip code required.
                     </div>
                   </div>
                 </div>
+
+                <div className ="row justify-content-md-center pb-4">
+                          <button className="btn btn-primary col-5" onClick={editUser} type="button">Save and Submit</button>
+                      </div>
               </form>
 
 

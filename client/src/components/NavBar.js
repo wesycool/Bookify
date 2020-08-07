@@ -9,6 +9,7 @@ function Navbar(props) {
     const location = useLocation();
     const [ businessList, setList ] = useState( [] )
     const [ fullList, setFullList ] = useState( [] )
+    const [ storeid, setStoreId ] = useState( [] )
     
     useEffect(() => {
         axios.get("/api/business-list")
@@ -43,6 +44,14 @@ function Navbar(props) {
         setList(filterSearch)
     }
 
+    function changeID(){
+        setStoreId(sessionStorage.id)
+    }
+
+    function signOut(){
+        sessionStorage.clear()
+    }
+
 
 
     return (
@@ -59,9 +68,10 @@ function Navbar(props) {
                 <div className="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
                     <div className='row'>
                         <div className='col-12 col-md-3 col-lg-12' id="signin">
-                            <Link to={location.pathname == '/'? "./businessdashboard/:id": "../businessdashboard/:id"} style={{color:'white'}}>Business Account</Link>
-                            <Link to={location.pathname == '/'? "./userdashboard/:id": "../userdashboard/:id"} style={{color:'white'}}>My Account</Link>
-                            <a href='' style={{color:'white'}} data-toggle="modal" data-target="#ModalSignIn"> Sign In</a>
+                            <Link to={location.pathname == '/'? `./businessdashboard/${storeid}`: `../businessdashboard/${storeid}`} onClick={changeID} style={{display:'none'}} id="businessAccountLink">Business Account</Link>
+                            <Link to={location.pathname == '/'? `./userdashboard/${storeid}`: `../userdashboard/${storeid}`} onClick={changeID} style={{display:'none'}} id="userAccountLink">My Account</Link>
+                            <a href='' style={{color:'white'}} data-toggle="modal" data-target="#ModalSignIn" id='signInLink'>Sign In</a>
+                            <a href='' style={{color:'white'}} id='signOutLink' onClick={signOut}> Sign Out</a>
                         </div>
                         <div className='col'>
                             <form className="form-inline justify-content-end">

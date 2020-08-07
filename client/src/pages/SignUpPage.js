@@ -15,7 +15,7 @@ function SignUpPage() {
     
 
     function postNewUser(){
-        if(getPassword.current.value != ''){
+        if(getPassword.current.value !== ''){
             if (getPassword.current.value === confirmPassword.current.value){
                 const data = {
                     "firstName": getFirstName.current.value,
