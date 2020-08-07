@@ -12,7 +12,6 @@ import TermsCondition from "./pages/TermsCondition.js";
 import Businessdash from "./pages/Businessdash.js";
 
 
-
 function App() {
   return (
     <Router>

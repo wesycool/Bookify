@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
+import Jumbo from "./Jumbo";
 import Browser from "./Browse"
 import axios from 'axios'
 import "./NavBar.css"
@@ -61,7 +62,7 @@ function Navbar(props) {
 
     return (
         <div>
-            <nav className="navbar navbar-expand-lg navbar-dark bg-dark" style={{marginBottom:'10px'}}>
+            <nav className="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
                 <Link to="/">
                     <h1 className="navbar-brand" ><i class="fas fa-bookmark"></i> Bookify</h1>
                 </Link>
@@ -93,7 +94,7 @@ function Navbar(props) {
                     </div>
                 </div>
             </nav>
-
+            {location.pathname === "/" ? <Jumbo /> : ''}
             {location.pathname === "/" ? <Browser list={businessList}></Browser> : ''}
     
 
