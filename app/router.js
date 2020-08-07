@@ -38,6 +38,12 @@ function router( app ){
     app.put('/api/edit-user/:id', async (req,res) =>{
         res.send(await orm.editUser(req))
     })
+
+    app.post('/api/new-reservation', async (req,res) =>{
+        await orm.postReservation(req.body.data)
+        res.send('success')
+    })
+
 }
 
 module.exports = router;

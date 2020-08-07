@@ -7,6 +7,7 @@ function Modal() {
   const location = useLocation();
   const email = useRef()
   const password = useRef()
+  const splitLocation = location.pathname.split('/')
 
   async function signIn(){
 
@@ -39,9 +40,22 @@ function Modal() {
     
   }
 
-
+  const dateTime = useRef()
+  
   async function book(){
-  console.log(this.selectedDate);
+
+    const data = {
+      "Date": sessionStorage.dateTime,
+      "userID": sessionStorage.id,
+      "businessID": splitLocation[2]
+    }
+    console.log(data)
+    axios.post("/api/new-reservation", {
+      headers: {'Content-Type': 'application/json'},
+      data
+    })
+
+    sessionStorage.removeItem('dateTime')
 
   }
     
@@ -76,7 +90,7 @@ function Modal() {
                         <form method="post">
 
                         <h2 className="text-center">Booking</h2>
-                          <BasicDateTimePicker />
+                          <BasicDateTimePicker ref={dateTime} />
 
                         <div className="form-group"><button className="btn btn-primary btn-block" type="button"  data-dismiss="modal" onClick={book}>Book Now</button></div>
 

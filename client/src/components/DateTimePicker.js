@@ -5,7 +5,8 @@ import { DateTimePicker, MuiPickersUtilsProvider } from "@material-ui/pickers";
 function BasicDateTimePicker() {
   const [selectedDate, handleDateChange] = useState(new Date());
 
-  console.log(selectedDate);
+  sessionStorage.dateTime = selectedDate
+
   return (
     <MuiPickersUtilsProvider utils={DateFnsUtils}>
 

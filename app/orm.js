@@ -18,6 +18,8 @@ const orm = {
     loginUser: async (email) => { return await db.Users.findOne({email}) },
     editUser: async ({body,params}) => { return await db.Users.findOneAndUpdate({_id: mongoose.Types.ObjectId(params.id)},body.data,{new:true}) },
 
+    postReservation: async (body) => { return await db.Reservation.create(body) },
+
 }
 
 

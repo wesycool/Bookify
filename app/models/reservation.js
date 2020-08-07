@@ -3,8 +3,6 @@ const Schema = mongoose.Schema;
 
 const reservationSchema = new Schema({
     Date: Date,
-    Price: Number,
-    Status: String,
     userID: String,
     businessID: String
 });
