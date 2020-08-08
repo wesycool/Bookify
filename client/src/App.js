@@ -4,7 +4,7 @@ import Navbar from "./components/NavBar.js";
 import Footer from "./components/Footer.js";
 import Modal from "./components/Modal.js";
 import Temp from "./pages/Temp.js";
-import Business from "./pages/NewBusinessPage.js";
+import Business from "./pages/Newbusinesspage.js";
 import Userdash from "./pages/Userdash.js";
 import AboutUs from "./pages/AboutUs.js";
 import SignUpPage from "./pages/SignUpPage.js";
