@@ -1,5 +1,6 @@
 import React, {useRef} from "react";
 import axios from 'axios';
+import './NewBusinessPage.css'
 
 function Newbusinesspage() {
   const category = useRef()
