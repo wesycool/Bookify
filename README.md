@@ -35,9 +35,9 @@ For consumers, registration is mandatory to benefit from the app. Basic user reg
 
 
 ## Demonstration
-### Video(Youtube)
-[![Watch the video](INSERT VIDEO IMAGE HERE)](INSERT VIDEO LINK HERE)
+Sample Link: https://spartans-bookify.herokuapp.com/
 
+![![Screenshot](screenshot.png)](https://spartans-bookify.herokuapp.com/)
 
 ## Technologies
 
