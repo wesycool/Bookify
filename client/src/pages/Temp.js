@@ -25,7 +25,7 @@ function Temp() {
   
 
   return (
-    <div className="container">
+    <div className="container mt-5">
       <div className='row'>
         <div className='col' style={{marginBottom: '20px'}}>
 
@@ -42,6 +42,7 @@ function Temp() {
           </div>
 
         </div>
+ 
 
 
           <div className="col-md-5 col-lg-3" style={{marginBottom: '20px'}}>
@@ -56,9 +57,17 @@ function Temp() {
 
                   <a href="" className="btn btn-danger  btn-block" data-toggle="modal" data-target="#ModalBooking">Book It Now!</a>
 
+                  <br/>
+                  <br/>
+                  <div>
+                    <a href="" className="btn btn-danger mb-5 btn-block" data-toggle="modal" data-target="#ModalBooking">Book It Now!</a>
+                  </div>
+
                 </div>
 
               </div>
+
+
           </div>
 
 
@@ -84,7 +93,11 @@ function Temp() {
                     <input type="radio" name="rating" value="1" id="1"/>
                     <label for="1">☆</label>
                   </div>
-                  <textarea className="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                  <div className="input-group">
+                    <input className="form-control" type="text" placeholder="Write your Review" />
+                    <button onClick="publishReview" class="btn btn-secondary" type="button"> Review </button> 
+
+                  </div>
               </div>
             </div>
           </div>
