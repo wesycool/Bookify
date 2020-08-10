@@ -24,7 +24,7 @@ function Temp() {
   
 
   return (
-    <div className="container">
+    <div className="container mt-5">
       <div className='row'>
         <div className='col' style={{marginBottom: '20px'}}>
 
@@ -41,6 +41,7 @@ function Temp() {
           </div>
 
         </div>
+ 
 
 
           <div className="col-md-5 col-lg-3" style={{marginBottom: '20px'}}>
@@ -53,9 +54,17 @@ function Temp() {
                   <p className="p">Email: {email}</p>
                   <p className="p">Phone: {phone}</p>
 
+                  <br/>
+                  <br/>
+                  <div>
+                    <a href="" className="btn btn-danger mb-5 btn-block" data-toggle="modal" data-target="#ModalBooking">Book It Now!</a>
+                  </div>
+
                 </div>
 
               </div>
+
+
           </div>
 
 
@@ -81,26 +90,17 @@ function Temp() {
                     <input type="radio" name="rating" value="1" id="1"/>
                     <label for="1">☆</label>
                   </div>
-                  <textarea className="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                  <div className="input-group">
+                    <input className="form-control" type="text" placeholder="Write your Review" />
+                    <button onClick="publishReview" class="btn btn-secondary" type="button"> Review </button> 
+
+                  </div>
               </div>
             </div>
           </div>
 
 
-          <div className="col-12 col-md-6" style={{marginBottom:"20px"}}>
-            <div className="card" style={{height:'100%'}}>
-              <div  className="card-body">
-
-                <h1 className="h1">Make a Reservation </h1>
-
-                <br/>
-                <h5  style={{color: "white", textAlign: "center"}} className="card-title">{businessName}</h5>
-                <div>
-                  <a href="" className="btn btn-danger  btn-block" data-toggle="modal" data-target="#ModalBooking">Book It Now!</a>
-                </div>
-              </div>
-            </div>
-          </div>
+ 
       </div>
     </div>
   );
