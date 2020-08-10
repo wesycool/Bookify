@@ -47,14 +47,8 @@ function Temp() {
   }
 
   return (
-<<<<<<< HEAD
-    <div className="container mt-5">
-      <div className='row'>
-        <div className='col' style={{marginBottom: '20px'}}>
-=======
     <div className="container mt-4">
       <div className="row">
->>>>>>> c19ec14ee8d427fad620be559768798ad148789f
 
         {/* main business card */}
         <div className="col mb-4">
@@ -87,15 +81,6 @@ function Temp() {
 
       <hr className="new1"/>
 
-<<<<<<< HEAD
-                  <br/>
-                  <br/>
-                  <div>
-                    <a href="" className="btn btn-danger mb-5 btn-block" data-toggle="modal" data-target="#ModalBooking">Book It Now!</a>
-                  </div>
-
-                </div>
-=======
       <div className="row">
         <div className="col" style={{marginBottom:"20px"}}>
           <div className="card">
@@ -114,18 +99,13 @@ function Temp() {
                 <input type="radio" name="rating" value="1" id="1" onClick={starClick}/>
                 <label for="1">☆</label>
               </div>
->>>>>>> c19ec14ee8d427fad620be559768798ad148789f
 
               <div className="input-group">
                 <input className="form-control" type="text" placeholder="Write your Review" ref={newReview} />
                 <button onClick="publishReview" class="btn btn-secondary" type="button" onClick={saveReview}> Review </button> 
               </div>
 
-<<<<<<< HEAD
-
-=======
             </div>
->>>>>>> c19ec14ee8d427fad620be559768798ad148789f
           </div>
         </div>
       </div>
@@ -141,46 +121,12 @@ function Temp() {
     //         <div className="card-body">
     //           <h1 className="card-text h1">{businessName}</h1>
 
-<<<<<<< HEAD
-      <div className='row'>
-        <div className="col-12 col-md-6" style={{marginBottom:"20px"}}>
-          <div className="card">
-              <div className="card-body">
-                  <h1 className="h1">Overall Star Rating </h1>
-
-                  <div className="rating">
-                    <input type="radio" name="rating" value="5" id="5"/>
-                    <label for="5">☆</label>
-                    <input type="radio" name="rating" value="4" id="4"/>
-                    <label for="4">☆</label>
-                    <input type="radio" name="rating" value="3" id="3"/>
-                    <label for="3">☆</label>
-                    <input type="radio" name="rating" value="2" id="2"/>
-                    <label for="2">☆</label>
-                    <input type="radio" name="rating" value="1" id="1"/>
-                    <label for="1">☆</label>
-                  </div>
-                  <div className="input-group">
-                    <input className="form-control" type="text" placeholder="Write your Review" />
-                    <button onClick="publishReview" class="btn btn-secondary" type="button"> Review </button> 
-
-                  </div>
-              </div>
-            </div>
-          </div>
-=======
     //           <p className="p">{category}</p>
     //           <p className="p">{information}</p>
->>>>>>> c19ec14ee8d427fad620be559768798ad148789f
 
     //         </div>
     //       </div>
 
-<<<<<<< HEAD
- 
-      </div>
-    </div>
-=======
     //     </div>
  
 
@@ -204,7 +150,6 @@ function Temp() {
 
     //   </div>
     // </div>
->>>>>>> c19ec14ee8d427fad620be559768798ad148789f
   );
 }
 
