@@ -21,6 +21,10 @@ const orm = {
     postReservation: async (body) => { return await db.Reservation.create(body) },
     findBusinessReservation: async (id) => { return await db.Reservation.find({businessID: id}) },
     findUserReservation: async (id) => { return await db.Reservation.find({userID: id}) },
+
+    postReview: async (body) => { return await db.Review.create(body) },
+    findBusinessReview: async (id) => { return await db.Review.find({businessID: id}) },
+    findUserReview: async (id) => { return await db.Review.find({userID: id}) },
 }
 
 

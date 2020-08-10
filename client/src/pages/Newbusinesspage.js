@@ -1,5 +1,6 @@
 import React, {useRef} from "react";
 import axios from 'axios';
+import NumberFormat from 'react-number-format';
 import './NewBusinessPage.css'
 
 function Newbusinesspage() {
@@ -37,6 +38,7 @@ function Newbusinesspage() {
     })
   }
 
+  
 
   
   return (
@@ -89,7 +91,8 @@ function Newbusinesspage() {
       
                   <div className="mb-3">
                     <label for="businessPhone">Phone Number</label>
-                    <input type="businessPhone" className="form-control" ref={phone} placeholder="416 123 4567" />
+                    <input type="businessPhone" className="form-control" ref={phone} placeholder="(416) 123-4567" />
+  
                     <div className="invalid-feedback">
                       Please enter a valid Business Phone for verification.
                     </div>
