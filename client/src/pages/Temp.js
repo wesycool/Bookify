@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from "react";
 import { Link, useLocation } from "react-router-dom";
+import NumberFormat from 'react-number-format';
 import './Temp.css'
 
 
@@ -51,8 +52,10 @@ function Temp() {
                   <h1 className="h1">Contact Us</h1>
 
                   <p className="p">{address1} {"\n"} {address2} {"\n"} {city}, {province}</p>
-                  <p className="p">Email: {email}</p>
-                  <p className="p">Phone: {phone}</p>
+                  <p className="p"><i class="fas fa-envelope"></i> {email}</p>
+                  <p className="p"><i class="fas fa-phone"></i> <NumberFormat value={phone} displayType={'text'} format="(###) ###-####" /></p>
+
+                  <a href="" className="btn btn-danger  btn-block" data-toggle="modal" data-target="#ModalBooking">Book It Now!</a>
 
                   <br/>
                   <br/>
@@ -73,7 +76,7 @@ function Temp() {
       <hr className="new1"/>
 
       <div className='row'>
-        <div className="col-12 col-md-6" style={{marginBottom:"20px"}}>
+        <div className="cole" style={{marginBottom:"20px"}}>
           <div className="card">
               <div className="card-body">
                   <h1 className="h1">Overall Star Rating </h1>
@@ -99,8 +102,6 @@ function Temp() {
             </div>
           </div>
 
-
- 
       </div>
     </div>
   );
