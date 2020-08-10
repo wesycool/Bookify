@@ -22,10 +22,10 @@ function App() {
         <Route exact path="/userdashboard/:id" component={Userdash} />
 
         <Route exact path="/business/:id" component={Temp} />
-        <Route exact path="/newbusiness/" component={Business} />
-        <Route exact path="/signuppage/" component={SignUpPage} />  
-        <Route exact path="/aboutus/" component={AboutUs} />  
-        <Route exact path="/termscondition/" component={TermsCondition} />          
+        <Route exact path="/newbusiness" component={Business} />
+        <Route exact path="/signuppage" component={SignUpPage} />  
+        <Route exact path="/aboutus" component={AboutUs} />  
+        <Route exact path="/termscondition" component={TermsCondition} />          
 
         <Footer />
         <Modal />
