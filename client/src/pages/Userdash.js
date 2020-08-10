@@ -45,9 +45,7 @@ function Usersdash() {
       }
       setUserInfo(user)
       })
-  })
 
-  useEffect(() => {
       axios.get(`/api/user-reservation/${splitLocation[2]}`)
         .then(({data}) => {
           const sortList = data.sort((a,b) => {
@@ -62,8 +60,14 @@ function Usersdash() {
 
       axios.get(`/api/user-review/${splitLocation[2]}`)
         .then(({data}) => {
-          setReviewList(data)
-          console.log(data)
+          const sortList = data.sort((a,b) => {
+            const condition = a.Date < b.Date
+            return (condition - !condition)
+          })
+
+          const newArray = [...sortList]
+
+          setReviewList(newArray)
           })
   }, [] )
 
@@ -128,36 +132,30 @@ function Usersdash() {
 
             {/* <!-- right contetns --> */}
 
-            {/* <!-- user setting --> */}
+            
             <div className="col-md-8 order-md-2">
 
-
-  
-
-
-
-               {/* <!-- My Appoinment --> */}
-               <div className="cardBusinessdash" id="reservationList">
+              {/* <!-- My Appoinment --> */}
+              <div>
                 <h4 className="mb-3">My Appointments</h4>
                 <div className='row'>
-                { Object.entries(reservationList).map( ([key,list]) => <ReservationCard key={key} list={list}></ReservationCard> ) }
+                  { Object.entries(reservationList).map( ([key,list]) => <ReservationCard key={key} list={list}></ReservationCard> ) }
                 </div>
-                
-                <hr className="mb-4" />
-
-              </div>
-
-              <div className="cardBusinessdash" id="reservationList">
-                <h4 className="mb-3">My Reviews </h4>
-                <div className='row'>
-                { Object.entries(reviewList).map( ([key,list]) => <ReservationCard key={key} list={list}></ReservationCard> ) }
-                </div>
-                
-
               </div>
 
               <hr className="mb-4" />
 
+              {/* <!-- My Review --> */}
+              <div>
+                <h4 className="mb-3">My Reviews </h4>
+                <div className='row'>
+                  { Object.entries(reviewList).map( ([key,list]) => <ReservationCard key={key} list={list}></ReservationCard> ) }
+                </div>
+              </div>
+
+              <hr className="mb-4" />
+              
+              {/* <!-- user setting --> */}
               <h4 className="mb-3">Setting</h4>
               
               <form className="needs-validation">
