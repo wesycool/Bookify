@@ -18,11 +18,11 @@ function ReservationCard({list}) {
 
   return (
 
-    <div className='col-12 col-md-6 col-lg-4' style={{marginBottom:'10px'}}>
+    <div className='col-12' style={{marginBottom:'10px'}}>
         <div className="card" style={{backgroundColor:'white'}}>
             <div className="card-body">
                 <h5 className="card-title">{(list.userID === splitLocation[2])? `${name.businessName}`:`${name.firstName} ${name.lastName}`}</h5>
-                <h6 className="card-subtitle mb-2 text-muted">{moment(list.Date).format('YYYY/MM/DD - hh:mm A')}</h6>
+                <h6 className="card-subtitle mb-2 text-muted">{ list.review || moment(list.Date).format('YYYY/MM/DD - hh:mm A')}</h6>
             </div>
         </div>
     </div>
