@@ -61,7 +61,7 @@ function Modal() {
     
   return (
     <div className='container'>
-        <div className="modal fade bd-example-modal-lg" id="ModalSignIn" tabindex="-1" role="dialog" aria-labelledby="ModalSignInTitle" aria-hidden="true">
+        <div className="modal fade bd-example-modal-lg" id="ModalSignIn" tabIndex="-1" role="dialog" aria-labelledby="ModalSignInTitle" aria-hidden="true">
             <div className="modal-dialog modal-lg">
                 <div className="userSignupForm modal-content">
                     <div className="form-container">
@@ -82,7 +82,7 @@ function Modal() {
         </div>  
 
 
-        <div className="modal fade bd-example-modal-lg" id="ModalBooking" tabindex="-1" role="dialog" aria-labelledby="ModalBookingTitle" aria-hidden="true">
+        <div className="modal fade bd-example-modal-lg" id="ModalBooking" tabIndex="-1" role="dialog" aria-labelledby="ModalBookingTitle" aria-hidden="true">
             <div className="modal-dialog modal-lg">
                 <div className="userSignupForm modal-content">
                     <div className="form-container">

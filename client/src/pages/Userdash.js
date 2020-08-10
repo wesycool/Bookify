@@ -16,31 +16,8 @@ function Usersdash() {
   const splitLocation = location.pathname.split('/')
 
   const [ userInfo , setUserInfo ] = useState( {} )
-  const [ reservationList, setReservationList ] = useState( [] )
-
-
-  const sampleReview = [
-    {
-      'review':'review1',
-      'rating':'rating1',
-      'userID':'5f2cb22b41d8b9da4b160e27',
-      'businessID': '5f2c9d930fc92fcfe04fe9cc'
-    },
-    {
-      'review':'review2',
-      'rating':'rating2',
-      'userID':'5f2cb22b41d8b9da4b160e27',
-      'businessID': '5f2c71acd7e4e0cac8181a94'
-    },
-    {
-      'review':'review3',
-      'rating':'rating3',
-      'userID':'5f2cb22b41d8b9da4b160e27',
-      'businessID': '5f2c71acd7e4e0cac8181a94'
-    }
-
-  ]
-  const [ reviewList, setReviewList ] = useState( sampleReview )
+  const [ reservationList, setReservationList ] = useState([])
+  const [ reviewList, setReviewList ] = useState([])
 
   // ObjectId("5f2cb22b41d8b9da4b160e27")
 
@@ -83,11 +60,11 @@ function Usersdash() {
           setReservationList(newArray)
           })
 
-      // axio.get(`/api/user-review/${splitLocation[2]}`)
-      //   .then(({data}) => {
-      //     setReviewList(data)
-      //     console.log(data)
-      //     })
+      axios.get(`/api/user-review/${splitLocation[2]}`)
+        .then(({data}) => {
+          setReviewList(data)
+          console.log(data)
+          })
   }, [] )
 
   function editUser(){
@@ -107,7 +84,7 @@ function Usersdash() {
   }
 
   return (
-    <div className="container">
+    <div className="container mt-4">
         <div className="row">
 
          {/* leftside */}
@@ -163,7 +140,7 @@ function Usersdash() {
                <div className="cardBusinessdash" id="reservationList">
                 <h4 className="mb-3">My Appointments</h4>
                 <div className='row'>
-                { reservationList.map( (list) => <ReservationCard list={list}></ReservationCard> ) }
+                { Object.entries(reservationList).map( ([key,list]) => <ReservationCard key={key} list={list}></ReservationCard> ) }
                 </div>
                 
                 <hr className="mb-4" />
@@ -173,7 +150,7 @@ function Usersdash() {
               <div className="cardBusinessdash" id="reservationList">
                 <h4 className="mb-3">My Reviews </h4>
                 <div className='row'>
-                { reviewList.map( (list) => <ReservationCard list={list}></ReservationCard> ) }
+                { Object.entries(reviewList).map( ([key,list]) => <ReservationCard key={key} list={list}></ReservationCard> ) }
                 </div>
                 
 
@@ -182,25 +159,28 @@ function Usersdash() {
               <hr className="mb-4" />
 
               <h4 className="mb-3">Setting</h4>
-              <form className="needs-validation" novalidate="">
+              
+              <form className="needs-validation">
                 <div className="row">
-                <div className="col-md-6 mb-3">
-                    <label for="firstName">First name</label>
+                
+                  <div className="col-md-6 mb-3">
+                    <label>First name</label>
                     <input type="text" className="form-control" ref={getFirstName} placeholder="" required="" />
                   </div>
 
                   <div className="col-md-6 mb-3">
-                    <label for="lastName">Last name</label>
+                    <label>Last name</label>
                     <input type="text" className="form-control" ref={getLastName} placeholder="" required="" />
                     <div className="invalid-feedback">
                       Valid last name is required.
                     </div>
                   </div>
+
                 </div>
 
     
                 <div className="mb-3">
-                  <label for="email">Email</label>
+                  <label>Email</label>
                   <input type="email" className="form-control" ref={getEmail} placeholder="you@example.com" />
                   <div className="invalid-feedback">
                     Please enter a valid email address for shipping updates.
@@ -208,7 +188,7 @@ function Usersdash() {
                 </div>
     
                 <div className="mb-3">
-                  <label for="address">Address</label>
+                  <label>Address</label>
                   <input type="text" className="form-control" ref={getAddress} placeholder="1234 Main St" required="" />
                   <div className="invalid-feedback">
                     Please enter your shipping address.
@@ -216,13 +196,13 @@ function Usersdash() {
                 </div>
     
                 <div className="mb-3">
-                  <label for="address2">Address 2 <span>(Optional)</span></label>
+                  <label>Address 2 <span>(Optional)</span></label>
                   <input type="text" className="form-control" ref={getAddress2} placeholder="Apartment or suite" />
                 </div>
     
                 <div className="row">
                   <div className="col-md-5 mb-3">
-                    <label for="country">City</label>
+                    <label>City</label>
                     <input type="text" className="form-control" ref={getCity} />
                     <div className="invalid-feedback">
                       Please select a valid country.
@@ -230,7 +210,7 @@ function Usersdash() {
                   </div>
 
                   <div className="col-md-4 mb-3">
-                    <label for="state">Province</label>
+                    <label>Province</label>
                     <select className="custom-select d-block w-100" ref={getProvince} required="">
                         <option {...getProvince === 'AB'? 'selected': ''}>AB</option>
                         <option {...getProvince === 'BC'? 'selected': ''}>BC</option>
@@ -252,7 +232,7 @@ function Usersdash() {
                   </div>
 
                   <div className="col-md-3 mb-3">
-                    <label for="zip">Postal Code</label>
+                    <label>Postal Code</label>
                     <input type="text" className="form-control" ref={getPostalCode} placeholder="" required="" />
                     <div className="invalid-feedback">
                       Zip code required.
@@ -260,11 +240,13 @@ function Usersdash() {
                   </div>
                 </div>
 
-                <div className ="row justify-content-md-center pb-4">
-                          <button className="btn btn-primary col-5" onClick={editUser} type="button">Save and Submit</button>
-                      </div>
-              </form>
 
+              </form>
+              <div className ="row pb-4">
+                  <div className='col-6 col-lg-4 offset-3 offset-lg-4'>
+                    <button className="btn btn-primary" style={{width:'100%'}} onClick={editUser} type="button">Save and Submit</button>
+                  </div>          
+              </div>
 
 
                 {/* <hr className="mb-4" /> */}

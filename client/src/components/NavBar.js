@@ -64,11 +64,11 @@ function Navbar(props) {
         <div>
             <nav className="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
                 <Link to="/">
-                    <h1 className="navbar-brand" ><i class="fas fa-bookmark"></i> Bookify</h1>
+                    <h1 className="navbar-brand" ><i className="fas fa-bookmark"></i> Bookify</h1>
                 </Link>
 
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
+                <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span className="navbar-toggler-icon"></span>
                 </button>
 
                 <div className="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
