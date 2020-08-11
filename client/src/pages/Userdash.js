@@ -1,18 +1,12 @@
 import React, {useRef, useEffect, useState} from "react";
 import { Link, useLocation } from "react-router-dom";
 import ReservationCard from '../components/ReservationCard.js'
+import UserSetting from '../components/userSetting.js'
+import BusinessSetting from '../components/businessSetting.js'
 import axios from 'axios'
 
 function Usersdash() {
   const location = useLocation()
-  const getFirstName = useRef()
-  const getLastName = useRef()
-  const getEmail = useRef()
-  const getAddress = useRef()
-  const getAddress2 = useRef()
-  const getCity = useRef()
-  const getProvince = useRef()
-  const getPostalCode = useRef()
   const splitLocation = location.pathname.split('/')
 
   const [ userInfo , setUserInfo ] = useState( {} )
@@ -22,31 +16,40 @@ function Usersdash() {
   // ObjectId("5f2cb22b41d8b9da4b160e27")
 
   useEffect(() => {
-    axios.get(`/api/get-user/${splitLocation[2]}`)
+    axios.get(`/api/get-${splitLocation[2]}/${splitLocation[3]}`)
     .then(({data}) => {
-      getFirstName.current.value = data.firstName
-      getLastName.current.value = data.lastName
-      getEmail.current.value = data.email
-      getAddress.current.value = data.address
-      getAddress2.current.value = data.address2
-      getCity.current.value = data.city
-      getProvince.current.value = data.province
-      getPostalCode.current.value = data.postalCode
 
-      const user = { 
-        'firstName': data.firstName, 
-        'lastName': data.lastName,
-        'email': data.email,
-        'address':data.address,
-        'address2':data.address2,
-        'city':data.city,
-        'province':data.province,
-        'postalCode':data.postalCode
+      if (splitLocation[2] == 'user'){
+        const user = { 
+          'firstName': data.firstName, 
+          'lastName': data.lastName,
+          'email': data.email,
+          'address':data.address,
+          'address2':data.address2,
+          'city':data.city,
+          'province':data.province,
+          'postalCode':data.postalCode
+        }
+        setUserInfo(user)
+      } else {
+        const business = { 
+          'category': data.category,
+          'businessName': data.businessName, 
+          'address1':data.address1,
+          'address2':data.address2,
+          'city':data.city,
+          'province':data.province,
+          'email': data.email,
+          'phone': data.phone,
+          'postalCode':data.postalCode,
+          'information': data.information
+        }
+        setUserInfo(business)
       }
-      setUserInfo(user)
+
       })
 
-      axios.get(`/api/user-reservation/${splitLocation[2]}`)
+      axios.get(`/api/${splitLocation[2]}-reservation/${splitLocation[3]}`)
         .then(({data}) => {
           const sortList = data.sort((a,b) => {
             const condition = a.Date > b.Date
@@ -58,7 +61,7 @@ function Usersdash() {
           setReservationList(newArray)
           })
 
-      axios.get(`/api/user-review/${splitLocation[2]}`)
+      axios.get(`/api/${splitLocation[2]}-review/${splitLocation[3]}`)
         .then(({data}) => {
           const sortList = data.sort((a,b) => {
             const condition = a.Date < b.Date
@@ -71,21 +74,21 @@ function Usersdash() {
           })
   }, [] )
 
-  function editUser(){
-    const data = { 
-      "firstName": getFirstName.current.value,
-      "lastName": getLastName.current.value,
-      "email": getEmail.current.value,
-      "address": getAddress.current.value,
-      "address2": getAddress2.current.value,
-      "city": getCity.current.value,
-      "province": getProvince.current.value,
-      "postalCode": getPostalCode.current.value,
-      "archieve": false
-    }
-      axios.put(`/api/edit-user/${splitLocation[2]}`,{headers: {'Content-Type': 'application/json'},data})
+  // function editUser(){
+  //   const data = { 
+  //     "firstName": getFirstName.current.value,
+  //     "lastName": getLastName.current.value,
+  //     "email": getEmail.current.value,
+  //     "address": getAddress.current.value,
+  //     "address2": getAddress2.current.value,
+  //     "city": getCity.current.value,
+  //     "province": getProvince.current.value,
+  //     "postalCode": getPostalCode.current.value,
+  //     "archieve": false
+  //   }
+  //     axios.put(`/api/edit-user/${splitLocation[3]}`,{headers: {'Content-Type': 'application/json'},data})
 
-  }
+  // }
 
   return (
     <div className="container mt-4">
@@ -94,15 +97,12 @@ function Usersdash() {
          {/* leftside */}
             <div className="col-md-4 order-md-1 mb-4">
               <h4 className="d-flex justify-content-between align-items-center mb-3">
-                <span>User Dashboard</span>
+                <span style={{ textTransform: "capitalize"}}>{sessionStorage.account} Dashboard</span>
               </h4>
               <ul className="list-group mb-3">
                 <li className="list-group-item d-flex justify-content-between lh-condensed">
-                    <div className="col">
-                        <div className="card-body text-center">
-                          <img className="rounded-circle mb-3 mt-4" src="https://avatars1.githubusercontent.com/u/31528729?s=460&u=47436ea6b0f63a23dbe6fbbc71e75156dc05e40f&v=4" width="160" height="160" />
-                        </div>
-
+                    <div className="col text-center">
+                        <img className="rounded-circle" src="https://avatars1.githubusercontent.com/u/31528729?s=460&u=47436ea6b0f63a23dbe6fbbc71e75156dc05e40f&v=4" style={{width:"150px", marginBottom:'10px'}} />
                         <div>{userInfo.firstName} {userInfo.lastName}</div>
                         <div>{userInfo.email}</div>
                     </div>
@@ -124,7 +124,9 @@ function Usersdash() {
                 </li>
                 <li className="list-group-item d-flex justify-content-between bg-light">
                   <div>
+                    <Link to="../../termscondition">
                     <h6 className="my-0">Privacy Policy</h6>
+                    </Link>
                   </div>
                 </li>
               </ul>
@@ -157,8 +159,12 @@ function Usersdash() {
               
               {/* <!-- user setting --> */}
               <h4 className="mb-3">Setting</h4>
-              
-              <form className="needs-validation">
+              <div>
+                {(splitLocation[2] == 'user')? <UserSetting list={userInfo}></UserSetting> : <BusinessSetting list={userInfo}></BusinessSetting> }
+                
+                
+              </div>
+              {/* <form className="needs-validation">
                 <div className="row">
                 
                   <div className="col-md-6 mb-3">
@@ -244,7 +250,7 @@ function Usersdash() {
                   <div className='col-6 col-lg-4 offset-3 offset-lg-4'>
                     <button className="btn btn-primary" style={{width:'100%'}} onClick={editUser} type="button">Save and Submit</button>
                   </div>          
-              </div>
+              </div> */}
 
 
                 {/* <hr className="mb-4" /> */}
@@ -293,12 +299,7 @@ function Usersdash() {
                    </div>
                </div>
             </div> */}
-
-
-
             </div>
-
-
         </div>
 
 

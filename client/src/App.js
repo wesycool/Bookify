@@ -5,11 +5,10 @@ import Footer from "./components/Footer.js";
 import Modal from "./components/Modal.js";
 import Temp from "./pages/Temp.js";
 import Business from "./pages/Newbusinesspage.js";
-import Userdash from "./pages/Userdash.js";
+import Dashboard from "./pages/Dashboard.js";
 import AboutUs from "./pages/AboutUs.js";
 import SignUpPage from "./pages/SignUpPage.js";
 import TermsCondition from "./pages/TermsCondition.js";
-import Businessdash from "./pages/Businessdash.js";
 
 
 function App() {
@@ -17,9 +16,8 @@ function App() {
     <Router>
       <div>
         <Navbar />
-{/* temp */}
-        <Route exact path="/businessdashboard/:id" component={Businessdash} />
-        <Route exact path="/userdashboard/:id" component={Userdash} />
+
+        <Route exact path="/dashboard/:account/:id" component={Dashboard} />
 
         <Route exact path="/business/:id" component={Temp} />
         <Route exact path="/newbusiness" component={Business} />

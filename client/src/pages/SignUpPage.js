@@ -40,7 +40,7 @@ function SignUpPage() {
     }
     
     return (
-        <div className='container'>
+        <div className='container mt-4'>
             <h4 className="mb-3">New Account Sign Up</h4>
               <form className="needs-validation" novalidate="">
                 <div className="row">
@@ -123,12 +123,12 @@ function SignUpPage() {
 
                 <div className="mb-3">
                   <label for="address">Password</label>
-                  <input type="text" className="form-control" ref={getPassword} required="" />
+                  <input type="password" className="form-control" ref={getPassword} required="" />
                 </div>
                 
                 <div className="mb-3">
                   <label for="address">Confirm Password</label>
-                  <input type="text" className="form-control" ref={confirmPassword} required="" />
+                  <input type="password" className="form-control" ref={confirmPassword} required="" />
                 </div>
 
                 <div className ="row justify-content-md-center pb-4">
