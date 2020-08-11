@@ -1,6 +1,5 @@
 import React, {useRef} from "react";
 import axios from 'axios';
-import NumberFormat from 'react-number-format';
 import './NewBusinessPage.css'
 
 function Newbusinesspage() {

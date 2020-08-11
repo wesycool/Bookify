@@ -14,12 +14,13 @@ function Usersdash() {
   const [ reservationList, setReservationList ] = useState([])
   const [ reviewList, setReviewList ] = useState([])
   const [ averageRating, setAverageRating ] = useState()
+  const [ roundRating, setRoundRating] = useState()
 
   useEffect(() => {
     axios.get(`/api/get-${splitLocation[2]}/${splitLocation[3]}`)
     .then(({data}) => {
 
-      if (splitLocation[2] == 'user'){
+      if (splitLocation[2] === 'user'){
         const user = { 
           'firstName': data.firstName, 
           'lastName': data.lastName,
@@ -63,7 +64,7 @@ function Usersdash() {
 
       axios.get(`/api/${splitLocation[2]}-review/${splitLocation[3]}`)
         .then(({data}) => {
-          if(splitLocation[2]=='business'){
+          if(splitLocation[2]==='business'){
             if (data.length !== 0) {
               const sortList = data.sort((a,b) => {
                 const condition = a.Date < b.Date
@@ -75,8 +76,10 @@ function Usersdash() {
               const getRating = newArray.map( ({rating}) => rating)
               const total = getRating.reduce((acc,cur) => acc + cur)
               const average = total/getRating.length
-      
+              const roundAverage = average.toFixed(1)
+
               setAverageRating(average)
+              setRoundRating(roundAverage)
               setReviewList(newArray)
             }
           }
@@ -98,8 +101,8 @@ function Usersdash() {
                     <div className="col text-center">
                         <img className="rounded-circle" src={`../../assets/img/default-${splitLocation[2]}.png`} style={{width:"150px", marginBottom:'10px'}} />
                         <div>{ userInfo.businessName || `${userInfo.firstName} ${userInfo.lastName}`}</div>
-                        <h5 style={{color:'#ffc107', textAlign:'center'}}>
-                          <p>{splitLocation[2]=='business' && !averageRating? 'No Review' : ''}</p>
+                        <h5 style={{color:'#ffc107', textAlign:'center'}} data-toggle="tooltip" data-placement="top" title={roundRating}>
+                          <p>{splitLocation[2]==='business' && !averageRating? 'No Review' : ''}</p>
                           <i className={ !averageRating? '': Math.floor(averageRating,0) >= 1? "fas fa-star text-warning" : averageRating >= 0.5? "fas fa-star-half-alt" : "far fa-star"}></i>
                           <i className={ !averageRating? '': Math.floor(averageRating,0) >= 2? "fas fa-star text-warning" : averageRating >= 1.5? "fas fa-star-half-alt" : "far fa-star"}></i>
                           <i className={ !averageRating? '': Math.floor(averageRating,0) >= 3? "fas fa-star text-warning" : averageRating >= 2.5? "fas fa-star-half-alt" : "far fa-star"}></i>
@@ -167,7 +170,7 @@ function Usersdash() {
               {/* <!-- user setting --> */}
               <h4 className="mb-3">Setting</h4>
               <div>
-                {(splitLocation[2] == 'user')? <UserSetting list={userInfo}></UserSetting> : <BusinessSetting list={userInfo}></BusinessSetting> }
+                {(splitLocation[2] === 'user')? <UserSetting list={userInfo}></UserSetting> : <BusinessSetting list={userInfo}></BusinessSetting> }
                 
                 
               </div>

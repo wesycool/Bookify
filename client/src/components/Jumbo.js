@@ -11,7 +11,7 @@ function Jumbo() {
         </ol>
         <div className="carousel-inner">
           <div className="carousel-item">
-            <img className="jumboImg" src="https://images.unsplash.com/photo-1463797221720-6b07e6426c24?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80" />
+            <img className="jumboImg" alt="Bookify is.." src="https://images.unsplash.com/photo-1463797221720-6b07e6426c24?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80" />
             <div className="container">
               <div className="carousel-caption text-left">
                 <h2>Bookify is..</h2>
@@ -22,7 +22,7 @@ function Jumbo() {
             </div>
           </div>
           <div className="carousel-item active">
-            <img className="jumboImg" src="https://images.unsplash.com/photo-1534778356534-d3d45b6df1da?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80 1050w" />
+            <img className="jumboImg" alt="Register your business!" src="https://images.unsplash.com/photo-1534778356534-d3d45b6df1da?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80 1050w" />
             <div className="container">
               <div className="carousel-caption">
                 <h2>Register your business!</h2>
@@ -32,7 +32,7 @@ function Jumbo() {
             </div>
           </div>
           <div className="carousel-item">
-            <img className="jumboImg" src="https://images.unsplash.com/photo-1512080482556-ea648017576c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80 1050w" />
+            <img className="jumboImg" alt="Make a Booking Us" src="https://images.unsplash.com/photo-1512080482556-ea648017576c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80 1050w" />
             <div className="container">
               <div className="carousel-caption text-right">
                 <h3>Make a Booking Us</h3>

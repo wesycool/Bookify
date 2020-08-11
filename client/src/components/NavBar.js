@@ -10,7 +10,6 @@ function Navbar(props) {
     const location = useLocation();
     const [ businessList, setList ] = useState( [] )
     const [ fullList, setFullList ] = useState( [] )
-    const [ storeid, setStoreId ] = useState( [] )
     
     useEffect(() => {
         axios.get("/api/business-list")
@@ -57,8 +56,8 @@ function Navbar(props) {
     }
 
     function changeID(){
-        window.location.href = `${(location.pathname =='/')? '.': '..'}/dashboard/${sessionStorage.account}/${sessionStorage.id}`
-        // setStoreId(sessionStorage.id)
+        window.location.href = `${(location.pathname === '/')? '.': '..'}/dashboard/${sessionStorage.account}/${sessionStorage.id}`
+
     }
 
     function signOut(){
@@ -85,7 +84,6 @@ function Navbar(props) {
                 <div className="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
                     <div className='row'>
                         <div className='col-12 col-md-3 col-lg-12' id="signin">
-                            {/* <Link to={location.pathname == '/'? `./businessdashboard/${storeid}`: `../businessdashboard/${storeid}`} onClick={changeID} style={{display:'none'}} id="businessAccountLink">Business Account</Link> */}
                             <Link to='' onClick={changeID} style={{display:'none'}} id="accountLink">My Account</Link>
                             <a href='' style={{color:'white'}} data-toggle="modal" data-target="#ModalSignIn" id='signInLink'>Sign In</a>
                             <a href='/' style={{color:'white'}} id='signOutLink' style={{display:'none'}} onClick={signOut}> Sign Out</a>

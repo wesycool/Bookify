@@ -14,6 +14,7 @@ function Temp() {
   const [ averageRating, setAverageRating ] = useState()
   const [ business, setList ] = useState( [] )
   const [ reviewList, setReviewList ] = useState([])
+  const [ roundRating, setRoundRating] = useState()
   const {category, businessName, address1, address2, city, province, postalCode, email, phone, information, imgSRC} = business
   const newReview = useRef()
 
@@ -41,8 +42,10 @@ function Temp() {
           const getRating = newArray.map( ({rating}) => rating)
           const total = getRating.reduce((acc,cur) => acc + cur)
           const average = total/getRating.length
-  
+          const roundAverage = average.toFixed(1)
+
           setAverageRating(average)
+          setRoundRating(roundAverage)
           setReviewList(newArray)
         }
 
@@ -54,7 +57,7 @@ function Temp() {
   }
 
   function saveReview(){
-    if(sessionStorage.account != 'business'){
+    if(sessionStorage.account !== 'business'){
       const data = {
         "review": newReview.current.value,
         "rating": starRating,
@@ -77,10 +80,10 @@ function Temp() {
       {/* main business card */}
       <div className="col mb-4">
         <div className="card" style={{height:'100%'}}>
-          <img className="card-img-top" src={`../assets/img/${imgSRC}`} alt="Card image cap" style={{height:"300px"}}/>
+          <img className="card-img-top" src={`../assets/img/${imgSRC}`} alt="Card cap" style={{height:"300px"}}/>
           <div className="card-body">
             <h1 className="card-text h1">{businessName}</h1>
-            <h5 style={{color:'#ffc107', textAlign:'center'}}>
+            <h5 style={{color:'#ffc107', textAlign:'center'}} data-toggle="tooltip" data-placement="top" title={roundRating}>
               <p>{!averageRating? 'No Review' : ''}</p>
               <i className={ !averageRating? '': Math.floor(averageRating,0) >= 1? "fas fa-star text-warning" : Math.floor(averageRating,0) + averageRating%1 >= 0.5? "fas fa-star-half-alt" : "far fa-star"}></i>
               <i className={ !averageRating? '': Math.floor(averageRating,0) >= 2? "fas fa-star text-warning" : Math.floor(averageRating,0) + averageRating%1 >= 1.5? "fas fa-star-half-alt" : "far fa-star"}></i>
