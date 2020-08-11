@@ -1,8 +1,7 @@
 import React from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 function BusinessCard({list}) {
-    const location = useLocation()
     const {_id, businessName, category, city, information,imgSRC} = list
 
   return (
