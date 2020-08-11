@@ -11,11 +11,13 @@ function Temp() {
   const location = useLocation();
   const businessID = location.pathname.split('/')
   const [ starRating, setStarRating ] = useState()
+  const [ averageRating, setAverageRating ] = useState()
   const [ business, setList ] = useState( [] )
   const [ reviewList, setReviewList ] = useState([])
   const {category, businessName, address1, address2, city, province, postalCode, email, phone, information, imgSRC} = business
   const newReview = useRef()
 
+  console.log(Math.floor(averageRating,0))
   useEffect(() => {
     fetch("/api/business-list")
       .then(res => res.json())
@@ -28,14 +30,22 @@ function Temp() {
 
       axios.get(`/api/business-review/${businessID[2]}`)
       .then(({data}) => {
-        const sortList = data.sort((a,b) => {
-          const condition = a.Date < b.Date
-          return (condition - !condition)
-        })
+        if (data.length !== 0) {
+          const sortList = data.sort((a,b) => {
+            const condition = a.Date < b.Date
+            return (condition - !condition)
+          })
+  
+          const newArray = [...sortList]
+  
+          const getRating = newArray.map( ({rating}) => rating)
+          const total = getRating.reduce((acc,cur) => acc + cur)
+          const average = total/getRating.length
+  
+          setAverageRating(average)
+          setReviewList(newArray)
+        }
 
-        const newArray = [...sortList]
-
-        setReviewList(newArray)
         })
   }, [])  
 
@@ -44,23 +54,20 @@ function Temp() {
   }
 
   function saveReview(){
-    const data = {
-      "review": newReview.current.value,
-      "rating": starRating,
-      "userID": sessionStorage.id,
-      "businessID": businessID[2]
+    if(sessionStorage.account != 'business'){
+      const data = {
+        "review": newReview.current.value,
+        "rating": starRating,
+        "userID": sessionStorage.id,
+        "businessID": businessID[2]
+      }
+      axios.post('/api/new-review', {
+        headers: {'Content-Type': 'application/json'},
+        data
+      })
+  
+      window.location.reload(true)
     }
-
-    console.log(data)
-
-    axios.post('/api/new-review', {
-      headers: {'Content-Type': 'application/json'},
-      data
-    })
-
-    window.location.reload(true)
-
-
   }
 
   return (
@@ -73,6 +80,16 @@ function Temp() {
           <img className="card-img-top" src={`../assets/img/${imgSRC}`} alt="Card image cap" style={{height:"300px"}}/>
           <div className="card-body">
             <h1 className="card-text h1">{businessName}</h1>
+            <h5 style={{color:'#ffc107', textAlign:'center'}}>
+              <p>{!averageRating? 'No Review' : ''}</p>
+              <i className={ !averageRating? '': Math.floor(averageRating,0) >= 1? "fas fa-star text-warning" : Math.floor(averageRating,0) + averageRating%1 >= 0.5? "fas fa-star-half-alt" : "far fa-star"}></i>
+              <i className={ !averageRating? '': Math.floor(averageRating,0) >= 2? "fas fa-star text-warning" : Math.floor(averageRating,0) + averageRating%1 >= 1.5? "fas fa-star-half-alt" : "far fa-star"}></i>
+              <i className={ !averageRating? '': Math.floor(averageRating,0) >= 3? "fas fa-star text-warning" : Math.floor(averageRating,0) + averageRating%1 >= 2.5? "fas fa-star-half-alt" : "far fa-star"}></i>
+              <i className={ !averageRating? '': Math.floor(averageRating,0) >= 4? "fas fa-star text-warning" : Math.floor(averageRating,0) + averageRating%1 >= 3.5? "fas fa-star-half-alt" : "far fa-star"}></i>
+              <i className={ !averageRating? '': Math.floor(averageRating,0) >= 5? "fas fa-star text-warning" : Math.floor(averageRating,0) + averageRating%1 >= 4.5? "fas fa-star-half-alt" : "far fa-star"}></i>
+            </h5>
+            
+            
             <p className="p">{category}</p>
             <p className="p">{information}</p>
           </div>
@@ -101,7 +118,7 @@ function Temp() {
       <div className="col" style={{marginBottom:"20px"}}>
         <div className="card">
           <div className="card-body">
-            <h1 className="h1">Overall Star Rating </h1>
+            <h1 className="h1">Write a Review</h1>
 
             <div className="rating">
               <input type="radio" name="rating" value="5" id="5" onClick={starClick}/>

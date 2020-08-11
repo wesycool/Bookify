@@ -1,9 +1,7 @@
 import React from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 function Jumbo() {
-  const location = useLocation()
-
   return (
     <div id="myCarousel" className="carousel slide" data-ride="carousel">
         <ol className="carousel-indicators">
@@ -19,7 +17,7 @@ function Jumbo() {
                 <h2>Bookify is..</h2>
                 <h6>to have a positive impact on the world with this powerful new app. With Bookify we can help connect consumers with businesses through minimal contact and precision bookings.
 </h6>
-                <p><Link className ="btn btn-lg btn-secondary" to={ location === "/" ? "./aboutus": "../aboutus"}>Button</Link></p>
+                <p><Link className ="btn btn-lg btn-secondary" to="./aboutus">Learn More</Link></p>
               </div>
             </div>
           </div>
@@ -29,7 +27,7 @@ function Jumbo() {
               <div className="carousel-caption">
                 <h2>Register your business!</h2>
                 <h6>During this unprecedented time, we wanted to ensure we can help businesses generate revenue at a faster pace with an easy-to-use platform.</h6>
-                <p><Link className ="btn btn-lg btn-secondary" to={ location === "/" ? "./newbusiness": "../newbusiness"}>Register</Link></p>
+                <p><Link className ="btn btn-lg btn-secondary" to="./newbusiness">Register</Link></p>
               </div>
             </div>
           </div>
@@ -39,7 +37,7 @@ function Jumbo() {
               <div className="carousel-caption text-right">
                 <h3>Make a Booking Us</h3>
                 <h6>During this unprecedented time, we wanted to ensure we can help consumers shop at and support their favourite businesses at a faster pace with an easy-to-use platform.</h6>
-                <p><Link className ="btn btn-lg btn-secondary" to={ location === "/" ? "./": "../"}>Book with Us</Link></p>
+                <p><a className ="btn btn-lg btn-secondary" >Book with Us</a></p>
               </div>
             </div>
           </div>

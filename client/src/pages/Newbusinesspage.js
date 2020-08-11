@@ -44,10 +44,10 @@ function Newbusinesspage() {
   return (
     <div className='container'>
         <header id="mainHeader" className="masthead text-center text-blue d-flex">
-            <div className="container my-auto">
+            <div className="container mt-5">
                 <div className="row">
-                    <div className="col-lg-10 mx-auto">
-                        <h1 className="text-center"><br/><br/><br/><br/>Boost Your Business with Bookify</h1>                
+                    <div className="col-lg-10 mx-auto" >
+                        <h1 className="text-center">Boost Your Business with Bookify</h1>                
                     </div>
                 </div>
                 </div>
@@ -161,12 +161,14 @@ function Newbusinesspage() {
                         <input type="file" className="form-control-file" ref={imgSRC} />
                     </div>
                     </div>
-                    <div className ="row justify-content-md-center pb-4">
-                        <button className="btn btn-primary col-5" onClick={postNewBusiness} type="submit">Save and Submit</button>
-                    </div>
+
                 </form>
 
-
+                <div className ="row pb-4">
+                    <div className='col-6 col-lg-4 offset-3 offset-lg-4'>
+                      <button className="btn btn-primary" style={{width:'100%'}} onClick={postNewBusiness} type="submit">Save and Submit</button>
+                    </div>          
+                </div>
             </div>
         </div>
     </div>
