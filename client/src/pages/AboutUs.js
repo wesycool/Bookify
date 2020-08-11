@@ -22,7 +22,7 @@ function AboutUs() {
                             Sam is a great coder, he helped us meet deadlines and his contribution shines.
                         </p>
                         <div class="link">
-                            <a href="https://samuelyoo.github.io/portfolio/" rel="noopener noreferrer" target="_blank" class="btn btn-secondary m-1" data-toggle="tooltip" data-placement="top" title="Portfolio"><h2 style={{margin:'0px'}}><i class="fas fa-globe"></i></h2></a>
+                            <a href="https://samuelyoo.github.io/portfolio/" rel="noopener noreferrer" target="_blank" class="btn btn-secondary m-1" data-toggle="tooltip" data-placement="top" title="Portfolio"><h2 style={{margin:'0px'}}><i class="fas fa-globe-americas"></i></h2></a>
                             <a href="https://github.com/samuelyoo/" rel="noopener noreferrer" target="_blank" class="btn btn-secondary m-1" data-toggle="tooltip" data-placement="top" title="GitHub"><h2 style={{margin:'0px'}}><i class="fa fa-github"></i></h2></a>
                             <a href="https://www.linkedin.com/in/samuel-hc-yoo/" rel="noopener noreferrer" target="_blank" class="btn btn-secondary m-1" data-toggle="tooltip" data-placement="top" title="LinkedIn"><h2 style={{margin:'0px'}}><i class="fab fa-linkedin-in"></i></h2></a>
                         </div>
@@ -58,7 +58,7 @@ function AboutUs() {
                             Chet is creative and his design skills make Bookify visually pleasing.
                         </p>
                         <div class="link">
-                            <a href="https://boiling-tundra-87912.herokuapp.com/" rel="noopener noreferrer" target="_blank" class="btn btn-secondary m-1" data-toggle="tooltip" data-placement="top" title="Portfolio"><h2 style={{margin:'0px'}}><i class="far fa-file"></i></h2></a>
+                            <a href="https://boiling-tundra-87912.herokuapp.com/" rel="noopener noreferrer" target="_blank" class="btn btn-secondary m-1" data-toggle="tooltip" data-placement="top" title="Portfolio"><h2 style={{margin:'0px'}}><i class="fas fa-globe-americase"></i></h2></a>
                             <a href="https://github.com/Chet1317" target="_blank" rel="noopener noreferrer" class="btn btn-secondary m-1" data-toggle="tooltip" data-placement="top" title="GitHub"><h2 style={{margin:'0px'}}><i class="fa fa-github"></i></h2></a>
                             <a href="https://www.linkedin.com/in/chet-martin-85891a17b/" rel="noopener noreferrer" target="_blank" class="btn btn-secondary m-1" data-toggle="tooltip" data-placement="top" title="LinkedIn"><h2 style={{margin:'0px'}}><i class="fab fa-linkedin-in"></i></h2></a>
                             
