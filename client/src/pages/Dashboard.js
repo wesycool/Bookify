@@ -100,11 +100,12 @@ function Usersdash() {
                         <div>{ userInfo.businessName || `${userInfo.firstName} ${userInfo.lastName}`}</div>
                         <h5 style={{color:'#ffc107', textAlign:'center'}}>
                           <p>{splitLocation[2]=='business' && !averageRating? 'No Review' : ''}</p>
-                          <i className={ !averageRating? '': Math.floor(averageRating,0) >= 1? "fas fa-star text-warning" : Math.floor(averageRating,0) + averageRating%1 >= 0.5? "fas fa-star-half-alt" : "far fa-star"}></i>
-                          <i className={ !averageRating? '': Math.floor(averageRating,0) >= 2? "fas fa-star text-warning" : Math.floor(averageRating,0) + averageRating%1 >= 1.5? "fas fa-star-half-alt" : "far fa-star"}></i>
-                          <i className={ !averageRating? '': Math.floor(averageRating,0) >= 3? "fas fa-star text-warning" : Math.floor(averageRating,0) + averageRating%1 >= 2.5? "fas fa-star-half-alt" : "far fa-star"}></i>
-                          <i className={ !averageRating? '': Math.floor(averageRating,0) >= 4? "fas fa-star text-warning" : Math.floor(averageRating,0) + averageRating%1 >= 3.5? "fas fa-star-half-alt" : "far fa-star"}></i>
-                          <i className={ !averageRating? '': Math.floor(averageRating,0) >= 5? "fas fa-star text-warning" : Math.floor(averageRating,0) + averageRating%1 >= 4.5? "fas fa-star-half-alt" : "far fa-star"}></i>
+                          <i className={ !averageRating? '': Math.floor(averageRating,0) >= 1? "fas fa-star text-warning" : averageRating >= 0.5? "fas fa-star-half-alt" : "far fa-star"}></i>
+                          <i className={ !averageRating? '': Math.floor(averageRating,0) >= 2? "fas fa-star text-warning" : averageRating >= 1.5? "fas fa-star-half-alt" : "far fa-star"}></i>
+                          <i className={ !averageRating? '': Math.floor(averageRating,0) >= 3? "fas fa-star text-warning" : averageRating >= 2.5? "fas fa-star-half-alt" : "far fa-star"}></i>
+                          <i className={ !averageRating? '': Math.floor(averageRating,0) >= 4? "fas fa-star text-warning" : averageRating >= 3.5? "fas fa-star-half-alt" : "far fa-star"}></i>
+                          <i className={ !averageRating? '': Math.floor(averageRating,0) >= 5? "fas fa-star text-warning" : averageRating >= 4.5? "fas fa-star-half-alt" : "far fa-star"}></i>
+
                         </h5>
                         <div>{userInfo.address1||userInfo.address}</div>
                         <div>{userInfo.address2}</div>
