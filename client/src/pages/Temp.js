@@ -147,7 +147,7 @@ function Temp() {
       </div>
     </div>
 
-    <form className='card'>
+    <form className='card pb-3'>
       <h4 className="h1 mb-3 pt-3">Reviews </h4>
       <div className='row pl-5 pr-5 pb-3'>
         { Object.entries(reviewList).map( ([key,list]) => <ReservationCard key={key} list={list}></ReservationCard> ) }

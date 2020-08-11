@@ -153,7 +153,7 @@ return (
 
     <div className ="row pb-4">
         <div className='col-6 col-lg-4 offset-3 offset-lg-4'>
-          <button className="btn btn-primary" style={{width:'100%'}} onClick={editBusinessInfo} type="button">Save and Submit</button>
+          <button className="btn btn-primary" style={{width:'100%'}} onClick={editBusinessInfo} type="submit">Save and Submit</button>
         </div>          
     </div>
 
