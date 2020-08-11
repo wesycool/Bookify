@@ -64,7 +64,7 @@ function Usersdash() {
 
       axios.get(`/api/${splitLocation[2]}-review/${splitLocation[3]}`)
         .then(({data}) => {
-          if(splitLocation[2]==='business'){
+          
             if (data.length !== 0) {
               const sortList = data.sort((a,b) => {
                 const condition = a.Date < b.Date
@@ -73,16 +73,19 @@ function Usersdash() {
       
               const newArray = [...sortList]
       
-              const getRating = newArray.map( ({rating}) => rating)
-              const total = getRating.reduce((acc,cur) => acc + cur)
-              const average = total/getRating.length
-              const roundAverage = average.toFixed(1)
+              if(splitLocation[2]==='business'){
+                const getRating = newArray.map( ({rating}) => rating)
+                const total = getRating.reduce((acc,cur) => acc + cur)
+                const average = total/getRating.length
+                const roundAverage = average.toFixed(1)
 
-              setAverageRating(average)
-              setRoundRating(roundAverage)
+                setAverageRating(average)
+                setRoundRating(roundAverage)
+              }
+              
               setReviewList(newArray)
             }
-          }
+          
         })
   }, [] )
 
