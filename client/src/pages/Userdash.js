@@ -72,6 +72,11 @@ function Usersdash() {
 
           setReviewList(newArray)
           })
+
+          const newArray = [...sortList]
+
+          setReservationList(newArray)
+
   }, [] )
 
 
@@ -149,7 +154,7 @@ function Usersdash() {
                 
                 
               </div>
-            
+              
             </div>
         </div>
 
