@@ -125,11 +125,18 @@ code {
 .devInfo{
   margin-top: 20px;
   margin-bottom: 20px;
-  height: 700px;
+  height: auto;
 }
 
 .devIntro{
   text-align: center;
   text-indent: 20px;
   margin: 10px;
+}
+
+.card-Img img {
+  display: block;
+  position: relative;
+  width: 100%;
+  border-radius: 0.5rem;
 }
