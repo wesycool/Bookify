@@ -1,6 +1,7 @@
 import React, {useState, useEffect, useRef} from "react";
-import { Link, useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import NumberFormat from 'react-number-format';
+
 import ReservationCard from '../components/ReservationCard'
 import axios from 'axios'
 import './Temp.css'
@@ -10,11 +11,13 @@ function Temp() {
   const location = useLocation();
   const businessID = location.pathname.split('/')
   const [ starRating, setStarRating ] = useState()
+  const [ averageRating, setAverageRating ] = useState()
   const [ business, setList ] = useState( [] )
   const [ reviewList, setReviewList ] = useState([])
   const {category, businessName, address1, address2, city, province, postalCode, email, phone, information, imgSRC} = business
   const newReview = useRef()
 
+  console.log(Math.floor(averageRating,0))
   useEffect(() => {
     fetch("/api/business-list")
       .then(res => res.json())
@@ -27,14 +30,22 @@ function Temp() {
 
       axios.get(`/api/business-review/${businessID[2]}`)
       .then(({data}) => {
-        const sortList = data.sort((a,b) => {
-          const condition = a.Date < b.Date
-          return (condition - !condition)
-        })
+        if (data.length !== 0) {
+          const sortList = data.sort((a,b) => {
+            const condition = a.Date < b.Date
+            return (condition - !condition)
+          })
+  
+          const newArray = [...sortList]
+  
+          const getRating = newArray.map( ({rating}) => rating)
+          const total = getRating.reduce((acc,cur) => acc + cur)
+          const average = total/getRating.length
+  
+          setAverageRating(average)
+          setReviewList(newArray)
+        }
 
-        const newArray = [...sortList]
-
-        setReviewList(newArray)
         })
   }, [])  
 
@@ -43,21 +54,20 @@ function Temp() {
   }
 
   function saveReview(){
-    const data = {
-      "review": newReview.current.value,
-      "rating": starRating,
-      "userID": sessionStorage.id,
-      "businessID": businessID[2]
+    if(sessionStorage.account != 'business'){
+      const data = {
+        "review": newReview.current.value,
+        "rating": starRating,
+        "userID": sessionStorage.id,
+        "businessID": businessID[2]
+      }
+      axios.post('/api/new-review', {
+        headers: {'Content-Type': 'application/json'},
+        data
+      })
+  
+      window.location.reload(true)
     }
-
-    console.log(data)
-
-    axios.post('/api/new-review', {
-      headers: {'Content-Type': 'application/json'},
-      data
-    })
-
-
   }
 
   return (
@@ -70,6 +80,16 @@ function Temp() {
           <img className="card-img-top" src={`../assets/img/${imgSRC}`} alt="Card image cap" style={{height:"300px"}}/>
           <div className="card-body">
             <h1 className="card-text h1">{businessName}</h1>
+            <h5 style={{color:'#ffc107', textAlign:'center'}}>
+              <p>{!averageRating? 'No Review' : ''}</p>
+              <i className={ !averageRating? '': Math.floor(averageRating,0) >= 1? "fas fa-star text-warning" : Math.floor(averageRating,0) + averageRating%1 >= 0.5? "fas fa-star-half-alt" : "far fa-star"}></i>
+              <i className={ !averageRating? '': Math.floor(averageRating,0) >= 2? "fas fa-star text-warning" : Math.floor(averageRating,0) + averageRating%1 >= 1.5? "fas fa-star-half-alt" : "far fa-star"}></i>
+              <i className={ !averageRating? '': Math.floor(averageRating,0) >= 3? "fas fa-star text-warning" : Math.floor(averageRating,0) + averageRating%1 >= 2.5? "fas fa-star-half-alt" : "far fa-star"}></i>
+              <i className={ !averageRating? '': Math.floor(averageRating,0) >= 4? "fas fa-star text-warning" : Math.floor(averageRating,0) + averageRating%1 >= 3.5? "fas fa-star-half-alt" : "far fa-star"}></i>
+              <i className={ !averageRating? '': Math.floor(averageRating,0) >= 5? "fas fa-star text-warning" : Math.floor(averageRating,0) + averageRating%1 >= 4.5? "fas fa-star-half-alt" : "far fa-star"}></i>
+            </h5>
+            
+            
             <p className="p">{category}</p>
             <p className="p">{information}</p>
           </div>
@@ -83,8 +103,8 @@ function Temp() {
           <div className="card-body" style={{marginTop:'10px'}}>
             <h1 className="h1">Contact Us</h1>
             <p className="p">{address1} <br/> {(address2)? `${address2}<br/>` : ''} {`${city}, ${province}  ${postalCode}`}</p>
-            <p className="p"><i class="fas fa-envelope"></i> {email}</p>
-            <p className="p"><i class="fas fa-phone"></i> <NumberFormat value={phone} displayType={'text'} format="(###) ###-####" /></p>
+            <p className="p"><i className="fas fa-envelope"></i> {email}</p>
+            <p className="p"><i className="fas fa-phone"></i> <NumberFormat value={phone} displayType={'text'} format="(###) ###-####" /></p>
             <a href="" className="btn btn-danger mb-4 btn-block" data-toggle="modal" data-target="#ModalBooking" >Book It Now!</a>
           </div>
         </div>
@@ -98,7 +118,7 @@ function Temp() {
       <div className="col" style={{marginBottom:"20px"}}>
         <div className="card">
           <div className="card-body">
-            <h1 className="h1">Overall Star Rating </h1>
+            <h1 className="h1">Write a Review</h1>
 
             <div className="rating">
               <input type="radio" name="rating" value="5" id="5" onClick={starClick}/>
@@ -115,7 +135,7 @@ function Temp() {
 
             <div className="input-group pl-4 pr-4">
               <input className="form-control" type="text" placeholder="Write your Review" ref={newReview} />
-              <button onClick="publishReview" class="btn btn-secondary" type="submit" onClick={saveReview}> Review </button> 
+              <button className="btn btn-secondary" onClick={saveReview} type="submit"> Review </button> 
             </div>
 
 
@@ -124,12 +144,12 @@ function Temp() {
       </div>
     </div>
 
-    <div className='card'>
+    <form className='card'>
       <h4 className="h1 mb-3 pt-3">Reviews </h4>
       <div className='row pl-5 pr-5 pb-3'>
         { Object.entries(reviewList).map( ([key,list]) => <ReservationCard key={key} list={list}></ReservationCard> ) }
       </div>
-    </div>
+    </form>
 
   </div>
   );

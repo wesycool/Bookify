@@ -3,6 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 import ReservationCard from '../components/ReservationCard.js'
 import UserSetting from '../components/userSetting.js'
 import BusinessSetting from '../components/businessSetting.js'
+import NumberFormat from 'react-number-format';
 import axios from 'axios'
 
 function Usersdash() {
@@ -12,6 +13,7 @@ function Usersdash() {
   const [ userInfo , setUserInfo ] = useState( {} )
   const [ reservationList, setReservationList ] = useState([])
   const [ reviewList, setReviewList ] = useState([])
+  const [ averageRating, setAverageRating ] = useState()
 
   useEffect(() => {
     axios.get(`/api/get-${splitLocation[2]}/${splitLocation[3]}`)
@@ -61,15 +63,24 @@ function Usersdash() {
 
       axios.get(`/api/${splitLocation[2]}-review/${splitLocation[3]}`)
         .then(({data}) => {
-          const sortList = data.sort((a,b) => {
-            const condition = a.Date < b.Date
-            return (condition - !condition)
-          })
-
-          const newArray = [...sortList]
-
-          setReviewList(newArray)
-          })
+          if(splitLocation[2]=='business'){
+            if (data.length !== 0) {
+              const sortList = data.sort((a,b) => {
+                const condition = a.Date < b.Date
+                return (condition - !condition)
+              })
+      
+              const newArray = [...sortList]
+      
+              const getRating = newArray.map( ({rating}) => rating)
+              const total = getRating.reduce((acc,cur) => acc + cur)
+              const average = total/getRating.length
+      
+              setAverageRating(average)
+              setReviewList(newArray)
+            }
+          }
+        })
   }, [] )
 
 
@@ -85,9 +96,21 @@ function Usersdash() {
               <ul className="list-group mb-3">
                 <li className="list-group-item d-flex justify-content-between lh-condensed">
                     <div className="col text-center">
-                        <img className="rounded-circle" src="https://avatars1.githubusercontent.com/u/31528729?s=460&u=47436ea6b0f63a23dbe6fbbc71e75156dc05e40f&v=4" style={{width:"150px", marginBottom:'10px'}} />
-                        <div>{userInfo.firstName} {userInfo.lastName}</div>
+                        <img className="rounded-circle" src={`../../assets/img/default-${splitLocation[2]}.png`} style={{width:"150px", marginBottom:'10px'}} />
+                        <div>{ userInfo.businessName || `${userInfo.firstName} ${userInfo.lastName}`}</div>
+                        <h5 style={{color:'#ffc107', textAlign:'center'}}>
+                          <p>{splitLocation[2]=='business' && !averageRating? 'No Review' : ''}</p>
+                          <i className={ !averageRating? '': Math.floor(averageRating,0) >= 1? "fas fa-star text-warning" : Math.floor(averageRating,0) + averageRating%1 >= 0.5? "fas fa-star-half-alt" : "far fa-star"}></i>
+                          <i className={ !averageRating? '': Math.floor(averageRating,0) >= 2? "fas fa-star text-warning" : Math.floor(averageRating,0) + averageRating%1 >= 1.5? "fas fa-star-half-alt" : "far fa-star"}></i>
+                          <i className={ !averageRating? '': Math.floor(averageRating,0) >= 3? "fas fa-star text-warning" : Math.floor(averageRating,0) + averageRating%1 >= 2.5? "fas fa-star-half-alt" : "far fa-star"}></i>
+                          <i className={ !averageRating? '': Math.floor(averageRating,0) >= 4? "fas fa-star text-warning" : Math.floor(averageRating,0) + averageRating%1 >= 3.5? "fas fa-star-half-alt" : "far fa-star"}></i>
+                          <i className={ !averageRating? '': Math.floor(averageRating,0) >= 5? "fas fa-star text-warning" : Math.floor(averageRating,0) + averageRating%1 >= 4.5? "fas fa-star-half-alt" : "far fa-star"}></i>
+                        </h5>
+                        <div>{userInfo.address1||userInfo.address}</div>
+                        <div>{userInfo.address2}</div>
+                        <p>{`${userInfo.city}, ${userInfo.province}  ${userInfo.postalCode}`}</p>
                         <div>{userInfo.email}</div>
+                        <div><NumberFormat value={userInfo.phone} displayType={'text'} format="(###) ###-####" /></div>
                     </div>
                   </li>
                 <li className="list-group-item d-flex justify-content-between lh-condensed">

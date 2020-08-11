@@ -72,23 +72,13 @@ function Usersdash() {
 
           setReviewList(newArray)
           })
+
+          const newArray = [...sortList]
+
+          setReservationList(newArray)
+
   }, [] )
 
-  // function editUser(){
-  //   const data = { 
-  //     "firstName": getFirstName.current.value,
-  //     "lastName": getLastName.current.value,
-  //     "email": getEmail.current.value,
-  //     "address": getAddress.current.value,
-  //     "address2": getAddress2.current.value,
-  //     "city": getCity.current.value,
-  //     "province": getProvince.current.value,
-  //     "postalCode": getPostalCode.current.value,
-  //     "archieve": false
-  //   }
-  //     axios.put(`/api/edit-user/${splitLocation[3]}`,{headers: {'Content-Type': 'application/json'},data})
-
-  // }
 
   return (
     <div className="container mt-4">
@@ -164,141 +154,7 @@ function Usersdash() {
                 
                 
               </div>
-              {/* <form className="needs-validation">
-                <div className="row">
-                
-                  <div className="col-md-6 mb-3">
-                    <label>First name</label>
-                    <input type="text" className="form-control" ref={getFirstName} placeholder="" required="" />
-                  </div>
-
-                  <div className="col-md-6 mb-3">
-                    <label>Last name</label>
-                    <input type="text" className="form-control" ref={getLastName} placeholder="" required="" />
-                    <div className="invalid-feedback">
-                      Valid last name is required.
-                    </div>
-                  </div>
-
-                </div>
-
-    
-                <div className="mb-3">
-                  <label>Email</label>
-                  <input type="email" className="form-control" ref={getEmail} placeholder="you@example.com" />
-                  <div className="invalid-feedback">
-                    Please enter a valid email address for shipping updates.
-                  </div>
-                </div>
-    
-                <div className="mb-3">
-                  <label>Address</label>
-                  <input type="text" className="form-control" ref={getAddress} placeholder="1234 Main St" required="" />
-                  <div className="invalid-feedback">
-                    Please enter your shipping address.
-                  </div>
-                </div>
-    
-                <div className="mb-3">
-                  <label>Address 2 <span>(Optional)</span></label>
-                  <input type="text" className="form-control" ref={getAddress2} placeholder="Apartment or suite" />
-                </div>
-    
-                <div className="row">
-                  <div className="col-md-5 mb-3">
-                    <label>City</label>
-                    <input type="text" className="form-control" ref={getCity} />
-                    <div className="invalid-feedback">
-                      Please select a valid country.
-                    </div>
-                  </div>
-
-                  <div className="col-md-4 mb-3">
-                    <label>Province</label>
-                    <select className="custom-select d-block w-100" ref={getProvince} required="">
-                        <option {...getProvince === 'AB'? 'selected': ''}>AB</option>
-                        <option {...getProvince === 'BC'? 'selected': ''}>BC</option>
-                        <option {...getProvince === 'MB'? 'selected': ''}>MB</option>
-                        <option {...getProvince === 'NB'? 'selected': ''}>NB</option>
-                        <option {...getProvince === 'NL'? 'selected': ''}>NL</option>
-                        <option {...getProvince === 'NS'? 'selected': ''}>NS</option>
-                        <option {...getProvince === 'NT'? 'selected': ''}>NT</option>
-                        <option {...getProvince === 'NU'? 'selected': ''}>NU</option>
-                        <option {...getProvince === 'ON'? 'selected': ''}>ON</option>
-                        <option {...getProvince === 'PE'? 'selected': ''}>PE</option>
-                        <option {...getProvince === 'QC'? 'selected': ''}>QC</option>
-                        <option {...getProvince === 'SK'? 'selected': ''}>SK</option>
-                        <option {...getProvince === 'YT'? 'selected': ''}>YT</option>
-                    </select>
-                    <div className="invalid-feedback">
-                      Please provide a valid state.
-                    </div>
-                  </div>
-
-                  <div className="col-md-3 mb-3">
-                    <label>Postal Code</label>
-                    <input type="text" className="form-control" ref={getPostalCode} placeholder="" required="" />
-                    <div className="invalid-feedback">
-                      Zip code required.
-                    </div>
-                  </div>
-                </div>
-
-
-              </form>
-              <div className ="row pb-4">
-                  <div className='col-6 col-lg-4 offset-3 offset-lg-4'>
-                    <button className="btn btn-primary" style={{width:'100%'}} onClick={editUser} type="button">Save and Submit</button>
-                  </div>          
-              </div> */}
-
-
-                {/* <hr className="mb-4" /> */}
-
-                {/* <!-- My Review -->
-               <div className="cardBusinessdash" id="reservationList">
-               <h4 className="mb-3">Review List</h4>
-
-             
-               <div className="card-body">
-                   <div className="row mt-4 ml-0.8 mr-0.5 mb-5">
-                       <div className="card-body col-3 d-none d-lg-block">
-                           <img className="rounded-circle mb-3 mt-4" src="https://avatars1.githubusercontent.com/u/31528729?s=460&u=47436ea6b0f63a23dbe6fbbc71e75156dc05e40f&v=4" alt="" />
-                       </div>
-                       <div className="card resultBox col-md-8">
-                           <div className="row no-gutters rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
-                               <div className="col">
-                                   <h3 className="mb-0" id="bookTitle">Customer Name</h3>
-                                   <p className="mb-auto" id="bookDescription">Customer / reservation Information</p>
-                                   <div className="footer d-flex justify-content-end">
-                                       <button className="btn btn-primary m-2">Accept</button>
-                                       <button className="btn btn-primary m-2">Cancel</button>
-                                   </div>
-                               </div>
-                           </div>
-                       </div>
-                   </div>
-               </div>
-               <div className="card-body">
-                   <div className="row mt-4 ml-0.8 mr-0.5 mb-5">
-                       <div className="card-body col-3 d-none d-lg-block">
-                           <img className="rounded-circle mb-3 mt-4" src="https://avatars1.githubusercontent.com/u/31528729?s=460&u=47436ea6b0f63a23dbe6fbbc71e75156dc05e40f&v=4" alt="" />
-                       </div>
-                       <div className="card resultBox col-md-8">
-                           <div className="row no-gutters rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
-                               <div className="col">
-                                   <h3 className="mb-0" id="bookTitle">Customer Name</h3>
-                                   <p className="mb-auto" id="bookDescription">Customer / reservation Information</p>
-                                   <div className="footer d-flex justify-content-end">
-                                       <button className="btn btn-primary m-2">Accept</button>
-                                       <button className="btn btn-primary m-2">Cancel</button>
-                                   </div>
-                               </div>
-                           </div>
-                       </div>
-                   </div>
-               </div>
-            </div> */}
+              
             </div>
         </div>
 
