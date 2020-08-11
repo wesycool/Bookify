@@ -1,7 +1,7 @@
 import React, {useRef} from "react";
 import { Link, useLocation } from "react-router-dom";
-import axios from 'axios';
 import BasicDateTimePicker from "./DateTimePicker";
+import axios from 'axios';
 
 function Modal() {
   const location = useLocation();
@@ -11,32 +11,18 @@ function Modal() {
 
   async function signIn(){
 
-    await axios.get(`/api/login-business/${email.current.value}`)
-    .then(({data}) => {
+    const businessData = await axios.get(`/api/login-business/${email.current.value}`)
+    const userData = await axios.get(`/api/login-user/${email.current.value}`)
 
-        if (data.password === password.current.value) {
-          document.querySelector('#signOutLink').setAttribute('style','display:initial; color:white')
-          document.querySelector('#businessAccountLink').setAttribute('style','display:initial; color:white')
-          document.querySelector('#userAccountLink').setAttribute('style','display:none')
+    const getData = businessData.data || userData.data
+
+    if (getData.password === password.current.value){
+      document.querySelector('#signOutLink').setAttribute('style','display:initial; color:white')
+          document.querySelector('#accountLink').setAttribute('style','display:initial; color:white')
           document.querySelector('#signInLink').setAttribute('style','display:none')
-          sessionStorage.id = data._id
-        }
-
-
-      })
-
-    await axios.get(`/api/login-user/${email.current.value}`)
-    .then(({data}) => {
-
-        if (data.password === password.current.value) {
-          document.querySelector('#signOutLink').setAttribute('style','display:initial; color:white')
-          document.querySelector('#userAccountLink').setAttribute('style','display:initial; color:white')
-          document.querySelector('#businessAccountLink').setAttribute('style','display:none')
-          document.querySelector('#signInLink').setAttribute('style','display:none')
-          sessionStorage.id = data._id
-        }
-
-      })
+          sessionStorage.id = getData._id
+          sessionStorage.account = (businessData.data)? 'business' : 'user'
+    }
     
   }
 
@@ -61,7 +47,7 @@ function Modal() {
     
   return (
     <div className='container'>
-        <div className="modal fade bd-example-modal-lg" id="ModalSignIn" tabindex="-1" role="dialog" aria-labelledby="ModalSignInTitle" aria-hidden="true">
+        <div className="modal fade bd-example-modal-lg" id="ModalSignIn" tabIndex="-1" role="dialog" aria-labelledby="ModalSignInTitle" aria-hidden="true">
             <div className="modal-dialog modal-lg">
                 <div className="userSignupForm modal-content">
                     <div className="form-container">
@@ -82,7 +68,7 @@ function Modal() {
         </div>  
 
 
-        <div className="modal fade bd-example-modal-lg" id="ModalBooking" tabindex="-1" role="dialog" aria-labelledby="ModalBookingTitle" aria-hidden="true">
+        <div className="modal fade bd-example-modal-lg" id="ModalBooking" tabIndex="-1" role="dialog" aria-labelledby="ModalBookingTitle" aria-hidden="true">
             <div className="modal-dialog modal-lg">
                 <div className="userSignupForm modal-content">
                     <div className="form-container">

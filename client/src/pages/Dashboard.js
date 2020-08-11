@@ -1,4 +1,4 @@
-import React, {useRef, useEffect, useState} from "react";
+import React, { useEffect, useState} from "react";
 import { Link, useLocation } from "react-router-dom";
 import ReservationCard from '../components/ReservationCard.js'
 import UserSetting from '../components/userSetting.js'
@@ -12,8 +12,6 @@ function Usersdash() {
   const [ userInfo , setUserInfo ] = useState( {} )
   const [ reservationList, setReservationList ] = useState([])
   const [ reviewList, setReviewList ] = useState([])
-
-  // ObjectId("5f2cb22b41d8b9da4b160e27")
 
   useEffect(() => {
     axios.get(`/api/get-${splitLocation[2]}/${splitLocation[3]}`)
@@ -72,11 +70,6 @@ function Usersdash() {
 
           setReviewList(newArray)
           })
-
-          const newArray = [...sortList]
-
-          setReservationList(newArray)
-
   }, [] )
 
 
@@ -154,12 +147,8 @@ function Usersdash() {
                 
                 
               </div>
-              
             </div>
         </div>
-
-
-
     </div>
   );
 }

@@ -19,6 +19,17 @@ function Navbar(props) {
                 setList(list)
                 setFullList(list)
             })
+
+        if (sessionStorage.id) {
+            document.querySelector('#signInLink').setAttribute('style','display:none')
+            document.querySelector('#accountLink').setAttribute('style','display:initial; color:white')
+            document.querySelector('#signOutLink').setAttribute('style','ddisplay:initial; color:white')
+        } else{
+            document.querySelector('#signInLink').setAttribute('style','display:initial; color:white')
+            document.querySelector('#accountLink').setAttribute('style','display:none')
+            document.querySelector('#signOutLink').setAttribute('style','display:none')
+        }
+
     }, [] )
 
 
@@ -46,13 +57,13 @@ function Navbar(props) {
     }
 
     function changeID(){
-        setStoreId(sessionStorage.id)
+        window.location.href = `${(location.pathname =='/')? '.': '..'}/dashboard/${sessionStorage.account}/${sessionStorage.id}`
+        // setStoreId(sessionStorage.id)
     }
 
     function signOut(){
         sessionStorage.clear()
-        document.querySelector('#userAccountLink').setAttribute('style','display:none')
-        document.querySelector('#businessAccountLink').setAttribute('style','display:none')
+        document.querySelector('#accountLink').setAttribute('style','display:none')
         document.querySelector('#signInLink').setAttribute('style','display:initial; color:white')
         document.querySelector('#signOutLink').setAttribute('style','display:none')
         
@@ -64,18 +75,18 @@ function Navbar(props) {
         <div>
             <nav className="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
                 <Link to="/">
-                    <h1 className="navbar-brand" ><i class="fas fa-bookmark"></i> Bookify</h1>
+                    <h1 className="navbar-brand" ><i className="fas fa-bookmark"></i> Bookify</h1>
                 </Link>
 
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
+                <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span className="navbar-toggler-icon"></span>
                 </button>
 
                 <div className="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
                     <div className='row'>
                         <div className='col-12 col-md-3 col-lg-12' id="signin">
-                            <Link to={location.pathname == '/'? `./businessdashboard/${storeid}`: `../businessdashboard/${storeid}`} onClick={changeID} style={{display:'none'}} id="businessAccountLink">Business Account</Link>
-                            <Link to={location.pathname == '/'? `./userdashboard/${storeid}`: `../userdashboard/${storeid}`} onClick={changeID} style={{display:'none'}} id="userAccountLink">My Account</Link>
+                            {/* <Link to={location.pathname == '/'? `./businessdashboard/${storeid}`: `../businessdashboard/${storeid}`} onClick={changeID} style={{display:'none'}} id="businessAccountLink">Business Account</Link> */}
+                            <Link to='' onClick={changeID} style={{display:'none'}} id="accountLink">My Account</Link>
                             <a href='' style={{color:'white'}} data-toggle="modal" data-target="#ModalSignIn" id='signInLink'>Sign In</a>
                             <a href='/' style={{color:'white'}} id='signOutLink' style={{display:'none'}} onClick={signOut}> Sign Out</a>
                         </div>
