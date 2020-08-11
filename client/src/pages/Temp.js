@@ -1,5 +1,5 @@
 import React, {useState, useEffect, useRef} from "react";
-import { Link, useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import NumberFormat from 'react-number-format';
 
 import ReservationCard from '../components/ReservationCard'
@@ -58,6 +58,8 @@ function Temp() {
       data
     })
 
+    window.location.reload(true)
+
 
   }
 
@@ -84,8 +86,8 @@ function Temp() {
           <div className="card-body" style={{marginTop:'10px'}}>
             <h1 className="h1">Contact Us</h1>
             <p className="p">{address1} <br/> {(address2)? `${address2}<br/>` : ''} {`${city}, ${province}  ${postalCode}`}</p>
-            <p className="p"><i class="fas fa-envelope"></i> {email}</p>
-            <p className="p"><i class="fas fa-phone"></i> <NumberFormat value={phone} displayType={'text'} format="(###) ###-####" /></p>
+            <p className="p"><i className="fas fa-envelope"></i> {email}</p>
+            <p className="p"><i className="fas fa-phone"></i> <NumberFormat value={phone} displayType={'text'} format="(###) ###-####" /></p>
             <a href="" className="btn btn-danger mb-4 btn-block" data-toggle="modal" data-target="#ModalBooking" >Book It Now!</a>
           </div>
         </div>
@@ -116,7 +118,7 @@ function Temp() {
 
             <div className="input-group pl-4 pr-4">
               <input className="form-control" type="text" placeholder="Write your Review" ref={newReview} />
-              <button onClick="publishReview" class="btn btn-secondary" type="submit" onClick={saveReview}> Review </button> 
+              <button className="btn btn-secondary" onClick={saveReview} type="submit"> Review </button> 
             </div>
 
 
@@ -125,12 +127,12 @@ function Temp() {
       </div>
     </div>
 
-    <div className='card'>
+    <form className='card'>
       <h4 className="h1 mb-3 pt-3">Reviews </h4>
       <div className='row pl-5 pr-5 pb-3'>
         { Object.entries(reviewList).map( ([key,list]) => <ReservationCard key={key} list={list}></ReservationCard> ) }
       </div>
-    </div>
+    </form>
 
   </div>
   );
